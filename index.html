@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accueil – Nany Moda Consciente</title>
-    
+    <title>Galería – Nany Moda Consciente</title>
+
     <link rel="stylesheet" href="style.css">
-    
-    </head>
+</head>
 
 <body>
 
@@ -15,36 +14,138 @@
     <div class="header-inner">
         <div class="header-logo">
             <a href="index.html">
-                <img src="logo-nany.png" alt="Nany Moda Consciente Logo">
+                <img src="logo-nany.png" alt="Nany Logo">
             </a>
         </div>
-        <div class="header-right">
-            <span>🔍</span>
-            <span>👤</span>
-            <span>♡</span>
-            <span>🛒</span>
-        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
 </header>
 
-<nav>
+<nav id="menuCategorias">
     <div class="nav-inner">
         <a href="index.html">Inicio</a>
-        <a href="galerie.html#pasarelas">Pasarelas</a>
-        <a href="galerie.html#abanicos">Abanicos</a>
-        <a href="galerie.html#sacs">Bolsos</a>
-        <a href="galerie.html#bisuteria">Bisutería</a>
-        <a href="galerie.html#sandalias">Sandalias</a>
+        <a href="#pasarelas">Pasarelas</a>
+        <a href="#abanicos">Abanicos</a>
+        <a href="#sacs">Bolsos</a>
+        <a href="#bisuteria">Bisutería</a>
+        <a href="#sandalias">Sandalias</a>
     </div>
 </nav>
 
-<main class="hero-section">
-    <h1>Bienvenue chez Nany Moda Consciente</h1>
-    <p>Découvrez notre collection artisanale unique d'éventails, de sacs, de bijoux et de sandales, inspirée par la culture et l'artisanat durable. Chaque pièce raconte une histoire de passion et de savoir-faire.</p>
-    
-    <a href="galerie.html" class="cta-button">Explorer la Galerie</a>
-</main>
+<h2 id="pasarelas">Pasarelas</h2>
+<div class="gallery-grid" id="galeria-pasarelas"></div>
 
+<h2 id="abanicos">Abanicos</h2>
+<div class="gallery-grid" id="galeria-abanicos"></div>
+
+<h2 id="sacs">Bolsos</h2>
+<div class="gallery-grid" id="galeria-sacs"></div>
+
+<h2 id="bisuteria">Bisutería</h2>
+<div class="gallery-grid" id="galeria-bisuteria"></div>
+
+<h2 id="sandalias">Sandalias</h2>
+<div class="gallery-grid" id="galeria-sandalias"></div>
+
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <span class="lightbox-arrow left" onclick="prevImage()">❮</span>
+    <img id="lightbox-img">
+    <span class="lightbox-arrow right" onclick="nextImage()">❯</span>
+</div>
+
+
+<script>
+/* Menu mobile */
+function toggleMenu() {
+    document.getElementById("menuCategorias").classList.toggle("open");
+}
+
+// --- DONNÉES DE LA GALERIE (IDENTIQUES à la version précédente) ---
+const galleryData = [
+    {
+        id: "galeria-pasarelas",
+        dossier: "pasarelas",
+        fichiers: Array.from({ length: 149 }, (_, i) => `desf${i + 1}.jpg`)
+    },
+    {
+        id: "galeria-abanicos",
+        dossier: "abanicos",
+        fichiers: [
+            "AB1.png", "AB10.jpg", "AB11.jpg", "AB12.jpg", "AB13.jpg", 
+            "AB14.jpg", "AB15.jpg", "AB16.jpg", "AB17.jpg", "AB18.jpg", 
+            "AB19.jpg", "AB2.png", "AB4.png", "AB5.png", "AB6.png", 
+            "AB7.jpg", "AB8.jpg", "AB20.jpg" 
+        ]
+    },
+    {
+        id: "galeria-sacs",
+        dossier: "sacs",
+        fichiers: Array.from({ length: 14 }, (_, i) => `BOL${i + 1}.jpg`)
+    },
+    {
+        id: "galeria-bisuteria",
+        dossier: "bisutérie", 
+        fichiers: Array.from({ length: 54 }, (_, i) => `BISOU${i + 1}.jpg`)
+    },
+    {
+        id: "galeria-sandalias",
+        dossier: "sandalias",
+        fichiers: [
+            "SAN1.jpg", "SAN10.png", "SAN11.jpg", "SAN12.jpg", "SAN13.jpg", 
+            "SAN14.jpg", "SAN15.jpg", "SAN16.jpg", "SAN17.jpg", "SAN18.jpg", 
+            "SAN19.jpg", "SAN2.png", "SAN20.jpg", "SAN21.jpg", "SAN22.jpg", 
+            "SAN3.jpg", "SAN4.jpg", "SAN5.jpg", "SAN6.jpg", "SAN7.jpg", "SAN8.jpg", "SAN9.jpg"
+        ]
+    }
+];
+// --- LIGHTBOX ET FONCTIONS DE CHARGEMENT ---
+let lightbox = document.getElementById("lightbox");
+let lightboxImg = document.getElementById("lightbox-img");
+let allImages = []; 
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = allImages[index];
+    lightbox.classList.add("active");
+}
+
+function closeLightbox() { lightbox.classList.remove("active"); }
+function nextImage() { currentIndex = (currentIndex + 1) % allImages.length; lightboxImg.src = allImages[currentIndex]; }
+function prevImage() { currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; lightboxImg.src = allImages[currentIndex]; }
+
+lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) { closeLightbox(); }
+});
+
+function loadGalleries() {
+    galleryData.forEach(gallery => {
+        const divGallery = document.getElementById(gallery.id);
+        if (!divGallery) return; 
+        
+        gallery.fichiers.forEach(fileName => {
+            const fullPath = `${gallery.dossier}/${fileName}`;
+            allImages.push(fullPath); 
+            
+            let card = document.createElement("div");
+            card.classList.add("gallery-card");
+
+            let img = document.createElement("img");
+            img.src = fullPath;
+            img.alt = `Image de ${gallery.dossier}`;
+            
+            const globalIndex = allImages.indexOf(fullPath);
+            img.onclick = () => openLightbox(globalIndex);
+
+            card.appendChild(img);
+            divGallery.appendChild(card);
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadGalleries);
+</script>
 
 </body>
 </html>
