@@ -3,64 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nany – Moda Consciente</title>
+  <title>Galería – Nany Moda Consciente</title>
 
   <style>
     :root {
       --text-main: #111111;
       --accent: #e11d48;
-      --bg-body: #ffffff;
       --border-soft: #e5e5e5;
-    }
-
-    * {
-      box-sizing: border-box;
+      --bg-light: #ffffff;
     }
 
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background: var(--bg-body);
+      background: var(--bg-light);
       color: var(--text-main);
     }
 
-    /* ===== TOP BAR ===== */
-    .top-info {
-      background: #111111;
-      color: #ffffff;
-      text-align: center;
-      font-size: 0.85rem;
-      padding: 0.4rem;
-      letter-spacing: 0.03em;
-    }
-
-    /* ===== HEADER ===== */
+    /* HEADER */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border-soft);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 50;
     }
 
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       padding: 0.8rem 1rem;
-    }
-
-    .header-left span {
-      border: 1px solid #111;
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .header-logo img {
-      height: 55px;
-      object-fit: contain;
+      height: 50px;
     }
 
     .header-right span {
@@ -69,187 +48,137 @@
       font-size: 1.2rem;
     }
 
-    /* ===== NAV ===== */
+    /* NAV */
     nav {
-  border-bottom: 1px solid var(--border-soft);
-  background: white;
-}
-
-
+      border-bottom: 1px solid var(--border-soft);
+      background: white;
+      position: sticky;
+      top: 65px;
+      z-index: 999;
+    }
 
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0.7rem 1rem;
+      padding: 0.8rem 1rem;
       display: flex;
-      align-items: center;
       justify-content: center;
       gap: 2rem;
-      font-size: 0.95rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-main);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-    }
-
-    .nav-inner a {
-      color: #111;
-      text-decoration: none;
+      font-size: 0.95rem;
       position: relative;
-      padding-bottom: 2px;
     }
 
-    .nav-inner a:hover::after {
+    nav a:hover::after {
       content: "";
       position: absolute;
-      bottom: 0;
+      bottom: -3px;
       left: 0;
       width: 100%;
       height: 2px;
       background: var(--accent);
     }
 
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      min-height: 70vh;
-      background-image: url("assets/pasarelas/desf27.jpg");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: #ffffff;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.05));
-    }
-
-    .hero-content {
-      position: relative;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      z-index: 2;
-    }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-    }
-
-    .hero-sub {
-      font-size: 1.2rem;
-      max-width: 450px;
-      line-height: 1.6;
-    }
-
-    .hero-btns {
+    /* TITULOS */
+    h2 {
+      text-align: center;
+      font-size: 2rem;
       margin-top: 2rem;
-      display: flex;
+      margin-bottom: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* GALERÍA */
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1rem;
     }
 
-    .btn {
-      padding: 0.9rem 1.6rem;
-      border-radius: 999px;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+    .gallery-card {
+      border-radius: 0.7rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: .3s;
     }
 
-    .btn-primary {
-      background: var(--accent);
+    .gallery-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 1rem;
+    }
+
+    .lightbox-close, .lightbox-arrow {
+      position: absolute;
       color: white;
+      font-size: 3rem;
+      cursor: pointer;
     }
 
-    .btn-primary:hover {
-      background: #be123c;
+    .lightbox-close {
+      top: 2rem;
+      right: 2rem;
     }
 
-    .btn-ghost {
-      border: 1px solid white;
-      color: white;
+    .lightbox-arrow.left {
+      top: 50%;
+      left: 2rem;
+      transform: translateY(-50%);
     }
 
-    /* ===== SECTIONS ===== */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-      border-bottom: 1px solid #eee;
-      text-align: left;
+    .lightbox-arrow.right {
+      top: 50%;
+      right: 2rem;
+      transform: translateY(-50%);
     }
 
-    .section h2 {
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .section h3 {
-      margin-top: 0;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .section p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 2rem;
-    }
-
-    .pill {
-      border: 1px solid #ddd;
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      margin: 0.2rem;
-    }
-
-    .pill-row {
-      margin-top: 1rem;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 1.5rem;
-      text-align: center;
-      color: #666;
-      background: #f9fafb;
-      font-size: 0.9rem;
-    }
   </style>
 </head>
 
 <body>
 
-<div class="top-info">
-  ENVÍOS ARTESANALES · COLECCIONES LIMITADAS · MODA CONSCIENTE
-</div>
-
 <header>
   <div class="header-inner">
-    <div class="header-left">
-      <span>BOUTIQUE NANY</span>
-    </div>
-
     <div class="header-logo">
-      <img src="assets/logo-nany.png" alt="logo">
+      <img src="logo-nany.png" alt="Nany">
     </div>
-
     <div class="header-right">
       <span>🔍</span>
       <span>👤</span>
@@ -262,110 +191,95 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html">Inicio</a>
-    <a href="#sobre">Sobre Nany</a>
-    <a href="#colecciones">Colecciones</a>
-    <a href="galeria.html">Galería</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#pasarelas">Pasarelas</a>
+    <a href="#abanicos">Abanicos</a>
+    <a href="#sacs">Bolsos</a>
+    <a href="#bisuteria">Bisutería</a>
+    <a href="#sandalias">Sandalias</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-title">MODA AFRO CONTEMPORÁNEA</div>
-    <div class="hero-sub">
-      Piezas únicas, hechas a mano, que fusionan identidad africana, reciclaje creativo y elegancia urbana.
-    </div>
-    <div class="hero-btns">
-      <a href="https://wa.me/240555517225" 
-   style="
-     display:inline-block;
-     background:#25D366;
-     color:white;
-     padding:0.9rem 1.6rem;
-     border-radius:999px;
-     text-decoration:none;
-     font-weight:600;
-     letter-spacing:0.08em;
-     text-transform:uppercase;
-     box-shadow:0 4px 12px rgba(0,0,0,0.2);
-   ">
-  🛍️ Boutique WhatsApp
-</a>
+<!-- GALERÍAS -->
+<h2 id="pasarelas">Pasarelas</h2>
+<div class="gallery-grid" id="galeria-pasarelas"></div>
 
-      <a href="galeria.html" class="btn btn-primary">Entrar en la galería</a>
-      <a href="#colecciones" class="btn btn-ghost">Descubrir colecciones</a>
-    </div>
-  </div>
-</section>
+<h2 id="abanicos">Abanicos</h2>
+<div class="gallery-grid" id="galeria-abanicos"></div>
 
-<section class="section" id="sobre">
-  <div class="grid-2">
-    <div>
-      <h2>SOBRE NANY</h2>
-<h3>Diseñadora, artesana y creadora comprometida</h3>
-<p>
-  Casiana Nanitursa Nchama Nguema, conocida artísticamente como <b>Nany</b>, 
-  es una diseñadora de moda y artesana de Guinea Ecuatorial cuya obra destaca 
-  por la fuerza estética, la creatividad y la conciencia social.
-</p>
+<h2 id="sacs">Bolsos</h2>
+<div class="gallery-grid" id="galeria-sacs"></div>
 
-<p>
-  Desde muy joven desarrolló una sensibilidad especial hacia la 
-  reutilización de materiales y la transformación artística. Su filosofía 
-  se basa en dar una “segunda vida” a telas, fibras y elementos reciclados, 
-  convirtiéndolos en piezas únicas que combinan tradición africana, diseño 
-  contemporáneo y una profunda identidad cultural.
-</p>
+<h2 id="bisuteria">Bisutería</h2>
+<div class="gallery-grid" id="galeria-bisuteria"></div>
 
-<p>
-  Su trabajo ha sido presentado en eventos como <b>Mujer Ideal</b>, 
-  <b>FIMIAGE</b>, <b>KAFAF Festival</b> y múltiples pasarelas locales e 
-  internacionales. Nany es reconocida por su estilo atrevido, elegante y 
-  altamente detallista, donde cada pieza cuenta una historia.
-</p>
+<h2 id="sandalias">Sandalias</h2>
+<div class="gallery-grid" id="galeria-sandalias"></div>
 
-<p>
-  Además de su labor artística, Nany impulsa proyectos de inclusión, 
-  empoderamiento femenino y artesanía sostenible, promoviendo un modelo de 
-  moda ética y responsable que inspira a nuevas generaciones de creadores.
-</p>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="cerrarLightbox()">×</span>
+  <span class="lightbox-arrow left" onclick="imagenAnterior()">❮</span>
+  <img id="lightbox-img">
+  <span class="lightbox-arrow right" onclick="imagenSiguiente()">❯</span>
+</div>
 
-    </div>
-    <div>
-      <h2>VALORES</h2>
-      <div class="pill-row">
-        <span class="pill">Moda ética</span>
-        <span class="pill">Reciclaje creativo</span>
-        <span class="pill">Diversidad</span>
-        <span class="pill">Inclusión</span>
-        <span class="pill">Empoderamiento</span>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+let lightbox = document.getElementById("lightbox");
+let lightboxImg = document.getElementById("lightbox-img");
+let imagenes = [];
+let indexActual = 0;
 
-<section class="section" id="colecciones">
-  <h2>COLECCIONES</h2>
-  <h3>Arte que cuenta historias</h3>
-  <p>
-    Cada creación es el resultado de un proceso artístico cuidadoso donde tradición y modernidad se fusionan.
-  </p>
-</section>
+function abrirLightbox(i) {
+  indexActual = i;
+  lightboxImg.src = imagenes[i];
+  lightbox.classList.add("active");
+}
 
-<section class="section" id="contacto">
-  <h2>CONTACTO</h2>
-  <h3>Pedidos, colaboraciones y proyectos</h3>
-  <p>
-    WhatsApp: <a href="https://wa.me/240555517225">+240 555 517 225</a><br>
-    Email: <a href="mailto:dannany1721@gmail.com">dannany1721@gmail.com</a><br>
-    Instagram: <a href="https://instagram.com/nany_inclusiva">@nany_inclusiva</a>
-  </p>
-</section>
+function cerrarLightbox() {
+  lightbox.classList.remove("active");
+}
 
-<footer>
-  © 2025 Nany – Moda Consciente · Creado por Michel con ayuda de Elodie
-</footer>
+function imagenSiguiente() {
+  indexActual = (indexActual + 1) % imagenes.length;
+  lightboxImg.src = imagenes[indexActual];
+}
+
+function imagenAnterior() {
+  indexActual = (indexActual - 1 + imagenes.length) % imagenes.length;
+  lightboxImg.src = imagenes[indexActual];
+}
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) cerrarLightbox();
+});
+
+/* Cargar galerías */
+function cargarGaleria(id, carpeta, base, cantidad, ext="jpg") {
+  const div = document.getElementById(id);
+
+  for (let i = 1; i <= cantidad; i++) {
+    let src = `${carpeta}/${base}${i}.${ext}`;
+    imagenes.push(src);
+
+    let card = document.createElement("div");
+    card.classList.add("gallery-card");
+
+    let img = document.createElement("img");
+    img.src = src;
+    img.onclick = () => abrirLightbox(imagenes.indexOf(src));
+
+    card.appendChild(img);
+    div.appendChild(card);
+  }
+}
+
+/* CONFIGURACIÓN BASADA EN TUS DOSSIERS SUR GITHUB */
+cargarGaleria("galeria-pasarelas", "pasarelas", "desf", 149);
+cargarGaleria("galeria-abanicos", "abanicos", "AB", 18);
+cargarGaleria("galeria-sacs", "sacs", "BOL", 14);
+cargarGaleria("galeria-bisuteria", "bisutérie", "BISOU", 54);
+cargarGaleria("galeria-sandalias", "sandalias", "SAN", 23);
+</script>
 
 </body>
 </html>
