@@ -30,8 +30,6 @@
         .lb .l{left:25px}
         .lb .r{right:25px}
         @media(max-width:768px){.ham{display:block}nav{display:none}nav.open{display:block}.nav{flex-direction:column;text-align:center;padding:2.5rem 0;gap:2rem}.card img{height:210px}}
-
-        /* Botón música */
         .music-player{position:fixed;bottom:20px;right:20px;z-index:9999}
         .music-btn{background:linear-gradient(135deg,#e11048,#25d366);color:#fff;border:none;width:55px;height:55px;border-radius:50%;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:all .3s}
         .music-btn:hover{transform:scale(1.15)}
@@ -58,8 +56,11 @@
     </div>
 </nav>
 
-<h2 id="pasarelas">Pasarelas</h2><div class="grid"><script>for(let i=1;i<=149;i++)document.write(`<div class="card"><img src="pasarelas/desf${i}.jpg" onclick="o(${i-1})"></div>`)</script></div>
-<h2 id="abanicos">Abanicos</h2><div class="grid">
+<h2 id="pasarelas">Pasarelas</h2>
+<div class="grid"><script>for(let i=1;i<=149;i++)document.write(`<div class="card"><img src="pasarelas/desf${i}.jpg" onclick="o(${i-1})"></div>`)</script></div>
+
+<h2 id="abanicos">Abanicos</h2>
+<div class="grid">
     <div class="card"><img src="abanicos/AB1.png" onclick="o(149)"></div>
     <div class="card"><img src="abanicos/AB2.png" onclick="o(150)"></div>
     <div class="card"><img src="abanicos/AB4.png" onclick="o(151)"></div>
@@ -99,7 +100,7 @@
     <div class="card"><img src="sandalias/SAN2.png" onclick="o(235)"></div>
     <div class="card"><img src="sandalias/SAN10.png" onclick="o(236)"></div>
     <div class="card"><img src="sandalias/SAN11.jpg" onclick="o(237)"></div>
-    <divжі class="card"><img src="sandalias/SAN12.jpg" onclick="o(238)"></div>
+    <div class="card"><img src="sandalias/SAN12.jpg" onclick="o(238)"></div>
     <div class="card"><img src="sandalias/SAN13.jpg" onclick="o(239)"></div>
     <div class="card"><img src="sandalias/SAN14.jpg" onclick="o(240)"></div>
     <div class="card"><img src="sandalias/SAN15.jpg" onclick="o(241)"></div>
@@ -126,7 +127,6 @@
 </div>
 
 <script>
-/* Lightbox + NO SALTA ARRIBA NUNCA MÁS */
 const imgs=[];
 for(let i=1;i<=149;i++)imgs.push(`pasarelas/desf${i}.jpg`);
 imgs.push(...["abanicos/AB1.png","abanicos/AB2.png","abanicos/AB4.png","abanicos/AB5.png","abanicos/AB6.png","abanicos/AB7.jpg","abanicos/AB8.jpg","abanicos/AB9.jpg","abanicos/AB10.jpg","abanicos/AB11.jpg","abanicos/AB12.jpg","abanicos/AB13.jpg","abanicos/AB14.jpg","abanicos/AB15.jpg","abanicos/AB16.jpg","abanicos/AB17.jpg","abanicos/AB18.jpg","abanicos/AB19.jpg"]);
@@ -139,14 +139,13 @@ function o(n){
     x=n;
     document.getElementById("i").src=imgs[n];
     document.getElementById("lb").classList.add("active");
-    history.pushState(null, null, location.href); /* ← Línea mágica anti-salto */
+    history.pushState(null, null, location.href);
 }
 function c(){document.getElementById("lb").classList.remove("active")}
 function n(){x=(x+1)%imgs.length;o(x)}
 function p(){x=(x-1+imgs.length)%imgs.length;o(x)}
 document.getElementById("lb").addEventListener("click",e=>{if(e.target.id==="lb")c()});
 
-/* Música 3 niveles */
 const music=document.getElementById('bgMusic');
 const btn=document.getElementById('musicToggle');
 const icon=document.getElementById('musicIcon');
