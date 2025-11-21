@@ -18,7 +18,6 @@ a { text-decoration:none; color:inherit; transition:all .3s; }
 .logo img { height:60px; }
 .nav-desktop { display:none; gap:40px; font-weight:500; }
 .nav-desktop a:hover { color:#e11048; }
-
 .hamburger { background:none; border:none; cursor:pointer; display:flex; flex-direction:column; gap:5px; }
 .hamburger span { width:25px; height:3px; background:#000; transition:all .3s; }
 
@@ -88,7 +87,6 @@ footer { background:#111; color:#fff; padding:40px 0; text-align:center; font-si
     .sobre-grid { grid-template-columns:1fr 1fr; }
     .hero h1 { font-size:4.5rem; }
 }
-
 @media (min-width: 1024px) {
     .hero h1 { font-size:5.5rem; }
 }
