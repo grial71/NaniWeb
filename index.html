@@ -72,4 +72,90 @@
                 <div class="sobre-text">
                     <p>Casiana Nanitursa Nchama Nguema, conocida artísticamente como <strong>Nany</strong>, es una diseñadora de moda y artesana de Guinea Ecuatorial cuya obra destaca por la fuerza estética, la creatividad y la conciencia social.</p>
                     <p>Desde muy joven desarrolló una sensibilidad especial hacia la reutilización de materiales y la transformación artística. Su filosofía se basa en dar una “segunda vida” a telas, fibras y elementos reciclados, convirtiéndolos en piezas únicas que combinan tradición africana, diseño contemporáneo y una profunda identidad cultural.</p>
-                    <p>Su trabajo ha sido presentado en eventos como <strong>Mujer Ideal, FIMIAGE, KAFSAF Festival</strong> y múltiples pasarelas locales e internacionales. Nany
+                    <p>Su trabajo ha sido presentado en eventos como <strong>Mujer Ideal, FIMIAGE, KAFSAF Festival</strong> y múltiples pasarelas locales e internacionales. Nany es reconocida por su estilo atrevido, elegante y altamente detallista, donde cada pieza cuenta una historia.</p>
+                    <p>Además de su labor artística, Nany impulsa proyectos de inclusión, empoderamiento femenino y artesanía sostenible, promoviendo un modelo de negocio que va más allá de la estética, impactando positivamente en su comunidad.</p>
+                </div>
+                <div class="sobre-image">
+                    <img src="pasarelas/desf27.jpg" alt="Nany en pasarela">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colecciones -->
+    <section id="colecciones" class="section colecciones">
+        <div class="container">
+            <h2 class="section-title center">Arte que cuenta historias</h2>
+            <p class="subtitle center">Cada creación es el resultado de un proceso artístico cuidadoso donde tradición y modernidad se fusionan.</p>
+            
+            <div class="collections-grid">
+                <a href="galerie.html#pasarelas" class="collection-card">
+                    <img src="pasarelas/desf1.jpg" alt="Pasarelas">
+                    <h3>Pasarelas</h3>
+                </a>
+                <a href="galerie.html#abanicos" class="collection-card">
+                    <img src="abanicos/AB1.png" alt="Abanicos">
+                    <h3>Abanicos</h3>
+                </a>
+                <a href="galerie.html#sacs" class="collection-card">
+                    <img src="sacs/BOL1.jpg" alt="Bolsos">
+                    <h3>Bolsos</h3>
+                </a>
+                <a href="galerie.html#bisuteria" class="collection-card">
+                    <img src="bisuteria/BISOU1.jpg" alt="Bisutería">
+                    <h3>Bisutería</h3>
+                </a>
+                <a href="galerie.html#sandalias" class="collection-card">
+                    <img src="sandalias/SAN1.jpg" alt="Sandalias">
+                    <h3>Sandalias</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section contacto">
+        <div class="container">
+            <h2 class="section-title center">Pedidos, colaboraciones y proyectos</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/240555517225" target="_blank">+240 555 517 225</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:dannany1721@gmail.com">dannany1721@gmail.com</a></p>
+                    <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/nany_inclusiva" target="_blank">@nany_inclusiva</a></p>
+                </div>
+                <div class="social-buttons">
+                    <a href="https://wa.me/240555517225" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com/nany.inclusiva" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/nany_inclusiva" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/240555517225" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Nany – Moda Consciente. Con mucho cariño por Michel y Elodie ♡</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("open");
+            document.body.classList.toggle("menu-open");
+        }
+        document.addEventListener("click", function(e) {
+            const menu = document.getElementById("mobileMenu");
+            const hamburger = document.querySelector(".hamburger");
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove("open");
+                document.body.classList.remove("menu-open");
+            }
+        });
+    </script>
+</body>
+</html>
