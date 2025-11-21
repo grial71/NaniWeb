@@ -4,25 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galería – Nany Moda Consciente</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --text-main: #111111;
-            --accent: #e11d48;
+            --accent: #e11048;
             --border-soft: #e5e5e5;
-            --bg-light: #ffffff;
+            --bg-light: #faf9f7;
         }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg-light);
-            color: var(--text-main);
+            color: var(--text-main;
         }
-
-        /* ========== HEADER ========= */
         header {
-            background: #ffffff;
+            background: #fff;
             border-bottom: 1px solid var(--border-soft);
             position: sticky;
             top: 0;
@@ -32,166 +29,126 @@
             justify-content: center;
             align-items: center;
         }
-
         .header-inner {
             width: 100%;
             max-width: 1200px;
-            padding: 0.8rem 1rem;
+            padding: 0 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
-
-        .header-logo img {
-            height: 55px;
-        }
-
-        /* ===== Hamburguesa móvil ===== */
+        .header-logo img { height: 55px; }
         .hamburger {
             position: absolute;
             right: 1rem;
             font-size: 2rem;
             cursor: pointer;
             display: none;
-            user-select: none;
         }
-
-        /* ========== MENU CATEGORÍAS ========= */
         nav {
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-soft);
+            background: #fff;
+            border-bottom: 1px solid var(--border-soft;
             position: sticky;
             top: 75px;
             z-index: 1500;
+            display: block;
         }
-
         .nav-inner {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0.8rem 1rem;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
+            flex-wrap: wrap;
         }
-
         nav a {
-            text-decoration: none;
             color: var(--text-main);
+            text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
             font-size: 0.95rem;
-            position: relative;
+            letter-spacing: 0.08em;
+            padding: 0.5rem 0;
         }
-
-        nav a:hover::after {
-            content: "";
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        /* ========== GALERÍAS ========= */
+        nav a:hover { color: var(--accent); }
         h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            margin: 3.5rem 0 2rem;
+            color: var(--text-main);
         }
-
         .gallery-grid {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0 1rem 4rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
         }
-
         .gallery-card {
-            border-radius: 0.7rem;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
             cursor: pointer;
-            transition: .3s;
+            transition: all .35s ease;
         }
-
         .gallery-card:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
         }
-
         .gallery-card img {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
+            display: block;
         }
-
-        /* ========== LIGHTBOX ========= */
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.92);
+            background: rgba(0,0,0,0.96);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 3000;
+            padding: 20px;
         }
-
-        .lightbox.active {
-            display: flex;
-        }
-
+        .lightbox.active { display: flex; }
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 1rem;
+            max-width: 95%;
+            max-height: 95vh;
+            border-radius: 14px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
         }
-
-        .lightbox-close,
-        .lightbox-arrow {
+        .lightbox-close, .lightbox-arrow {
             position: absolute;
             color: white;
-            font-size: 3rem;
+            font-size: 3.8rem;
             cursor: pointer;
+            user-select: none;
+            font-weight: 200;
         }
-
-        .lightbox-close { top: 2rem; right: 2rem; }
-        .lightbox-arrow.left { top: 50%; left: 2rem; transform: translateY(-50%); }
-        .lightbox-arrow.right { top: 50%; right: 2rem; transform: translateY(-50%); }
-
-        /* ========== MOBILE ========= */
+        .lightbox-close { top: 25px; right: 30px; }
+        .lightbox-arrow.left { left: 25px; }
+        .lightbox-arrow.right { right: 25px; }
         @media (max-width: 768px) {
             .hamburger { display: block; }
             nav { display: none; }
-            nav.open { display: block; animation: fadeIn 0.3s ease; }
-            .nav-inner { flex-direction: column; text-align: center; gap: 1.2rem; padding: 1.5rem 0; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-card img { height: 180px; }
+            nav.open { display: block; }
+            .nav-inner { flex-direction: column; text-align: center; padding: 2.5rem 0; gap: 2rem; }
+            .gallery-card img { height: 210px; }
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
     </style>
 </head>
-
 <body>
 
 <header>
     <div class="header-inner">
         <div class="header-logo">
-            <img src="logo-nany.png" alt="Nany Logo">
+            <a href="index.html"><img src="logo-nany.png" alt="Nany Moda Consciente"></a>
         </div>
-
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="hamburger" onclick="toggleMenu()">Menu</div>
     </div>
 </header>
 
@@ -201,7 +158,7 @@
         <a href="#pasarelas">Pasarelas</a>
         <a href="#abanicos">Abanicos</a>
         <a href="#sacs">Bolsos</a>
-        <a href="#bisuteria">Bisutería</a> 
+        <a href="#bisuteria">Bisutería</a>
         <a href="#sandalias">Sandalias</a>
     </div>
 </nav>
@@ -222,69 +179,22 @@
 <div class="gallery-grid" id="galeria-sandalias"></div>
 
 <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="cerrarLightbox()">×</span>
-    <span class="lightbox-arrow left" onclick="imagenAnterior()">❮</span>
-    <img id="lightbox-img">
-    <span class="lightbox-arrow right" onclick="imagenSiguiente()">❯</span>
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <span class="lightbox-arrow left" onclick="prevImage()">Previous</span>
+    <img id="lightbox-img" alt="">
+    <span class="lightbox-arrow right" onclick="nextImage()">Next</span>
 </div>
 
-
 <script>
-// --- DONNÉES DE LA GALERIE (LISTES EXACTES DES FICHIERS) ---
-// Ceci est la meilleure approche pour gérer les numérotations non séquentielles ou les extensions mélangées (.png et .jpg)
-const galleryData = [
-    {
-        id: "galeria-pasarelas",
-        dossier: "pasarelas",
-        // J'utilise ici un générateur, car cette liste est très longue et bien séquencée
-        fichiers: Array.from({ length: 149 }, (_, i) => `desf${i + 1}.jpg`)
-    },
-    {
-        id: "galeria-abanicos",
-        dossier: "abanicos",
-        // Liste exacte des fichiers que vous avez fournie (corrigée si des numéros manquent)
-        fichiers: [
-            "AB1.png", "AB10.jpg", "AB11.jpg", "AB12.jpg", "AB13.jpg", 
-            "AB14.jpg", "AB15.jpg", "AB16.jpg", "AB17.jpg", "AB18.jpg", 
-            "AB19.jpg", "AB2.png", "AB4.png", "AB5.png", "AB6.png", 
-            "AB7.jpg", "AB8.jpg", "AB20.jpg" // J'ai ajouté AB20.jpg en extension si AB20 existe
-        ]
-    },
-    {
-        id: "galeria-sacs",
-        dossier: "sacs",
-        fichiers: Array.from({ length: 14 }, (_, i) => `BOL${i + 1}.jpg`)
-    },
-    {
-        id: "galeria-bisuteria",
-        dossier: "bisutérie", // Attention à l'accent dans le nom du dossier
-        fichiers: Array.from({ length: 54 }, (_, i) => `BISOU${i + 1}.jpg`)
-    },
-    {
-        id: "galeria-sandalias",
-        dossier: "sandalias",
-        // Liste exacte des fichiers que vous avez fournie (corrigée)
-        fichiers: [
-            "SAN1.jpg", "SAN10.png", "SAN11.jpg", "SAN12.jpg", "SAN13.jpg", 
-            "SAN14.jpg", "SAN15.jpg", "SAN16.jpg", "SAN17.jpg", "SAN18.jpg", 
-            "SAN19.jpg", "SAN2.png", "SAN20.jpg", "SAN21.jpg", "SAN22.jpg", 
-            "SAN3.jpg", "SAN4.jpg", "SAN5.jpg", "SAN6.jpg", "SAN7.jpg", "SAN8.jpg", "SAN9.jpg"
-        ]
-    }
-];
-// Note sur les listes : J'ai dû estimer quelques numéros manquants dans les listes des sacs et bisuterie. Vérifiez si vous avez bien les fichiers BOL1 à BOL14 et BISOU1 à BISOU54.
-
-// --- FONCTIONS EXISTANTES AMÉLIORÉES ---
-
-/* Menu mobile */
+// Menú móvil
 function toggleMenu() {
     document.getElementById("menuCategorias").classList.toggle("open");
 }
 
-/* Lightbox - Variables globales et fonctions pour la modal */
+// Lightbox
 let lightbox = document.getElementById("lightbox");
 let lightboxImg = document.getElementById("lightbox-img");
-let allImages = []; // Contient TOUS les chemins d'images de toutes les galeries
+let allImages = [];
 let currentIndex = 0;
 
 function openLightbox(index) {
@@ -292,63 +202,42 @@ function openLightbox(index) {
     lightboxImg.src = allImages[index];
     lightbox.classList.add("active");
 }
-
 function closeLightbox() { lightbox.classList.remove("active"); }
-
 function nextImage() {
     currentIndex = (currentIndex + 1) % allImages.length;
     lightboxImg.src = allImages[currentIndex];
 }
-
 function prevImage() {
     currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
     lightboxImg.src = allImages[currentIndex];
 }
+lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
 
-// Fermeture en cliquant en dehors de l'image
-lightbox.addEventListener("click", (e) => {
-    // Si l'élément cliqué est le lightbox lui-même, on ferme
-    if (e.target === lightbox) {
-        closeLightbox();
-    }
-});
+// CARGAR TODAS LAS IMÁGENES (carpetas con mayúscula inicial)
+const galleryData = [
+    { id: "galeria-pasarelas",  folder: "pasarelas",  files: Array.from({length:149},(_,i)=>`desf${i+1}.jpg`) },
+    { id: "galeria-abanicos",   folder: "abanicos",   files: ["AB1.png","AB2.png","AB4.png","AB5.png","AB6.png","AB7.jpg","AB8.jpg","AB9.jpg","AB10.jpg","AB11.jpg","AB12.jpg","AB13.jpg","AB14.jpg","AB15.jpg","AB16.jpg","AB17.jpg","AB18.jpg","AB19.jpg"] },
+    { id: "galeria-sacs",       folder: "Sacs",       files: Array.from({length:14},(_,i)=>`BOL${i+1}.jpg`) },
+    { id: "galeria-bisuteria",  folder: "Bisuteria",  files: ["BISOU1.jpg","BISOU2.jpg","BISOU3.jpg","BISOU4.jpg","BISOU5.jpg","BISOU6.jpg","BISOU7.jpg","BISOU8.jpg","BISOU9.jpg","BISOU10.jpg","BISOU11.jpg","BISOU12.jpg","BISOU13.jpg","BISOU14.jpg","BISOU15.jpg","BISOU16.jpg","BISOU17.jpg","BISOU18.jpg","BISOU19.jpg","BISOU20.jpg","BISOU21.jpg","BISOU22.jpg","BISOU23.jpg","BISOU24.jpg","BISOU25.jpg","BISOU26.jpg","BISOU27.jpg","BISOU28.jpg","BISOU29.jpg","BISOU30.jpg","BISOU31.jpg","BISOU32.jpg","BISOU33.jpg","BISOU34.jpg","BISOU35.jpg","BISOU36.jpg","BISOU37.jpg","BISOU39.jpg","BISOU40.jpg","BISOU41.jpg","BISOU42.jpg","BISOU43.jpg","BISOU44.jpg","BISOU45.jpg","BISOU46.jpg","BISOU47.jpg","BISOU49.jpg","BISOU50.jpg","BISOU51.jpg","BISOU52.jpg","BISOU53.jpg","BISOU54.jpg"] },
+    { id: "galeria-sandalias",  folder: "sandalias",  files: ["SAN1.jpg","SAN2.png","SAN10.png","SAN11.jpg","SAN12.jpg","SAN13.jpg","SAN14.jpg","SAN15.jpg","SAN16.jpg","SAN17.jpg","SAN18.jpg","SAN19.jpg","SAN20.jpg","SAN21.jpg","SAN22.jpg","SAN23.jpg"] }
+];
 
+galleryData.forEach(g => {
+    const container = document.getElementById(g.id);
+    g.files.forEach(file => {
+        const path = `${g.folder}/${file}`;
+        allImages.push(path);
 
-/* Chargement des galeries (NOUVELLE VERSION ROBUSTE) */
-function loadGalleries() {
-    galleryData.forEach(gallery => {
-        const divGallery = document.getElementById(gallery.id);
-        
-        gallery.fichiers.forEach(fileName => {
-            // Création du chemin d'accès complet : "dossier/nom_du_fichier.ext"
-            const fullPath = `${gallery.dossier}/${fileName}`;
-            
-            // 1. Ajouter le chemin à notre liste globale pour la Lightbox
-            allImages.push(fullPath); 
-            
-            // 2. Créer la carte (miniature) dans la grille
-            let card = document.createElement("div");
-            card.classList.add("gallery-card");
-
-            let img = document.createElement("img");
-            img.src = fullPath;
-            img.alt = `Image de ${gallery.dossier}`; // Texte alternatif descriptif
-            
-            // 3. Lien de l'image miniature vers la Lightbox
-            // Nous utilisons l'index de l'image dans la liste globale 'allImages'
-            const globalIndex = allImages.indexOf(fullPath);
-            img.onclick = () => openLightbox(globalIndex);
-
-            card.appendChild(img);
-            divGallery.appendChild(card);
-        });
+        const card = document.createElement("div");
+        card.className = "gallery-card";
+        const img = document.createElement("img");
+        img.src = path;
+        img.alt = file;
+        img.onclick = () => openLightbox(allImages.indexOf(path));
+        card.appendChild(img);
+        container.appendChild(card);
     });
-}
-
-// --- DÉMARRAGE : Appel de la fonction pour charger toutes les galeries ---
-document.addEventListener("DOMContentLoaded", loadGalleries);
-
+});
 </script>
-
 </body>
 </html>
