@@ -1,8 +1,11 @@
+/* Début de votre style.css existant */
 :root {
   --text-main: #111111;
   --accent: #e11d48;
   --border-soft: #e5e5e5;
   --bg-light: #ffffff;
+  --bg-dark: #111111; /* Nouveau: pour le pied de page ou sections sombres */
+  --text-light: #ffffff;
 }
 
 body {
@@ -10,112 +13,394 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: var(--bg-light);
   color: var(--text-main);
+  line-height: 1.6; /* Améliore la lisibilité */
 }
 
-/* HEADER */
+a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-main);
+}
+
+/* HEADER GLOBAL (pour index.html et galerie.html) */
 header {
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-soft);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-soft);
+    position: sticky;
+    top: 0;
+    z-index: 2000; /* Plus élevé pour assurer la visibilité */
+    padding: 0.5rem 0;
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.8rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.header-left .button-nany-boutique {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.header-left .button-nany-boutique:hover {
+    background: var(--text-main);
+    color: var(--bg-light);
+}
+
 
 .header-logo img {
-  height: 50px;
+    height: 60px; /* Taille ajustée pour le logo central */
 }
 
-.header-right span {
-  margin-left: 1rem;
-  cursor: pointer;
-  font-size: 1.2rem;
+.header-right-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-/* NAV */
-nav {
-  border-bottom: 1px solid var(--border-soft);
-  background: white;
-  position: sticky;
-  top: 65px;
-  z-index: 999;
+.header-right-icons a {
+    color: var(--text-main);
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
 }
 
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.8rem 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.95rem;
-  position: relative;
-}
-
-nav a:hover::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--accent);
-}
-
-/* HERO SECTION (pour la page d'accueil) */
-.hero-section {
-    max-width: 800px;
-    margin: 3rem auto 5rem;
-    padding: 1rem;
-    text-align: center;
-}
-
-.hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+.header-right-icons a:hover {
     color: var(--accent);
 }
 
-.hero-section p {
-    font-size: 1.15rem;
-    line-height: 1.6;
+/* Hamburguesa móvil (pour index.html et galerie.html) */
+.hamburger {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none; /* Caché par défaut sur desktop */
+    user-select: none;
+    margin-left: 1.5rem;
+    color: var(--text-main);
 }
 
-.cta-button {
-    display: inline-block;
-    background: var(--accent);
-    color: white;
+/* NAV PRINCIPALE (pour index.html et galerie.html) */
+nav {
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-soft);
+    position: sticky;
+    top: 80px; /* Ajusté pour laisser de la place au header */
+    z-index: 1500;
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
     text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    margin-top: 1.5rem;
-    border-radius: 5px;
+    color: var(--text-main);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 0.5rem 0; /* Ajout pour une meilleure zone de clic */
+}
+
+nav a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+}
+
+/* ========================================================= */
+/* NOUVEAUX STYLES POUR index.html SPECIFIQUES */
+/* ========================================================= */
+
+/* HERO SECTION */
+.hero-section {
+    position: relative;
+    height: 70vh; /* Hauteur de la section */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligner le contenu à gauche */
+    color: var(--text-light);
+    text-align: left; /* Texte aligné à gauche */
+    padding: 0 5%; /* Marge sur les côtés */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Effet d'overlay pour que le texte soit lisible */
+    isolation: isolate; /* Crée un nouveau contexte d'empilement */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay sombre */
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 600px; /* Limite la largeur du texte pour la lisibilité */
+    z-index: 1; /* S'assure que le contenu est au-dessus de l'overlay */
+    padding-top: 5rem; /* Espace pour le header */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    color: var(--text-light);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Pour gérer le débordement sur mobile */
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px; /* Boutons plus arrondis */
     font-weight: bold;
+    text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
-.cta-button:hover {
+.button-whatsapp {
+    background: #25d366; /* Vert WhatsApp */
+    color: var(--text-light);
+}
+.button-whatsapp:hover {
+    background: #1da851;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-gallery {
+    background: var(--accent);
+    color: var(--text-light);
+}
+.button-gallery:hover {
     background: #c01a3f;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-collections {
+    background: rgba(255, 255, 255, 0.2); /* Fond transparent pour plus de discrétion */
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+}
+.button-collections:hover {
+    background: var(--text-light);
+    color: var(--text-main);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* SECTIONS GÉNÉRIQUES DE CONTENU */
+.section-content {
+    padding: 4rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+}
+
+.section-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+/* Mots-clés pour "Sobre Nany" */
+.keywords {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.keyword {
+    background: var(--border-soft);
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* SECTION COLLECTIONS (aperçus) */
+.section-collections {
+    background: #f8f8f8; /* Fond légèrement différent */
+    padding: 5rem 1rem;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.collection-item {
+    display: block;
+    background: var(--bg-light);
+    border-radius: 0.7rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: var(--text-main);
+    padding-bottom: 1rem; /* Espace pour le titre */
+}
+
+.collection-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.collection-item img {
+    width: 100%;
+    height: 180px; /* Hauteur fixe pour les miniatures */
+    object-fit: cover;
+    margin-bottom: 0.8rem;
+}
+
+.collection-item h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
 }
 
 
-/* TITULOS (utilisés pour la galerie) */
+/* SECTION CONTACTO */
+.section-contact {
+    padding-bottom: 5rem;
+}
+
+.section-contact h3 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+}
+
+.section-contact p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+    color: var(--text-light); /* Couleur de texte par défaut pour les boutons sociaux */
+}
+
+.social-button i {
+    font-size: 1.2rem;
+}
+
+.whatsapp-button {
+    background: #25d366;
+}
+.whatsapp-button:hover { background: #1da851; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+.facebook-button {
+    background: #1877f2;
+}
+.facebook-button:hover { background: #145dbb; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+.instagram-button {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.instagram-button:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+
+/* FOOTER */
+footer {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-soft);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* GALERÍA (styles existants, gardés pour galerie.html) */
+/* TITULOS */
 h2 {
   text-align: center;
   font-size: 2rem;
@@ -125,7 +410,6 @@ h2 {
   text-transform: uppercase;
 }
 
-/* GALERÍA (utilisés pour la galerie) */
 .gallery-grid {
   max-width: 1200px;
   margin: 0 auto;
@@ -154,7 +438,7 @@ h2 {
   object-fit: cover;
 }
 
-/* LIGHTBOX (utilisés pour la galerie) */
+/* LIGHTBOX */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -186,9 +470,130 @@ h2 {
 .lightbox-arrow.left { top: 50%; left: 2rem; transform: translateY(-50%); }
 .lightbox-arrow.right { top: 50%; right: 2rem; transform: translateY(-50%); }
 
-/* MOBILE (utilisés pour la galerie) */
+
+/* ========================================================= */
+/* RESPONSIVE DESIGN */
+/* ========================================================= */
+
 @media (max-width: 768px) {
-    .header-right { display: none; }
+    /* Header */
+    .header-left .button-nany-boutique {
+        display: none; /* Cache le bouton "Boutique Nany" sur mobile */
+    }
+    .header-right-icons {
+        gap: 1rem; /* Réduit l'espace entre les icônes */
+    }
+    .hamburger {
+        display: block; /* Affiche le hamburger sur mobile */
+    }
+
+    /* Navigation mobile */
+    nav {
+        position: fixed; /* Le menu apparaît en plein écran */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-light);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 80px; /* Laisse de l'espace pour le header */
+        display: none; /* Cache le menu par défaut */
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        z-index: 1800; /* Assure qu'il est au-dessus du header */
+    }
+    nav.open {
+        display: flex; /* Affiche le menu quand "open" est actif */
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-soft); /* Séparateur de liens */
+        width: 80%; /* Pour les séparateurs */
+    }
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        height: 80vh; /* Plus grande sur mobile */
+        justify-content: center; /* Centrer le contenu */
+        text-align: center;
+        padding: 0 1rem;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column; /* Boutons en colonne */
+        align-items: center; /* Centrer les boutons */
+    }
+    .button {
+        width: 90%; /* Boutons pleine largeur */
+        max-width: 300px;
+    }
+
+    /* Sections de contenu */
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-content p {
+        font-size: 1rem;
+    }
+    .keywords {
+        gap: 0.5rem;
+    }
+    .keyword {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    /* Collections grid */
+    .collections-grid {
+        grid-template-columns: 1fr; /* Une colonne sur mobile */
+    }
+    .collection-item img {
+        height: 150px;
+    }
+
+    /* Social buttons */
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-button {
+        width: 90%;
+        max-width: 280px;
+    }
+
+    /* Galerie (pour galerie.html mais style partagé) */
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .gallery-card img { height: 180px; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    .hero-content p {
+        font-size: 0.9rem;
+    }
 }
