@@ -14,7 +14,7 @@
         .header-logo img { height: 55px; }
         .hamburger { position: absolute; right: 1rem; font-size: 2rem; cursor: pointer; display: none; background: none; border: none; }
         nav { background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 75px; z-index: 1500; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0.8rem 1rem; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0.8rem 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
         nav a { color: var(--text-main); text-decoration: none; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.08em; padding: 0.5rem 0; }
         nav a:hover { color: var(--accent); }
         h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.6rem; margin: 3.5rem 0 2rem; color: var(--text-main); }
@@ -51,128 +51,128 @@
 </nav>
 
 <h2 id="pasarelas">Pasarelas</h2>
-<div class="gallery-grid" id="galeria-pasarelas">
+<div class="gallery-grid">
     <script>
         for(let i=1; i<=149; i++){
-            document.write(`<div class="gallery-card"><img src="pasarelas/desf${i}.jpg" alt="Pasarela ${i}" onclick="openLightbox(${i-1})"></div>`);
+            document.write('<div class="gallery-card"><img src="pasarelas/desf' + i + '.jpg" alt="Pasarela ' + i + '" onclick="openLightbox(' + (i-1) + ')"></div>');
         }
     </script>
 </div>
 
 <h2 id="abanicos">Abanicos</h2>
-<div class="gallery-grid" id="galeria-abanicos">
-    <div class="gallery-card"><img src="abanicos/AB1.png" alt="AB1" onclick="openLightbox(149)"></div>
-    <div class="gallery-card"><img src="abanicos/AB2.png" alt="AB2" onclick="openLightbox(150)"></div>
-    <div class="gallery-card"><img src="abanicos/AB4.png" alt="AB4" onclick="openLightbox(151)"></div>
-    <div class="gallery-card"><img src="abanicos/AB5.png" alt="AB5" onclick="openLightbox(152)"></div>
-    <div class="gallery-card"><img src="abanicos/AB6.png" alt="AB6" onclick="openLightbox(153)"></div>
-    <div class="gallery-card"><img src="abanicos/AB7.jpg" alt="AB7" onclick="openLightbox(154)"></div>
-    <div class="gallery-card"><img src="abanicos/AB8.jpg" alt="AB8" onclick="openLightbox(155)"></div>
-    <div class="gallery-card"><img src="abanicos/AB9.jpg" alt="AB9" onclick="openLightbox(156)"></div>
-    <div class="gallery-card"><img src="abanicos/AB10.jpg" alt="AB10" onclick="openLightbox(157)"></div>
-    <div class="gallery-card"><img src="abanicos/AB11.jpg" alt="AB11" onclick="openLightbox(158)"></div>
-    <div class="gallery-card"><img src="abanicos/AB12.jpg" alt="AB12" onclick="openLightbox(159)"></div>
-    <div class="gallery-card"><img src="abanicos/AB13.jpg" alt="AB13" onclick="openLightbox(160)"></div>
-    <div class="gallery-card"><img src="abanicos/AB14.jpg" alt="AB14" onclick="openLightbox(161)"></div>
-    <div class="gallery-card"><img src="abanicos/AB15.jpg" alt="AB15" onclick="openLightbox(162)"></div>
-    <div class="gallery-card"><img src="abanicos/AB16.jpg" alt="AB16" onclick="openLightbox(163)"></div>
-    <div class="gallery-card"><img src="abanicos/AB17.jpg" alt="AB17" onclick="openLightbox(164)"></div>
-    <div class="gallery-card"><img src="abanicos/AB18.jpg" alt="AB18" onclick="openLightbox(165)"></div>
-    <div class="gallery-card"><img src="abanicos/AB19.jpg" alt="AB19" onclick="openLightbox(166)"></div>
+<div class="gallery-grid">
+    <div class="gallery-card"><img src="abanicos/AB1.png" alt="Abanico AB1" onclick="openLightbox(149)"></div>
+    <div class="gallery-card"><img src="abanicos/AB2.png" alt="Abanico AB2" onclick="openLightbox(150)"></div>
+    <div class="gallery-card"><img src="abanicos/AB4.png" alt="Abanico AB4" onclick="openLightbox(151)"></div>
+    <div class="gallery-card"><img src="abanicos/AB5.png" alt="Abanico AB5" onclick="openLightbox(152)"></div>
+    <div class="gallery-card"><img src="abanicos/AB6.png" alt="Abanico AB6" onclick="openLightbox(153)"></div>
+    <div class="gallery-card"><img src="abanicos/AB7.jpg" alt="Abanico AB7" onclick="openLightbox(154)"></div>
+    <div class="gallery-card"><img src="abanicos/AB8.jpg" alt="Abanico AB8" onclick="openLightbox(155)"></div>
+    <div class="gallery-card"><img src="abanicos/AB9.jpg" alt="Abanico AB9" onclick="openLightbox(156)"></div>
+    <div class="gallery-card"><img src="abanicos/AB10.jpg" alt="Abanico AB10" onclick="openLightbox(157)"></div>
+    <div class="gallery-card"><img src="abanicos/AB11.jpg" alt="Abanico AB11" onclick="openLightbox(158)"></div>
+    <div class="gallery-card"><img src="abanicos/AB12.jpg" alt="Abanico AB12" onclick="openLightbox(159)"></div>
+    <div class="gallery-card"><img src="abanicos/AB13.jpg" alt="Abanico AB13" onclick="openLightbox(160)"></div>
+    <div class="gallery-card"><img src="abanicos/AB14.jpg" alt="Abanico AB14" onclick="openLightbox(161)"></div>
+    <div class="gallery-card"><img src="abanicos/AB15.jpg" alt="Abanico AB15" onclick="openLightbox(162)"></div>
+    <div class="gallery-card"><img src="abanicos/AB16.jpg" alt="Abanico AB16" onclick="openLightbox(163)"></div>
+    <div class="gallery-card"><img src="abanicos/AB17.jpg" alt="Abanico AB17" onclick="openLightbox(164)"></div>
+    <div class="gallery-card"><img src="abanicos/AB18.jpg" alt="Abanico AB18" onclick="openLightbox(165)"></div>
+    <div class="gallery-card"><img src="abanicos/AB19.jpg" alt="Abanico AB19" onclick="openLightbox(166)"></div>
 </div>
 
 <h2 id="sacs">Bolsos</h2>
-<div class="gallery-grid" id="galeria-sacs">
-    <div class="gallery-card"><img src="sacs/BOL1.jpg" alt="BOL1" onclick="openLightbox(167)"></div>
-    <div class="gallery-card"><img src="sacs/BOL2.jpg" alt="BOL2" onclick="openLightbox(168)"></div>
-    <div class="gallery-card"><img src="sacs/BOL3.jpg" alt="BOL3" onclick="openLightbox(169)"></div>
-    <div class="gallery-card"><img src="sacs/BOL4.jpg" alt="BOL4" onclick="openLightbox(170)"></div>
-    <div class="gallery-card"><img src="sacs/BOL5.jpg" alt="BOL5" onclick="openLightbox(171)"></div>
-    <div class="gallery-card"><img src="sacs/BOL6.jpg" alt="BOL6" onclick="openLightbox(172)"></div>
-    <div class="gallery-card"><img src="sacs/BOL7.jpg" alt="BOL7" onclick="openLightbox(173)"></div>
-    <div class="gallery-card"><img src="sacs/BOL8.jpg" alt="BOL8" onclick="openLightbox(174)"></div>
-    <div class="gallery-card"><img src="sacs/BOL9.jpg" alt="BOL9" onclick="openLightbox(175)"></div>
-    <div class="gallery-card"><img src="sacs/BOL10.jpg" alt="BOL10" onclick="openLightbox(176)"></div>
-    <div class="gallery-card"><img src="sacs/BOL11.jpg" alt="BOL11" onclick="openLightbox(177)"></div>
-    <div class="gallery-card"><img src="sacs/BOL12.jpg" alt="BOL12" onclick="openLightbox(178)"></div>
-    <div class="gallery-card"><img src="sacs/BOL13.jpg" alt="BOL13" onclick="openLightbox(179)"></div>
-    <div class="gallery-card"><img src="sacs/BOL14.jpg" alt="BOL14" onclick="openLightbox(180)"></div>
+<div class="gallery-grid">
+    <div class="gallery-card"><img src="sacs/BOL1.jpg" alt="Bolso BOL1" onclick="openLightbox(167)"></div>
+    <div class="gallery-card"><img src="sacs/BOL2.jpg" alt="Bolso BOL2" onclick="openLightbox(168)"></div>
+    <div class="gallery-card"><img src="sacs/BOL3.jpg" alt="Bolso BOL3" onclick="openLightbox(169)"></div>
+    <div class="gallery-card"><img src="sacs/BOL4.jpg" alt="Bolso BOL4" onclick="openLightbox(170)"></div>
+    <div class="gallery-card"><img src="sacs/BOL5.jpg" alt="Bolso BOL5" onclick="openLightbox(171)"></div>
+    <div class="gallery-card"><img src="sacs/BOL6.jpg" alt="Bolso BOL6" onclick="openLightbox(172)"></div>
+    <div class="gallery-card"><img src="sacs/BOL7.jpg" alt="Bolso BOL7" onclick="openLightbox(173)"></div>
+    <div class="gallery-card"><img src="sacs/BOL8.jpg" alt="Bolso BOL8" onclick="openLightbox(174)"></div>
+    <div class="gallery-card"><img src="sacs/BOL9.jpg" alt="Bolso BOL9" onclick="openLightbox(175)"></div>
+    <div class="gallery-card"><img src="sacs/BOL10.jpg" alt="Bolso BOL10" onclick="openLightbox(176)"></div>
+    <div class="gallery-card"><img src="sacs/BOL11.jpg" alt="Bolso BOL11" onclick="openLightbox(177)"></div>
+    <div class="gallery-card"><img src="sacs/BOL12.jpg" alt="Bolso BOL12" onclick="openLightbox(178)"></div>
+    <div class="gallery-card"><img src="sacs/BOL13.jpg" alt="Bolso BOL13" onclick="openLightbox(179)"></div>
+    <div class="gallery-card"><img src="sacs/BOL14.jpg" alt="Bolso BOL14" onclick="openLightbox(180)"></div>
 </div>
 
 <h2 id="bisuteria">Bisutería</h2>
-<div class="gallery-grid" id="galeria-bisuteria">
-    <div class="gallery-card"><img src="bisuterié/BISOU1.jpg" alt="BISOU1" onclick="openLightbox(181)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU2.jpg" alt="BISOU2" onclick="openLightbox(182)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU3.jpg" alt="BISOU3" onclick="openLightbox(183)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU4.jpg" alt="BISOU4" onclick="openLightbox(184)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU5.jpg" alt="BISOU5" onclick="openLightbox(185)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU6.jpg" alt="BISOU6" onclick="openLightbox(186)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU7.jpg" alt="BISOU7" onclick="openLightbox(187)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU8.jpg" alt="BISOU8" onclick="openLightbox(188)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU9.jpg" alt="BISOU9" onclick="openLightbox(189)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU10.jpg" alt="BISOU10" onclick="openLightbox(190)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU11.jpg" alt="BISOU11" onclick="openLightbox(191)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU12.jpg" alt="BISOU12" onclick="openLightbox(192)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU13.jpg" alt="BISOU13" onclick="openLightbox(193)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU14.jpg" alt="BISOU14" onclick="openLightbox(194)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU15.jpg" alt="BISOU15" onclick="openLightbox(195)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU16.jpg" alt="BISOU16" onclick="openLightbox(196)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU17.jpg" alt="BISOU17" onclick="openLightbox(197)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU18.jpg" alt="BISOU18" onclick="openLightbox(198)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU19.jpg" alt="BISOU19" onclick="openLightbox(199)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU20.jpg" alt="BISOU20" onclick="openLightbox(200)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU21.jpg" alt="BISOU21" onclick="openLightbox(201)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU22.jpg" alt="BISOU22" onclick="openLightbox(202)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU23.jpg" alt="BISOU23" onclick="openLightbox(203)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU24.jpg" alt="BISOU24" onclick="openLightbox(204)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU25.jpg" alt="BISOU25" onclick="openLightbox(205)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU26.jpg" alt="BISOU26" onclick="openLightbox(206)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU27.jpg" alt="BISOU27" onclick="openLightbox(207)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU28.jpg" alt="BISOU28" onclick="openLightbox(208)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU29.jpg" alt="BISOU29" onclick="openLightbox(209)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU30.jpg" alt="BISOU30" onclick="openLightbox(210)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU31.jpg" alt="BISOU31" onclick="openLightbox(211)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU32.jpg" alt="BISOU32" onclick="openLightbox(212)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU33.jpg" alt="BISOU33" onclick="openLightbox(213)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU34.jpg" alt="BISOU34" onclick="openLightbox(214)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU35.jpg" alt="BISOU35" onclick="openLightbox(215)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU36.jpg" alt="BISOU36" onclick="openLightbox(216)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU37.jpg" alt="BISOU37" onclick="openLightbox(217)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU39.jpg" alt="BISOU39" onclick="openLightbox(218)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU40.jpg" alt="BISOU40" onclick="openLightbox(219)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU41.jpg" alt="BISOU41" onclick="openLightbox(220)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU42.jpg" alt="BISOU42" onclick="openLightbox(221)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU43.jpg" alt="BISOU43" onclick="openLightbox(222)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU44.jpg" alt="BISOU44" onclick="openLightbox(223)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU45.jpg" alt="BISOU45" onclick="openLightbox(224)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU46.jpg" alt="BISOU46" onclick="openLightbox(225)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU47.jpg" alt="BISOU47" onclick="openLightbox(226)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU49.jpg" alt="BISOU49" onclick="openLightbox(227)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU50.jpg" alt="BISOU50" onclick="openLightbox(228)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU51.jpg" alt="BISOU51" onclick="openLightbox(229)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU52.jpg" alt="BISOU52" onclick="openLightbox(230)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU53.jpg" alt="BISOU53" onclick="openLightbox(231)"></div>
-    <div class="gallery-card"><img src="bisuterié/BISOU54.jpg" alt="BISOU54" onclick="openLightbox(232)"></div>
+<div class="gallery-grid">
+    <div class="gallery-card"><img src="bisuterié/BISOU1.jpg" alt="Bisou 1" onclick="openLightbox(181)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU2.jpg" alt="Bisou 2" onclick="openLightbox(182)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU3.jpg" alt="Bisou 3" onclick="openLightbox(183)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU4.jpg" alt="Bisou 4" onclick="openLightbox(184)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU5.jpg" alt="Bisou 5" onclick="openLightbox(185)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU6.jpg" alt="Bisou 6" onclick="openLightbox(186)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU7.jpg" alt="Bisou 7" onclick="openLightbox(187)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU8.jpg" alt="Bisou 8" onclick="openLightbox(188)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU9.jpg" alt="Bisou 9" onclick="openLightbox(189)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU10.jpg" alt="Bisou 10" onclick="openLightbox(190)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU11.jpg" alt="Bisou 11" onclick="openLightbox(191)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU12.jpg" alt="Bisou 12" onclick="openLightbox(192)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU13.jpg" alt="Bisou 13" onclick="openLightbox(193)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU14.jpg" alt="Bisou 14" onclick="openLightbox(194)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU15.jpg" alt="Bisou 15" onclick="openLightbox(195)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU16.jpg" alt="Bisou 16" onclick="openLightbox(196)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU17.jpg" alt="Bisou 17" onclick="openLightbox(197)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU18.jpg" alt="Bisou 18" onclick="openLightbox(198)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU19.jpg" alt="Bisou 19" onclick="openLightbox(199)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU20.jpg" alt="Bisou 20" onclick="openLightbox(200)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU21.jpg" alt="Bisou 21" onclick="openLightbox(201)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU22.jpg" alt="Bisou 22" onclick="openLightbox(202)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU23.jpg" alt="Bisou 23" onclick="openLightbox(203)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU24.jpg" alt="Bisou 24" onclick="openLightbox(204)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU25.jpg" alt="Bisou 25" onclick="openLightbox(205)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU26.jpg" alt="Bisou 26" onclick="openLightbox(206)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU27.jpg" alt="Bisou 27" onclick="openLightbox(207)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU28.jpg" alt="Bisou 28" onclick="openLightbox(208)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU29.jpg" alt="Bisou 29" onclick="openLightbox(209)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU30.jpg" alt="Bisou 30" onclick="openLightbox(210)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU31.jpg" alt="Bisou 31" onclick="openLightbox(211)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU32.jpg" alt="Bisou 32" onclick="openLightbox(212)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU33.jpg" alt="Bisou 33" onclick="openLightbox(213)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU34.jpg" alt="Bisou 34" onclick="openLightbox(214)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU35.jpg" alt="Bisou 35" onclick="openLightbox(215)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU36.jpg" alt="Bisou 36" onclick="openLightbox(216)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU37.jpg" alt="Bisou 37" onclick="openLightbox(217)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU39.jpg" alt="Bisou 39" onclick="openLightbox(218)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU40.jpg" alt="Bisou 40" onclick="openLightbox(219)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU41.jpg" alt="Bisou 41" onclick="openLightbox(220)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU42.jpg" alt="Bisou 42" onclick="openLightbox(221)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU43.jpg" alt="Bisou 43" onclick="openLightbox(222)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU44.jpg" alt="Bisou 44" onclick="openLightbox(223)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU45.jpg" alt="Bisou 45" onclick="openLightbox(224)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU46.jpg" alt="Bisou 46" onclick="openLightbox(225)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU47.jpg" alt="Bisou 47" onclick="openLightbox(226)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU49.jpg" alt="Bisou 49" onclick="openLightbox(227)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU50.jpg" alt="Bisou 50" onclick="openLightbox(228)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU51.jpg" alt="Bisou 51" onclick="openLightbox(229)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU52.jpg" alt="Bisou 52" onclick="openLightbox(230)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU53.jpg" alt="Bisou 53" onclick="openLightbox(231)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU54.jpg" alt="Bisou 54" onclick="openLightbox(232)"></div>
 </div>
 
 <h2 id="sandalias">Sandalias</h2>
-<div class="gallery-grid" id="galeria-sandalias">
-    <div class="gallery-card"><img src="sandalias/SAN1.jpg" alt="SAN1" onclick="openLightbox(233)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN2.png" alt="SAN2" onclick="openLightbox(234)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN10.png" alt="SAN10" onclick="openLightbox(235)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN11.jpg" alt="SAN11" onclick="openLightbox(236)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN12.jpg" alt="SAN12" onclick="openLightbox(237)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN13.jpg" alt="SAN13" onclick="openLightbox(238)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN14.jpg" alt="SAN14" onclick="openLightbox(239)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN15.jpg" alt="SAN15" onclick="openLightbox(240)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN16.jpg" alt="SAN16" onclick="openLightbox(241)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN17.jpg" alt="SAN17" onclick="openLightbox(242)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN18.jpg" alt="SAN18" onclick="openLightbox(243)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN19.jpg" alt="SAN19" onclick="openLightbox(244)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN20.jpg" alt="SAN20" onclick="openLightbox(245)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN21.jpg" alt="SAN21" onclick="openLightbox(246)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN22.jpg" alt="SAN22" onclick="openLightbox(247)"></div>
-    <div class="gallery-card"><img src="sandalias/SAN23.jpg" alt="SAN23" onclick="openLightbox(248)"></div>
+<div class="gallery-grid">
+    <div class="gallery-card"><img src="sandalias/SAN1.jpg" alt="Sandalia SAN1" onclick="openLightbox(233)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN2.png" alt="Sandalia SAN2" onclick="openLightbox(234)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN10.png" alt="Sandalia SAN10" onclick="openLightbox(235)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN11.jpg" alt="Sandalia SAN11" onclick="openLightbox(236)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN12.jpg" alt="Sandalia SAN12" onclick="openLightbox(237)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN13.jpg" alt="Sandalia SAN13" onclick="openLightbox(238)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN14.jpg" alt="Sandalia SAN14" onclick="openLightbox(239)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN15.jpg" alt="Sandalia SAN15" onclick="openLightbox(240)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN16.jpg" alt="Sandalia SAN16" onclick="openLightbox(241)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN17.jpg" alt="Sandalia SAN17" onclick="openLightbox(242)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN18.jpg" alt="Sandalia SAN18" onclick="openLightbox(243)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN19.jpg" alt="Sandalia SAN19" onclick="openLightbox(244)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN20.jpg" alt="Sandalia SAN20" onclick="openLightbox(245)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN21.jpg" alt="Sandalia SAN21" onclick="openLightbox(246)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN22.jpg" alt="Sandalia SAN22" onclick="openLightbox(247)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN23.jpg" alt="Sandalia SAN23" onclick="openLightbox(248)"></div>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -185,7 +185,18 @@
 <script>
 function toggleMenu() { document.getElementById("menuCategorias").classList.toggle("open"); }
 let currentIndex = 0;
-const allImages = []; // Se llena automáticamente con las rutas de arriba
+const allImages = [
+    // Pasarelas (149)
+    'pasarelas/desf1.jpg', 'pasarelas/desf2.jpg', 'pasarelas/desf3.jpg', 'pasarelas/desf4.jpg', 'pasarelas/desf5.jpg', 'pasarelas/desf6.jpg', 'pasarelas/desf7.jpg', 'pasarelas/desf8.jpg', 'pasarelas/desf9.jpg', 'pasarelas/desf10.jpg', 'pasarelas/desf11.jpg', 'pasarelas/desf12.jpg', 'pasarelas/desf13.jpg', 'pasarelas/desf14.jpg', 'pasarelas/desf15.jpg', 'pasarelas/desf16.jpg', 'pasarelas/desf17.jpg', 'pasarelas/desf18.jpg', 'pasarelas/desf19.jpg', 'pasarelas/desf20.jpg', 'pasarelas/desf21.jpg', 'pasarelas/desf22.jpg', 'pasarelas/desf23.jpg', 'pasarelas/desf24.jpg', 'pasarelas/desf25.jpg', 'pasarelas/desf26.jpg', 'pasarelas/desf27.jpg', 'pasarelas/desf28.jpg', 'pasarelas/desf29.jpg', 'pasarelas/desf30.jpg', 'pasarelas/desf31.jpg', 'pasarelas/desf32.jpg', 'pasarelas/desf33.jpg', 'pasarelas/desf34.jpg', 'pasarelas/desf35.jpg', 'pasarelas/desf36.jpg', 'pasarelas/desf37.jpg', 'pasarelas/desf38.jpg', 'pasarelas/desf39.jpg', 'pasarelas/desf40.jpg', 'pasarelas/desf41.jpg', 'pasarelas/desf42.jpg', 'pasarelas/desf43.jpg', 'pasarelas/desf44.jpg', 'pasarelas/desf45.jpg', 'pasarelas/desf46.jpg', 'pasarelas/desf47.jpg', 'pasarelas/desf48.jpg', 'pasarelas/desf49.jpg', 'pasarelas/desf50.jpg', 'pasarelas/desf51.jpg', 'pasarelas/desf52.jpg', 'pasarelas/desf53.jpg', 'pasarelas/desf54.jpg', 'pasarelas/desf55.jpg', 'pasarelas/desf56.jpg', 'pasarelas/desf57.jpg', 'pasarelas/desf58.jpg', 'pasarelas/desf59.jpg', 'pasarelas/desf60.jpg', 'pasarelas/desf61.jpg', 'pasarelas/desf62.jpg', 'pasarelas/desf63.jpg', 'pasarelas/desf64.jpg', 'pasarelas/desf65.jpg', 'pasarelas/desf66.jpg', 'pasarelas/desf67.jpg', 'pasarelas/desf68.jpg', 'pasarelas/desf69.jpg', 'pasarelas/desf70.jpg', 'pasarelas/desf71.jpg', 'pasarelas/desf72.jpg', 'pasarelas/desf73.jpg', 'pasarelas/desf74.jpg', 'pasarelas/desf75.jpg', 'pasarelas/desf76.jpg', 'pasarelas/desf77.jpg', 'pasarelas/desf78.jpg', 'pasarelas/desf79.jpg', 'pasarelas/desf80.jpg', 'pasarelas/desf81.jpg', 'pasarelas/desf82.jpg', 'pasarelas/desf83.jpg', 'pasarelas/desf84.jpg', 'pasarelas/desf85.jpg', 'pasarelas/desf86.jpg', 'pasarelas/desf87.jpg', 'pasarelas/desf88.jpg', 'pasarelas/desf89.jpg', 'pasarelas/desf90.jpg', 'pasarelas/desf91.jpg', 'pasarelas/desf92.jpg', 'pasarelas/desf93.jpg', 'pasarelas/desf94.jpg', 'pasarelas/desf95.jpg', 'pasarelas/desf96.jpg', 'pasarelas/desf97.jpg', 'pasarelas/desf98.jpg', 'pasarelas/desf99.jpg', 'pasarelas/desf100.jpg', 'pasarelas/desf101.jpg', 'pasarelas/desf102.jpg', 'pasarelas/desf103.jpg', 'pasarelas/desf104.jpg', 'pasarelas/desf105.jpg', 'pasarelas/desf106.jpg', 'pasarelas/desf107.jpg', 'pasarelas/desf108.jpg', 'pasarelas/desf109.jpg', 'pasarelas/desf110.jpg', 'pasarelas/desf111.jpg', 'pasarelas/desf112.jpg', 'pasarelas/desf113.jpg', 'pasarelas/desf114.jpg', 'pasarelas/desf115.jpg', 'pasarelas/desf116.jpg', 'pasarelas/desf117.jpg', 'pasarelas/desf118.jpg', 'pasarelas/desf119.jpg', 'pasarelas/desf120.jpg', 'pasarelas/desf121.jpg', 'pasarelas/desf122.jpg', 'pasarelas/desf123.jpg', 'pasarelas/desf124.jpg', 'pasarelas/desf125.jpg', 'pasarelas/desf126.jpg', 'pasarelas/desf127.jpg', 'pasarelas/desf128.jpg', 'pasarelas/desf129.jpg', 'pasarelas/desf130.jpg', 'pasarelas/desf131.jpg', 'pasarelas/desf132.jpg', 'pasarelas/desf133.jpg', 'pasarelas/desf134.jpg', 'pasarelas/desf135.jpg', 'pasarelas/desf136.jpg', 'pasarelas/desf137.jpg', 'pasarelas/desf138.jpg', 'pasarelas/desf139.jpg', 'pasarelas/desf140.jpg', 'pasarelas/desf141.jpg', 'pasarelas/desf142.jpg', 'pasarelas/desf143.jpg', 'pasarelas/desf144.jpg', 'pasarelas/desf145.jpg', 'pasarelas/desf146.jpg', 'pasarelas/desf147.jpg', 'pasarelas/desf148.jpg', 'pasarelas/desf149.jpg',
+    // Abanicos (18)
+    'abanicos/AB1.png', 'abanicos/AB2.png', 'abanicos/AB4.png', 'abanicos/AB5.png', 'abanicos/AB6.png', 'abanicos/AB7.jpg', 'abanicos/AB8.jpg', 'abanicos/AB9.jpg', 'abanicos/AB10.jpg', 'abanicos/AB11.jpg', 'abanicos/AB12.jpg', 'abanicos/AB13.jpg', 'abanicos/AB14.jpg', 'abanicos/AB15.jpg', 'abanicos/AB16.jpg', 'abanicos/AB17.jpg', 'abanicos/AB18.jpg', 'abanicos/AB19.jpg',
+    // Bolsos (14)
+    'sacs/BOL1.jpg', 'sacs/BOL2.jpg', 'sacs/BOL3.jpg', 'sacs/BOL4.jpg', 'sacs/BOL5.jpg', 'sacs/BOL6.jpg', 'sacs/BOL7.jpg', 'sacs/BOL8.jpg', 'sacs/BOL9.jpg', 'sacs/BOL10.jpg', 'sacs/BOL11.jpg', 'sacs/BOL12.jpg', 'sacs/BOL13.jpg', 'sacs/BOL14.jpg',
+    // Bisutería (51)
+    'bisuterié/BISOU1.jpg', 'bisuterié/BISOU2.jpg', 'bisuterié/BISOU3.jpg', 'bisuterié/BISOU4.jpg', 'bisuterié/BISOU5.jpg', 'bisuterié/BISOU6.jpg', 'bisuterié/BISOU7.jpg', 'bisuterié/BISOU8.jpg', 'bisuterié/BISOU9.jpg', 'bisuterié/BISOU10.jpg', 'bisuterié/BISOU11.jpg', 'bisuterié/BISOU12.jpg', 'bisuterié/BISOU13.jpg', 'bisuterié/BISOU14.jpg', 'bisuterié/BISOU15.jpg', 'bisuterié/BISOU16.jpg', 'bisuterié/BISOU17.jpg', 'bisuterié/BISOU18.jpg', 'bisuterié/BISOU19.jpg', 'bisuterié/BISOU20.jpg', 'bisuterié/BISOU21.jpg', 'bisuterié/BISOU22.jpg', 'bisuterié/BISOU23.jpg', 'bisuterié/BISOU24.jpg', 'bisuterié/BISOU25.jpg', 'bisuterié/BISOU26.jpg', 'bisuterié/BISOU27.jpg', 'bisuterié/BISOU28.jpg', 'bisuterié/BISOU29.jpg', 'bisuterié/BISOU30.jpg', 'bisuterié/BISOU31.jpg', 'bisuterié/BISOU32.jpg', 'bisuterié/BISOU33.jpg', 'bisuterié/BISOU34.jpg', 'bisuterié/BISOU35.jpg', 'bisuterié/BISOU36.jpg', 'bisuterié/BISOU37.jpg', 'bisuterié/BISOU39.jpg', 'bisuterié/BISOU40.jpg', 'bisuterié/BISOU41.jpg', 'bisuterié/BISOU42.jpg', 'bisuterié/BISOU43.jpg', 'bisuterié/BISOU44.jpg', 'bisuterié/BISOU45.jpg', 'bisuterié/BISOU46.jpg', 'bisuterié/BISOU47.jpg', 'bisuterié/BISOU49.jpg', 'bisuterié/BISOU50.jpg', 'bisuterié/BISOU51.jpg', 'bisuterié/BISOU52.jpg', 'bisuterié/BISOU53.jpg', 'bisuterié/BISOU54.jpg',
+    // Sandalias (16)
+    'sandalias/SAN1.jpg', 'sandalias/SAN2.png', 'sandalias/SAN10.png', 'sandalias/SAN11.jpg', 'sandalias/SAN12.jpg', 'sandalias/SAN13.jpg', 'sandalias/SAN14.jpg', 'sandalias/SAN15.jpg', 'sandalias/SAN16.jpg', 'sandalias/SAN17.jpg', 'sandalias/SAN18.jpg', 'sandalias/SAN19.jpg', 'sandalias/SAN20.jpg', 'sandalias/SAN21.jpg', 'sandalias/SAN22.jpg', 'sandalias/SAN23.jpg'
+];
 function openLightbox(index) { currentIndex = index; document.getElementById("lightbox-img").src = allImages[index]; document.getElementById("lightbox").classList.add("active"); }
 function closeLightbox() { document.getElementById("lightbox").classList.remove("active"); }
 function nextImage() { currentIndex = (currentIndex + 1) % allImages.length; openLightbox(currentIndex); }
