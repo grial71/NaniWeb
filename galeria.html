@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería – Nany Moda Consciente</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root{--c:#111;--a:#e11048;--b:#e5e5e5;--l:#faf9f7}
         *{margin:0;padding:0;box-sizing:border-box}
@@ -29,6 +30,13 @@
         .lb .l{left:25px}
         .lb .r{right:25px}
         @media(max-width:768px){.ham{display:block}nav{display:none}nav.open{display:block}.nav{flex-direction:column;text-align:center;padding:2.5rem 0;gap:2rem}.card img{height:210px}}
+        
+        /* Botón música (igual que en index) */
+        .music-player{position:fixed;bottom:20px;right:20px;z-index:9999}
+        .music-btn{background:linear-gradient(135deg,#e11048,#25d366);color:#fff;border:none;width:55px;height:55px;border-radius:50%;font-size:21px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:all .3s}
+        .music-btn:hover{transform:scale(1.15)}
+        .music-btn.playing{animation:pulse 2s infinite}
+        @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
     </style>
 </head>
 <body>
@@ -39,15 +47,14 @@
 
 <nav><div class="nav">
     <a href="index.html">Inicio</a>
-    <a href="#pasarelas">Pasarelas</a>
-    <a href="#abanicos">Abanicos</a>
-    <a href="#bolsos">Bolsos</a>
-    <a href="#bisuteria">Bisutería</a>
-    <a href="#sandalias">Sandalias</a>
+    <a href="index.html#pasarelas">Pasarelas</a>
+    <a href="index.html#abanicos">Abanicos</a>
+    <a href="index.html#bolsos">Bolsos</a>
+    <a href="index.html#bisuteria">Bisutería</a>
+    <a href="index.html#sandalias">Sandalias</a>
 </div></nav>
 
 <h2 id="pasarelas">Pasarelas</h2><div class="grid"><script>for(let i=1;i<=149;i++)document.write(`<div class="card"><img src="pasarelas/desf${i}.jpg" onclick="o(${i-1})"></div>`)</script></div>
-
 <h2 id="abanicos">Abanicos</h2><div class="grid">
     <div class="card"><img src="abanicos/AB1.png" onclick="o(149)"></div>
     <div class="card"><img src="abanicos/AB2.png" onclick="o(150)"></div>
@@ -102,12 +109,23 @@
     <div class="card"><img src="sandalias/SAN23.jpg" onclick="o(249)"></div>
 </div>
 
+<!-- Lightbox -->
 <div class="lb" id="lb"><span class="x" onclick="c()">×</span><span class="l" onclick="p()">‹</span><img id="i"><span class="r" onclick="n()">›</span></div>
+
+<!-- MÚSICA AFROBEAT (igual que en index) -->
+<div class="music-player">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="afrobeat-nanymp3.mp3" type="audio/mpeg">
+    </audio>
+    <button id="musicToggle" class="music-btn" title="Música Afrobeat">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </button>
+</div>
 
 <script>
 const imgs=[];
 for(let i=1;i<=149;i++)imgs.push(`pasarelas/desf${i}.jpg`);
-imgs.push(...["abanicos/AB1.png","abanicos/AB2.png","abanicos/AB4.png","abanicos/AB5.png","abanicos/AB6.png","abanicos/AB7.jpg","abanicos/AB8.jpg","abanicos/AB9.jpg","abanicos/AB10.jpg","abanicos/AB11.jpg","abanicos/AB12.jpg","abanicos/AB13.jpg","abanicos/AB14.jpg","abanicos/AB15.jpg","abanicos/AB16.jpg","abanicos/AB17.jpg","abanicos/AB18.jpg","abanicos/ Ab19.jpg"]);
+imgs.push(...["abanicos/AB1.png","abanicos/AB2.png","abanicos/AB4.png","abanicos/AB5.png","abanicos/AB6.png","abanicos/AB7.jpg","abanicos/AB8.jpg","abanicos/AB9.jpg","abanicos/AB10.jpg","abanicos/AB11.jpg","abanicos/AB12.jpg","abanicos/AB13.jpg","abanicos/AB14.jpg","abanicos/AB15.jpg","abanicos/AB16.jpg","abanicos/AB17.jpg","abanicos/AB18.jpg","abanicos/AB19.jpg"]);
 for(let i=1;i<=14;i++)imgs.push(`bolsos/BOL${i}.jpg`);
 const bisou=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,49,50,51,52,53,54];
 bisou.forEach(n=>imgs.push(`bisouteria/BISOU${n}.jpg`));
@@ -118,6 +136,14 @@ function c(){document.getElementById("lb").classList.remove("active")}
 function n(){x=(x+1)%imgs.length;o(x)}
 function p(){x=(x-1+imgs.length)%imgs.length;o(x)}
 document.getElementById("lb").addEventListener("click",e=>{if(e.target.id==="lb")c()});
+
+// MÚSICA
+const music=document.getElementById('bgMusic');
+const btn=document.getElementById('musicToggle');
+const icon=document.getElementById('musicIcon');
+let playing=false;
+btn.addEventListener('click',()=>{if(playing){music.pause();playing=false;btn.classList.remove('playing');icon.className='fas fa-music'}
+else{music.volume=0.30;music.play();playing=true;btn.classList.add('playing');icon.className='fas fa-volume-up'}});
 </script>
 </body>
 </html>
