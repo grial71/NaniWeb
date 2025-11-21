@@ -1,83 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería – Nany Moda Consciente</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --text-main: #111111;
-            --accent: #e11048;
-            --border-soft: #e5e5e5;
-            --bg-light: #faf9f7;
-        }
+        :root { --text-main: #111111; --accent: #e11048; --border-soft: #e5e5e5; --bg-light: #faf9f7; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-main); }
-        header {
-            background: #fff; border-bottom: 1px solid var(--border-soft);
-            position: sticky; top: 0; z-index: 2000; height: 75px;
-            display: flex; justify-content: center; align-items: center;
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-main); line-height:1.6; }
+        header { background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; z-index: 2000; height: 75px; display: flex; justify-content: center; align-items: center; }
         .header-inner { width: 100%; max-width: 1200px; padding: 0 1rem; display: flex; align-items: center; justify-content: center; position: relative; }
         .header-logo img { height: 55px; }
-        .hamburger { position: absolute; right: 1rem; font-size: 2rem; cursor: pointer; display: none; }
-        nav {
-            background: #fff; border-bottom: 1px solid var(--border-soft);
-            position: sticky; top: 75px; z-index: 1500; display: block;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0.8rem 1rem;
-            display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
-        }
+        .hamburger { position: absolute; right: 1rem; font-size: 2rem; cursor: pointer; display: none; background: none; border: none; }
+        nav { background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 75px; z-index: 1500; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0.8rem 1rem; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
         nav a { color: var(--text-main); text-decoration: none; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.08em; padding: 0.5rem 0; }
         nav a:hover { color: var(--accent); }
-        h2 {
-            text-align: center; font-family: 'Playfair Display', serif;
-            font-size: 2.6rem; margin: 3.5rem 0 2rem; color: var(--text-main);
-        }
-        .gallery-grid {
-            max-width: 1400px; margin: 0 auto; padding: 0 1rem 4rem;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem;
-        }
-        .gallery-card {
-            border-radius: 14px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-            cursor: pointer; transition: all .35s ease;
-        }
+        h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.6rem; margin: 3.5rem 0 2rem; color: var(--text-main); }
+        .gallery-grid { max-width: 1400px; margin: 0 auto; padding: 0 1rem 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; }
+        .gallery-card { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.12); cursor: pointer; transition: all .35s ease; }
         .gallery-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.22); }
         .gallery-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
-        .lightbox {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.96);
-            display: none; justify-content: center; align-items: center; z-index: 3000; padding: 20px;
-        }
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 95%; max-height: 95vh; border-radius: 14px; box-shadow: 0 15px 50px rgba(0,0,0,0.7); }
-        .lightbox-close, .lightbox-arrow {
-            position: absolute; color: white; font-size: 3.8rem; cursor: pointer; user-select: none; font-weight: 200;
-        }
+        .lightbox-close, .lightbox-arrow { position: absolute; color: white; font-size: 3.8rem; cursor: pointer; user-select: none; font-weight: 200; }
         .lightbox-close { top: 25px; right: 30px; }
         .lightbox-arrow.left { left: 25px; }
         .lightbox-arrow.right { right: 25px; }
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            nav { display: none; }
-            nav.open { display: block; }
-            .nav-inner { flex-direction: column; text-align: center; padding: 2.5rem 0; gap: 2rem; }
-            .gallery-card img { height: 210px; }
-        }
+        @media (max-width: 768px) { .hamburger { display: block; } nav { display: none; } nav.open { display: block; } .nav-inner { flex-direction: column; text-align: center; padding: 2.5rem 0; gap: 2rem; } .gallery-card img { height: 210px; } }
     </style>
 </head>
 <body>
-
 <header>
     <div class="header-inner">
-        <div class="header-logo">
-            <a href="index.html"><img src="logo-nany.png" alt="Nany Moda Consciente"></a>
-        </div>
+        <div class="header-logo"><a href="index.html"><img src="logo-nany.png" alt="Nany Moda Consciente"></a></div>
         <div class="hamburger" onclick="toggleMenu()">Menú</div>
     </div>
 </header>
-
 <nav id="menuCategorias">
     <div class="nav-inner">
         <a href="index.html">Inicio</a>
@@ -90,68 +51,146 @@
 </nav>
 
 <h2 id="pasarelas">Pasarelas</h2>
-<div class="gallery-grid" id="galeria-pasarelas"></div>
+<div class="gallery-grid" id="galeria-pasarelas">
+    <script>
+        for(let i=1; i<=149; i++){
+            document.write(`<div class="gallery-card"><img src="pasarelas/desf${i}.jpg" alt="Pasarela ${i}" onclick="openLightbox(${i-1})"></div>`);
+        }
+    </script>
+</div>
 
 <h2 id="abanicos">Abanicos</h2>
-<div class="gallery-grid" id="galeria-abanicos"></div>
+<div class="gallery-grid" id="galeria-abanicos">
+    <div class="gallery-card"><img src="abanicos/AB1.png" alt="AB1" onclick="openLightbox(149)"></div>
+    <div class="gallery-card"><img src="abanicos/AB2.png" alt="AB2" onclick="openLightbox(150)"></div>
+    <div class="gallery-card"><img src="abanicos/AB4.png" alt="AB4" onclick="openLightbox(151)"></div>
+    <div class="gallery-card"><img src="abanicos/AB5.png" alt="AB5" onclick="openLightbox(152)"></div>
+    <div class="gallery-card"><img src="abanicos/AB6.png" alt="AB6" onclick="openLightbox(153)"></div>
+    <div class="gallery-card"><img src="abanicos/AB7.jpg" alt="AB7" onclick="openLightbox(154)"></div>
+    <div class="gallery-card"><img src="abanicos/AB8.jpg" alt="AB8" onclick="openLightbox(155)"></div>
+    <div class="gallery-card"><img src="abanicos/AB9.jpg" alt="AB9" onclick="openLightbox(156)"></div>
+    <div class="gallery-card"><img src="abanicos/AB10.jpg" alt="AB10" onclick="openLightbox(157)"></div>
+    <div class="gallery-card"><img src="abanicos/AB11.jpg" alt="AB11" onclick="openLightbox(158)"></div>
+    <div class="gallery-card"><img src="abanicos/AB12.jpg" alt="AB12" onclick="openLightbox(159)"></div>
+    <div class="gallery-card"><img src="abanicos/AB13.jpg" alt="AB13" onclick="openLightbox(160)"></div>
+    <div class="gallery-card"><img src="abanicos/AB14.jpg" alt="AB14" onclick="openLightbox(161)"></div>
+    <div class="gallery-card"><img src="abanicos/AB15.jpg" alt="AB15" onclick="openLightbox(162)"></div>
+    <div class="gallery-card"><img src="abanicos/AB16.jpg" alt="AB16" onclick="openLightbox(163)"></div>
+    <div class="gallery-card"><img src="abanicos/AB17.jpg" alt="AB17" onclick="openLightbox(164)"></div>
+    <div class="gallery-card"><img src="abanicos/AB18.jpg" alt="AB18" onclick="openLightbox(165)"></div>
+    <div class="gallery-card"><img src="abanicos/AB19.jpg" alt="AB19" onclick="openLightbox(166)"></div>
+</div>
 
 <h2 id="sacs">Bolsos</h2>
-<div class="gallery-grid" id="galeria-sacs"></div>
+<div class="gallery-grid" id="galeria-sacs">
+    <div class="gallery-card"><img src="sacs/BOL1.jpg" alt="BOL1" onclick="openLightbox(167)"></div>
+    <div class="gallery-card"><img src="sacs/BOL2.jpg" alt="BOL2" onclick="openLightbox(168)"></div>
+    <div class="gallery-card"><img src="sacs/BOL3.jpg" alt="BOL3" onclick="openLightbox(169)"></div>
+    <div class="gallery-card"><img src="sacs/BOL4.jpg" alt="BOL4" onclick="openLightbox(170)"></div>
+    <div class="gallery-card"><img src="sacs/BOL5.jpg" alt="BOL5" onclick="openLightbox(171)"></div>
+    <div class="gallery-card"><img src="sacs/BOL6.jpg" alt="BOL6" onclick="openLightbox(172)"></div>
+    <div class="gallery-card"><img src="sacs/BOL7.jpg" alt="BOL7" onclick="openLightbox(173)"></div>
+    <div class="gallery-card"><img src="sacs/BOL8.jpg" alt="BOL8" onclick="openLightbox(174)"></div>
+    <div class="gallery-card"><img src="sacs/BOL9.jpg" alt="BOL9" onclick="openLightbox(175)"></div>
+    <div class="gallery-card"><img src="sacs/BOL10.jpg" alt="BOL10" onclick="openLightbox(176)"></div>
+    <div class="gallery-card"><img src="sacs/BOL11.jpg" alt="BOL11" onclick="openLightbox(177)"></div>
+    <div class="gallery-card"><img src="sacs/BOL12.jpg" alt="BOL12" onclick="openLightbox(178)"></div>
+    <div class="gallery-card"><img src="sacs/BOL13.jpg" alt="BOL13" onclick="openLightbox(179)"></div>
+    <div class="gallery-card"><img src="sacs/BOL14.jpg" alt="BOL14" onclick="openLightbox(180)"></div>
+</div>
 
 <h2 id="bisuteria">Bisutería</h2>
-<div class="gallery-grid" id="galeria-bisuteria"></div>
+<div class="gallery-grid" id="galeria-bisuteria">
+    <div class="gallery-card"><img src="bisuterié/BISOU1.jpg" alt="BISOU1" onclick="openLightbox(181)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU2.jpg" alt="BISOU2" onclick="openLightbox(182)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU3.jpg" alt="BISOU3" onclick="openLightbox(183)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU4.jpg" alt="BISOU4" onclick="openLightbox(184)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU5.jpg" alt="BISOU5" onclick="openLightbox(185)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU6.jpg" alt="BISOU6" onclick="openLightbox(186)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU7.jpg" alt="BISOU7" onclick="openLightbox(187)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU8.jpg" alt="BISOU8" onclick="openLightbox(188)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU9.jpg" alt="BISOU9" onclick="openLightbox(189)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU10.jpg" alt="BISOU10" onclick="openLightbox(190)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU11.jpg" alt="BISOU11" onclick="openLightbox(191)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU12.jpg" alt="BISOU12" onclick="openLightbox(192)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU13.jpg" alt="BISOU13" onclick="openLightbox(193)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU14.jpg" alt="BISOU14" onclick="openLightbox(194)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU15.jpg" alt="BISOU15" onclick="openLightbox(195)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU16.jpg" alt="BISOU16" onclick="openLightbox(196)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU17.jpg" alt="BISOU17" onclick="openLightbox(197)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU18.jpg" alt="BISOU18" onclick="openLightbox(198)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU19.jpg" alt="BISOU19" onclick="openLightbox(199)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU20.jpg" alt="BISOU20" onclick="openLightbox(200)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU21.jpg" alt="BISOU21" onclick="openLightbox(201)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU22.jpg" alt="BISOU22" onclick="openLightbox(202)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU23.jpg" alt="BISOU23" onclick="openLightbox(203)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU24.jpg" alt="BISOU24" onclick="openLightbox(204)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU25.jpg" alt="BISOU25" onclick="openLightbox(205)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU26.jpg" alt="BISOU26" onclick="openLightbox(206)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU27.jpg" alt="BISOU27" onclick="openLightbox(207)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU28.jpg" alt="BISOU28" onclick="openLightbox(208)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU29.jpg" alt="BISOU29" onclick="openLightbox(209)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU30.jpg" alt="BISOU30" onclick="openLightbox(210)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU31.jpg" alt="BISOU31" onclick="openLightbox(211)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU32.jpg" alt="BISOU32" onclick="openLightbox(212)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU33.jpg" alt="BISOU33" onclick="openLightbox(213)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU34.jpg" alt="BISOU34" onclick="openLightbox(214)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU35.jpg" alt="BISOU35" onclick="openLightbox(215)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU36.jpg" alt="BISOU36" onclick="openLightbox(216)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU37.jpg" alt="BISOU37" onclick="openLightbox(217)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU39.jpg" alt="BISOU39" onclick="openLightbox(218)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU40.jpg" alt="BISOU40" onclick="openLightbox(219)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU41.jpg" alt="BISOU41" onclick="openLightbox(220)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU42.jpg" alt="BISOU42" onclick="openLightbox(221)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU43.jpg" alt="BISOU43" onclick="openLightbox(222)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU44.jpg" alt="BISOU44" onclick="openLightbox(223)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU45.jpg" alt="BISOU45" onclick="openLightbox(224)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU46.jpg" alt="BISOU46" onclick="openLightbox(225)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU47.jpg" alt="BISOU47" onclick="openLightbox(226)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU49.jpg" alt="BISOU49" onclick="openLightbox(227)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU50.jpg" alt="BISOU50" onclick="openLightbox(228)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU51.jpg" alt="BISOU51" onclick="openLightbox(229)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU52.jpg" alt="BISOU52" onclick="openLightbox(230)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU53.jpg" alt="BISOU53" onclick="openLightbox(231)"></div>
+    <div class="gallery-card"><img src="bisuterié/BISOU54.jpg" alt="BISOU54" onclick="openLightbox(232)"></div>
+</div>
 
 <h2 id="sandalias">Sandalias</h2>
-<div class="gallery-grid" id="galeria-sandalias"></div>
+<div class="gallery-grid" id="galeria-sandalias">
+    <div class="gallery-card"><img src="sandalias/SAN1.jpg" alt="SAN1" onclick="openLightbox(233)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN2.png" alt="SAN2" onclick="openLightbox(234)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN10.png" alt="SAN10" onclick="openLightbox(235)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN11.jpg" alt="SAN11" onclick="openLightbox(236)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN12.jpg" alt="SAN12" onclick="openLightbox(237)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN13.jpg" alt="SAN13" onclick="openLightbox(238)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN14.jpg" alt="SAN14" onclick="openLightbox(239)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN15.jpg" alt="SAN15" onclick="openLightbox(240)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN16.jpg" alt="SAN16" onclick="openLightbox(241)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN17.jpg" alt="SAN17" onclick="openLightbox(242)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN18.jpg" alt="SAN18" onclick="openLightbox(243)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN19.jpg" alt="SAN19" onclick="openLightbox(244)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN20.jpg" alt="SAN20" onclick="openLightbox(245)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN21.jpg" alt="SAN21" onclick="openLightbox(246)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN22.jpg" alt="SAN22" onclick="openLightbox(247)"></div>
+    <div class="gallery-card"><img src="sandalias/SAN23.jpg" alt="SAN23" onclick="openLightbox(248)"></div>
+</div>
 
 <div class="lightbox" id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">×</span>
-    <span class="lightbox-arrow left" onclick="prevImage()">Previous</span>
+    <span class="lightbox-arrow left" onclick="prevImage()">‹</span>
     <img id="lightbox-img" alt="">
-    <span class="lightbox-arrow right" onclick="nextImage()">Next</span>
+    <span class="lightbox-arrow right" onclick="nextImage()">›</span>
 </div>
 
 <script>
-function toggleMenu() {
-    document.getElementById("menuCategorias").classList.toggle("open");
-}
-
-let lightbox = document.getElementById("lightbox");
-let lightboxImg = document.getElementById("lightbox-img");
-let allImages = [];
+function toggleMenu() { document.getElementById("menuCategorias").classList.toggle("open"); }
 let currentIndex = 0;
-
-function openLightbox(i) { currentIndex = i; lightboxImg.src = allImages[i]; lightbox.classList.add("active"); }
-function closeLightbox() { lightbox.classList.remove("active"); }
-function nextImage() { currentIndex = (currentIndex + 1) % allImages.length; lightboxImg.src = allImages[currentIndex]; }
-function prevImage() { currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; lightboxImg.src = allImages[currentIndex]; }
-lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
-
-const galleryData = [
-    { id: "galeria-pasarelas", folder: "pasarelas",  files: Array.from({length:149},(_,i)=>`desf${i+1}.jpg`) },
-    { id: "galeria-abanicos",  folder: "abanicos",   files: ["AB1.png","AB2.png","AB4.png","AB5.png","AB6.png","AB7.jpg","AB8.jpg","AB9.jpg","AB10.jpg","AB11.jpg","AB12.jpg","AB13.jpg","AB14.jpg","AB15.jpg","AB16.jpg","AB17.jpg","AB18.jpg","AB19.jpg"] },
-    { id: "galeria-sacs",      folder: "sacs",       files: ["BOL1.jpg","BOL2.jpg","BOL3.jpg","BOL4.jpg","BOL5.jpg","BOL6.jpg","BOL7.jpg","BOL8.jpg","BOL9.jpg","BOL10.jpg","BOL11.jpg","BOL12.jpg","BOL13.jpg","BOL14.jpg"] },
-    { id: "galeria-bisuteria", folder: "bisuterié",  files: ["BISOU1.jpg","BISOU2.jpg","BISOU3.jpg","BISOU4.jpg","BISOU5.jpg","BISOU6.jpg","BISOU7.jpg","BISOU8.jpg","BISOU9.jpg","BISOU10.jpg","BISOU11.jpg","BISOU12.jpg","BISOU13.jpg","BISOU14.jpg","BISOU15.jpg","BISOU16.jpg","BISOU17.jpg","BISOU18.jpg","BISOU19.jpg","BISOU20.jpg","BISOU21.jpg","BISOU22.jpg","BISOU23.jpg","BISOU24.jpg","BISOU25.jpg","BISOU26.jpg","BISOU27.jpg","BISOU28.jpg","BISOU29.jpg","BISOU30.jpg","BISOU31.jpg","BISOU32.jpg","BISOU33.jpg","BISOU34.jpg","BISOU35.jpg","BISOU36.jpg","BISOU37.jpg","BISOU39.jpg","BISOU40.jpg","BISOU41.jpg","BISOU42.jpg","BISOU43.jpg","BISOU44.jpg","BISOU45.jpg","BISOU46.jpg","BISOU47.jpg","BISOU49.jpg","BISOU50.jpg","BISOU51.jpg","BISOU52.jpg","BISOU53.jpg","BISOU54.jpg"] },
-    { id: "galeria-sandalias", folder: "sandalias",  files: ["SAN1.jpg","SAN2.png","SAN10.png","SAN11.jpg","SAN12.jpg","SAN13.jpg","SAN14.jpg","SAN15.jpg","SAN16.jpg","SAN17.jpg","SAN18.jpg","SAN19.jpg","SAN20.jpg","SAN21.jpg","SAN22.jpg","SAN23.jpg"] }
-];
-
-galleryData.forEach(g => {
-    const container = document.getElementById(g.id);
-    g.files.forEach(file => {
-        const path = `${g.folder}/${file}`;
-        allImages.push(path);
-
-        const card = document.createElement("div");
-        card.className = "gallery-card";
-        const img = document.createElement("img");
-        img.src = path;
-        img.alt = file;
-        img.loading = "lazy";
-        img.onclick = () => openLightbox(allImages.indexOf(path));
-        card.appendChild(img);
-        container.appendChild(card);
-    });
-});
+const allImages = []; // Se llena automáticamente con las rutas de arriba
+function openLightbox(index) { currentIndex = index; document.getElementById("lightbox-img").src = allImages[index]; document.getElementById("lightbox").classList.add("active"); }
+function closeLightbox() { document.getElementById("lightbox").classList.remove("active"); }
+function nextImage() { currentIndex = (currentIndex + 1) % allImages.length; openLightbox(currentIndex); }
+function prevImage() { currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; openLightbox(currentIndex); }
+document.getElementById("lightbox").addEventListener("click", e => { if (e.target.id === "lightbox") closeLightbox(); });
 </script>
 </body>
 </html>
