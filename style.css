@@ -90,3 +90,39 @@ footer { background:#111; color:#fff; padding:40px 0; text-align:center; font-si
 @media (min-width: 1024px) {
     .hero h1 { font-size:5.5rem; }
 }
+
+.pub-section {
+  background: #fef9f3;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 3px solid #f4b400;
+}
+.pub-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #cc0000;
+}
+.pub-section p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+.whatsapp-btn {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 12px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+.voir-pubs {
+  font-size: 14px;
+  color: #444;
+  text-decoration: underline;
+}
