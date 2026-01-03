@@ -162,3 +162,41 @@ footer { background:#111; color:#fff; padding:40px 0; text-align:center; font-si
 .calendar-actions{
   margin-top: 18px;
 }
+
+/* =========================
+   Google Translate – FIX
+   ========================= */
+
+.translate-box {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 3000;
+}
+
+/* Ajuste móvil */
+@media (max-width: 768px) {
+  .translate-box {
+    top: 65px;      /* debajo del header */
+    right: 10px;
+    transform: scale(0.9);
+    transform-origin: top right;
+  }
+}
+
+/* Ocultar texto feo de Google */
+.goog-te-gadget {
+  font-size: 0;
+}
+
+.goog-te-gadget span {
+  display: none;
+}
+
+.goog-te-gadget select {
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
