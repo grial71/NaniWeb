@@ -126,3 +126,39 @@ footer { background:#111; color:#fff; padding:40px 0; text-align:center; font-si
   color: #444;
   text-decoration: underline;
 }
+
+/* ============= CALENDARIO ============= */
+.calendario .subtitle { max-width: 820px; }
+
+.calendar-embed{
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 35px auto 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+  background: #fff;
+  border: 1px solid #eee;
+  /* Alto responsive (móvil) */
+  padding-top: 95%;
+}
+
+@media (min-width: 768px){
+  .calendar-embed{ padding-top: 62%; }
+}
+@media (min-width: 1024px){
+  .calendar-embed{ padding-top: 52%; }
+}
+
+.calendar-embed iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.calendar-actions{
+  margin-top: 18px;
+}
