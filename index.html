@@ -3,284 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nany – Moda Afro Consciente | Diseño inclusivo y sostenible</title>
-    <meta name="description" content="Nany, diseñadora y artesana de Guinea Ecuatorial. Moda ética, reciclaje creativo y empoderamiento femenino.">
-   
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>NANY | Collection 2026 - Eventos & Alta Costura</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =====================================================================
+           SECTION 1: VARIABLES ET ARCHITECTURE CSS (LIGNES 30-220)
+           =====================================================================
+        */
+        :root {
+            --oro-nany: #D4AF37;
+            --oro-fond: #C5A028;
+            --noir-total: #000000;
+            --noir-lux: #111111;
+            --blanc-pur: #FFFFFF;
+            --blanc-soft: #F9F9F9;
+            --font-titre: 'Playfair Display', serif;
+            --font-corps: 'Montserrat', sans-serif;
+            --shadow-card: 0 15px 35px rgba(0,0,0,0.2);
+            --transition-lux: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            font-family: var(--font-corps);
+            background-color: var(--blanc-pur);
+            color: var(--noir-total);
+            overflow-x: hidden;
+        }
+
+        /* SCROLLBAR PERSONNALISÉE */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--noir-total); }
+        ::-webkit-scrollbar-thumb { background: var(--oro-nany); }
+
+        /* =====================================================================
+           SECTION 2: ÉCRAN D'ACCUEIL ET AUDIO (LIGNES 221-420)
+           =====================================================================
+        */
+        #rideau-entree {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--noir-total);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--oro-nany);
+            transition: opacity 1.5s ease;
+        }
+
+        .disque-audio {
+            position: fixed;
+            left: 35px;
+            bottom: 35px;
+            width: 70px;
+            height: 70px;
+            background: var(--noir-total);
+            border: 2px solid var(--oro-nany);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9999;
+            color: var(--oro-nany);
+            animation: rotation 4s linear infinite;
+            animation-play-state: paused;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .disque-audio.playing { animation-play-state: running; }
+
+        @keyframes rotation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* =====================================================================
+           SECTION 3: NAVEGACIÓN Y FILTROS (LIGNES 421-650)
+           =====================================================================
+        */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 125px;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--oro-nany);
+        }
+
+        .nav-wrapper {
+            width: 90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .logo-box img { height: 85px; }
+
+        .collection-tag {
+            text-align: right;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .filter-menu {
+            padding-top: 150px;
+            background: var(--blanc-soft);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 30px;
+        }
+
+        .btn-filter {
+            padding: 12px 25px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-filter.active, .btn-filter:hover {
+            background: var(--oro-nany);
+            color: white;
+            border-color: var(--oro-nany);
+        }
+
+        /* =====================================================================
+           SECTION 4: CALENDRIER GOOGLE (NOUVEAUTÉ) (LIGNES 651-800)
+           =====================================================================
+        */
+        .calendar-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 40px;
+            background: #fff;
+            box-shadow: var(--shadow-card);
+            border-top: 4px solid var(--oro-nany);
+        }
+
+        .calendar-section h2 {
+            font-family: var(--font-titre);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+        }
+
+        .calendar-container {
+            position: relative;
+            padding-bottom: 75%; /* Ratio pour mobile */
+            height: 0;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .calendar-container { padding-bottom: 50%; }
+        }
+
+        .calendar-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* =====================================================================
+           SECTION 5: GRILLE DE PRODUITS (LIGNES 801-1000)
+           =====================================================================
+        */
+        .gallery-grid {
+            width: 90%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .item-card {
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            background: #eee;
+            box-shadow: var(--shadow-card);
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 2s ease;
+        }
+
+        .item-card:hover img { transform: scale(1.1); }
+
+        /* =====================================================================
+           SECTION 6: PROTECTION LÉGALE (LIGNES 1001-1117+)
+           =====================================================================
+        */
+        footer {
+            background: var(--noir-lux);
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .footer-content {
+            width: 90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .legal-item h4 {
+            color: var(--oro-nany);
+            margin-bottom: 20px;
+            font-family: var(--font-titre);
+        }
+
+        .legal-item p {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-align: justify;
+        }
+
+        .shield-michel {
+            border: 1px solid var(--oro-nany);
+            padding: 25px;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* BOUTONS FIXES */
+        .ui-social {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 20000;
+        }
+
+        .btn-round {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+
+        .wa-bg { background: #25D366; }
+        .tk-bg { background: #000; border: 1px solid var(--oro-nany); }
+        .btn-round:hover { transform: translateY(-8px); }
+
+    </style>
 </head>
 <body>
-    <!-- Header fijo -->
-    <header class="header">
-        <div class="container header-inner">
-            <a href="index.html" class="boutique-btn">BOUTIQUE NANY</a>
-            <a href="index.html" class="logo">
-                <img src="logo-nany.png" alt="Logo Nany Moda Consciente">
-            </a>
-            <nav class="nav-desktop">
-                <a href="#sobre">Sobre Nany</a>
-                <a href="#colecciones">Colecciones</a>
-                <a href="galeria.html">Galería</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-            <div id="google_translate_element" class="translate-box"></div>
 
-            <button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </button>
+    <div id="rideau-entree">
+        <h1 style="font-family: 'Playfair Display'; font-size: 4rem;">NANY</h1>
+        <p style="letter-spacing: 8px; margin-bottom: 30px;">COLLECTION 2026</p>
+        <button class="btn-filter" style="background: var(--oro-nany); color: #000;" onclick="startWorld()">ENTRAR</button>
+    </div>
+
+    <div class="disque-audio" id="audioBtn" onclick="toggleAudio()">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <audio id="bgSong" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav>
+        <div class="nav-wrapper">
+            <div id="google_translate_element"></div>
+            <div class="logo-box">
+                <img src="assets/logo-nany.png" alt="Nany Logo">
+            </div>
+            <div class="collection-tag">Collection 2026</div>
         </div>
-    </header>
-
-    <!-- Menú móvil -->
-    <nav id="mobileMenu" class="mobile-menu">
-        <a href="#sobre">Sobre Nany</a>
-        <a href="#colecciones">Colecciones</a>
-        <a href="galeria.html">Galería</a>
-        <a href="#contacto">Contacto</a>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero" style="background-image: url('pasarelas/desf27.jpg');">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1>MODA AFRO CONTEMPORÁNEA</h1>
-            <p>Piezas únicas, hechas a mano, que fusionan identidad africana,<br>reciclaje creativo y elegancia urbana.</p>
-            <div class="hero-buttons">
-                <a href="https://wa.me/240555517225" target="_blank" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> BOUTIQUE WHATSAPP
-                </a>
-                <a href="galeria.html" class="btn btn-secondary">ENTRAR EN LA GALERÍA</a>
-                <a href="#colecciones" class="btn btn-outline">DESCUBRIR COLECCIONES</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Nany -->
-    <section id="sobre" class="section sobre">
-        <div class="container">
-            <h2 class="section-title">Diseñadora, artesana y creadora comprometida</h2>
-            <div class="keywords">
-                <span>MODA ÉTICA</span>
-                <span>RECICLAJE CREATIVO</span>
-                <span>DIVERSIDAD</span>
-                <span>INCLUSIÓN</span>
-                <span>EMPODERAMIENTO</span>
-            </div>
-            <div class="sobre-grid">
-                <div class="sobre-text">
-                    <p>Casiana Nanitursa Nchama Nguema, conocida artísticamente como <strong>Nany</strong>, es una diseñadora de moda y artesana de Guinea Ecuatorial cuya obra destaca por la fuerza estética, la creatividad y la conciencia social.</p>
-                    <p>Desde muy joven desarrolló una sensibilidad especial hacia la reutilización de materiales y la transformación artística. Su filosofía se basa en dar una “segunda vida” a telas, fibras y elementos reciclados, convirtiéndolos en piezas únicas que combinan tradición africana, diseño contemporáneo y una profunda identidad cultural.</p>
-                    <p>Su trabajo ha sido presentado en eventos como <strong>Mujer Ideal, FIMIAGE, KAFSAF Festival</strong> y múltiples pasarelas locales e internacionales. Nany es reconocida por su estilo atrevido, elegante y altamente detallista, donde cada pieza cuenta una historia.</p>
-                    <p>Además de su labor artística, Nany impulsa proyectos de inclusión, empoderamiento femenino y artesanía sostenible, promoviendo un modelo de negocio que va más allá de la estética, impactando positivamente en su comunidad.</p>
-                </div>
-                <div class="sobre-image">
-                    <img src="pasarelas/desf27.jpg" alt="Nany en pasarela">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Colecciones -->
-    <section id="colecciones" class="section colecciones">
-        <div class="container">
-            <h2 class="section-title center">Arte que cuenta historias</h2>
-            <p class="subtitle center">Cada creación es el resultado de un proceso artístico cuidadoso donde tradición y modernidad se fusionan.</p>
-           
-            <div class="collections-grid">
-                <a href="galeria.html#pasarelas" class="collection-card">
-                    <img src="pasarelas/desf1.jpg" alt="Pasarelas">
-                    <h3>Pasarelas</h3>
-                </a>
-                <a href="galeria.html#abanicos" class="collection-card">
-                    <img src="abanicos/AB1.png" alt="Abanicos">
-                    <h3>Abanicos</h3>
-                </a>
-                <a href="galeria.html#bolsos" class="collection-card">
-                    <img src="bolsos/BOL1.jpg" alt="Bolsos">
-                    <h3>Bolsos</h3>
-                </a>
-                <a href="galeria.html#bisuteria" class="collection-card">
-                    <img src="bisouteria/BISOU1.jpg" alt="Bisutería">
-                    <h3>Bisutería</h3>
-                </a>
-                <a href="galeria.html#sandalias" class="collection-card">
-                    <img src="sandalias/SAN1.jpg" alt="Sandalias">
-                    <h3>Sandalias</h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calendario de eventos -->
-<section id="eventos" class="section calendario">
-  <div class="container">
-    <h2 class="section-title center">Calendario de eventos</h2>
-    <p class="subtitle center">
-      Fechas de pasarelas, exposiciones, presentaciones y colaboraciones.
-    </p>
-
-    <div class="calendar-embed" aria-label="Calendario de eventos de Nany">
-      <iframe
-        title="Calendario de eventos - Creaciones Nany"
-        src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FMadrid"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
+    <div class="filter-menu">
+        <button class="btn-filter active" onclick="filtrar('tout')">Tout</button>
+        <button class="btn-filter" onclick="filtrar('pasarelas')">Pasarelas</button>
+        <button class="btn-filter" onclick="filtrar('abanicos')">Abanicos</button>
+        <button class="btn-filter" onclick="filtrar('bisouteria')">Bisouteria</button>
+        <button class="btn-filter" onclick="filtrar('bolsos')">Bolsos</button>
+        <button class="btn-filter" onclick="filtrar('sandalias')">Sandalias</button>
     </div>
 
-    <div class="calendar-actions center">
-      <a class="btn btn-secondary" target="_blank"
-         href="https://calendar.google.com/calendar/u/0?cid=NTg0YTE0OTQ1MWUwMzU0Mjg3MDc2MjE0YzY4Yzg0YmI4M2NhYjA5OWE5Yjg2ZGY2Njk0MmQ1ZGJiYTI1YWVhOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t">
-        Abrir calendario en Google
-      </a>
-    </div>
-  </div>
-</section>
+    <main class="gallery-grid" id="mainGallery"></main>
 
-
-    <!-- Contacto -->
-    <section id="contacto" class="section contacto">
-        <div class="container">
-            <h2 class="section-title center">Pedidos, colaboraciones y proyectos</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/240555517225" target="_blank">+240 555 517 225</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:dannany1721@gmail.com">dannany1721@gmail.com</a></p>
-                    <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/nany_inclusiva" target="_blank">@nany_inclusiva</a></p>
-                </div>
-                <div class="social-buttons">
-                    <a href="https://wa.me/240555517225" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://facebook.com/dannany21" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/nany_inclusiva" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+    <section class="calendar-section">
+        <h2>Agenda de Eventos</h2>
+        <div class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </section>
-
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/240555517225" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- MÚSICA AFROBEAT + BOTÓN VOLUMEN -->
-    <div class="music-player">
-        <audio id="bgMusic" loop preload="auto">
-            <source src="afrobeat-nanymp3.mp3" type="audio/mpeg">
-        </audio>
-        <button id="musicToggle" class="music-btn" title="Música Afrobeat">
-            <i class="fas fa-music" id="musicIcon"></i>
-        </button>
-    </div>
 
     <footer>
-        <div class="container">
-            <p>© 2025 Nany – Moda Consciente. Con mucho cariño por Michel y Elodie ♡</p>
+        <div class="footer-content">
+            <div class="legal-item">
+                <h4>Exclusividad</h4>
+                <p>Todos los diseños y eventos presentados son propiedad de Nany Haute Couture 2026.</p>
+            </div>
+            <div class="legal-item shield-michel">
+                <h4>Protección Hébergeur</h4>
+                <p><strong>Michel</strong> actúa como <strong>alojador técnico</strong>. La responsabilidad sobre el tratamiento de datos personales de WhatsApp recae exclusivamente en <strong>Nany</strong>.</p>
+            </div>
+            <div class="legal-item">
+                <h4>Contacto Digital</h4>
+                <p>Desarrollo multilingüe optimizado por Michel para el mercado internacional remoto.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <div class="ui-social">
+        <a href="https://wa.me/34612345678" class="btn-round wa-bg"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@nany" class="btn-round tk-bg"><i class="fab fa-tiktok"></i></a>
+    </div>
+
     <script>
-        function toggleMenu() {
-            document.getElementById("mobileMenu").classList.toggle("open");
-            document.body.classList.toggle("menu-open");
+        const PATH = 'assets/';
+        const DATA = {
+            pasarelas: Array.from({length: 149}, (_, i) => `${PATH}pasarelas/desf${i+1}.jpg`),
+            abanicos: [1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(id => `${PATH}abanicos/AB${id}.${id<=6?'png':'jpg'}`),
+            bisouteria: Array.from({length: 54}, (_, i) => `${PATH}bisouteria/BISOU${i+1}.jpg`),
+            bolsos: Array.from({length: 25}, (_, i) => `${PATH}bolsos/BOL${i+1}.jpg`),
+            sandalias: [1,2,10,11,12,13,14,15,16,17,18,19,20,21,22,23,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44].map(id => `${PATH}sandalias/SAN${id}.${id>=43?'png':'jpg'}`)
+        };
+
+        const song = document.getElementById('bgSong');
+        const disk = document.getElementById('audioBtn');
+
+        function startWorld() {
+            song.play();
+            disk.classList.add('playing');
+            document.getElementById('rideau-entree').style.opacity = '0';
+            setTimeout(() => { document.getElementById('rideau-entree').style.display = 'none'; }, 1500);
         }
-        document.addEventListener("click", function(e) {
-            const menu = document.getElementById("mobileMenu");
-            const hamburger = document.querySelector(".hamburger");
-            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-                menu.classList.remove("open");
-                document.body.classList.remove("menu-open");
-            }
-        });
 
-        // MÚSICA
-        const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicToggle');
-        const icon = document.getElementById('musicIcon');
-        let playing = false;
+        function toggleAudio() {
+            if(song.paused) { song.play(); disk.classList.add('playing'); }
+            else { song.pause(); disk.classList.remove('playing'); }
+        }
 
-        btn.addEventListener('click', () => {
-            if (playing) {
-                music.pause();
-                playing = false;
-                btn.classList.remove('playing');
-                icon.className = 'fas fa-music';
+        function filtrar(c) {
+            const grid = document.getElementById('mainGallery');
+            grid.innerHTML = '';
+            document.querySelectorAll('.btn-filter').forEach(b => {
+                b.classList.remove('active');
+                if(b.innerText.toLowerCase() === c) b.classList.add('active');
+            });
+            if(c === 'tout') {
+                Object.keys(DATA).forEach(k => DATA[k].forEach(s => render(s)));
             } else {
-                music.volume = 0.30; // volumen suave y elegante
-                music.play();
-                playing = true;
-                btn.classList.add('playing');
-                icon.className = 'fas fa-volume-up';
+                DATA[c].forEach(s => render(s));
             }
-        });
-    </script>
-
-    <!-- Estilos del botón de música (pequeño toque bonito) -->
-    <style>
-    <style>
-        .music-player{position:fixed;bottom:20px;right:20px;z-index:9999}
-        .music-btn{background:linear-gradient(135deg,#e11048,#25d366);color:#fff;border:none;width:55px;height:55px;border-radius:50%;font-size:21px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:all .3s}
-        .music-btn:hover{transform:scale(1.15)}
-        .music-btn.playing{animation:pulse 2s infinite}
-        @keyframes pulse{
-            0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
-            70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}
-            100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
         }
 
-    </style>
+        function render(s) {
+            const d = document.createElement('div');
+            d.className = 'item-card';
+            d.innerHTML = `<img src="${s}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
+            document.getElementById('mainGallery').appendChild(d);
+        }
 
-   <!-- Bouton Google Translate (en haut à droite) -->
-<div id="google_translate_element" class="translate-box"></div>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'es,fr,en'}, 'google_translate_element');
+        }
 
+        window.onload = () => filtrar('tout');
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<style>
-#google_translate_element {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 9999;
-  background: #fff;
-  border-radius: 8px;
-  padding: 5px 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-}
-.goog-te-gadget {
-  color: #333 !important;
-}
-.goog-te-gadget select {
-  padding: 3px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-}
-</style>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'es',
-    includedLanguages: 'es,fr,en',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-}
-</script>
-
-<script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
-
-
-
-
-
-
-
-
+</body>
+</html>
