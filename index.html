@@ -3,241 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NANY | Collection 2026 - Alta Costura</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>NANY | Excellence Haute Couture 2026</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
         :root {
             --oro: #D4AF37;
-            --oro-dark: #B8860B;
-            --negro-lux: #0A0A0A;
-            --blanco-soft: #FDFDFD;
-            --fuente-titulos: 'Playfair Display', serif;
-            --fuente-cuerpo: 'Montserrat', sans-serif;
-            --shadow-premium: 0 15px 35px rgba(0,0,0,0.1);
+            --oro-brillante: #FFD700;
+            --negro-profundo: #050505;
+            --negro-suave: #1A1A1A;
+            --blanco-lujo: #FBFBFB;
+            --transparencia-oro: rgba(212, 175, 55, 0.1);
+            --transition-slow: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
         body {
-            font-family: var(--fuente-cuerpo);
-            background-color: var(--blanco-soft);
-            color: var(--negro-lux);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--blanco-lujo);
+            color: var(--negro-profundo);
             overflow-x: hidden;
         }
 
-        /* BARRA DE NAVEGACIÓN PROFESIONAL */
+        /* --- PANTALLA DE ENTRADA (ELITE GATE) --- */
+        #elite-gate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle, var(--negro-suave) 0%, var(--negro-profundo) 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .gate-frame {
+            text-align: center;
+            padding: 60px;
+            border: 1px solid var(--oro);
+            position: relative;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .gate-frame::before, .gate-frame::after {
+            content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--oro);
+        }
+        .gate-frame::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .gate-frame::after { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+        .gate-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--oro);
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .gate-subtitle {
+            color: white;
+            letter-spacing: 8px;
+            font-weight: 200;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .btn-enter {
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            padding: 18px 50px;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-enter:hover {
+            background: var(--oro);
+            color: var(--negro-profundo);
+            box-shadow: 0 0 40px var(--oro);
+        }
+
+        /* --- NAVEGACIÓN --- */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100px;
+            top: 0; width: 100%; height: 100px;
             background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid var(--oro);
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--oro);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
-        .logo img { height: 70px; transition: 0.3s; }
-        .logo img:hover { transform: scale(1.05); }
+        .nav-logo img { height: 70px; }
+        .nav-title { font-family: 'Playfair Display'; font-size: 1.5rem; letter-spacing: 3px; }
 
-        /* FILTROS DE CATEGORÍA */
-        .filter-section {
-            padding-top: 140px;
-            text-align: center;
-            background: #fff;
-            padding-bottom: 40px;
+        /* --- GALERÍA DE ALTO IMPACTO --- */
+        .main-content { padding-top: 150px; max-width: 1600px; margin: 0 auto; }
+        
+        .filter-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
         }
 
-        .btn-filter {
-            padding: 12px 28px;
-            margin: 5px;
-            border: 1px solid #eee;
-            background: white;
-            cursor: pointer;
+        .filter-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            border-radius: 0;
             text-transform: uppercase;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 2px;
-            border-radius: 50px;
-            transition: all 0.4s ease;
-            color: #666;
+            cursor: pointer;
+            transition: 0.4s;
         }
 
-        .btn-filter.active, .btn-filter:hover {
-            background: var(--oro);
-            color: white;
-            border-color: var(--oro);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--negro-profundo);
+            color: var(--oro);
+            border-color: var(--negro-profundo);
         }
 
-        /* GALERÍA DE PRODUCTOS */
-        .gallery-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .luxury-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
         }
 
-        .product-card {
-            height: 500px;
+        .art-card {
+            height: 550px;
             overflow: hidden;
-            border-radius: 12px;
-            background: #eee;
             position: relative;
-            box-shadow: var(--shadow-premium);
+            background: #eee;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: var(--transition-slow);
         }
 
-        .product-card img {
+        .art-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: transform 2s ease;
         }
 
-        .product-card:hover img { transform: scale(1.1); }
+        .art-card:hover img { transform: scale(1.1); }
 
-        /* SECCIÓN CALENDARIO */
+        /* --- SECCIÓN CALENDARIO --- */
         .calendar-section {
-            padding: 100px 0;
-            background: #fff;
+            padding: 120px 0;
+            background: var(--negro-profundo);
+            color: var(--oro);
             text-align: center;
         }
 
         .calendar-section h2 {
-            font-family: var(--fuente-titulos);
-            font-size: 3rem;
-            margin-bottom: 40px;
-            color: var(--oro);
+            font-family: 'Playfair Display';
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+            letter-spacing: 5px;
         }
 
-        .calendar-frame {
+        .calendar-wrapper {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            height: 650px;
-            border: 4px solid var(--oro);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-premium);
+            height: 700px;
+            border: 1px solid var(--oro);
+            padding: 10px;
+            background: #000;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
         }
 
-        /* PIE DE PÁGINA LEGAL */
+        /* --- FOOTER LEGAL --- */
         footer {
-            background: #f9f9f9;
-            padding: 80px 0;
-            border-top: 1px solid #eee;
+            background: #000;
+            color: #888;
+            padding: 100px 5%;
+            border-top: 1px solid var(--oro);
         }
 
         .footer-grid {
-            width: 90%;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
         }
 
         .footer-box h3 {
-            font-family: var(--fuente-titulos);
             color: var(--oro);
+            font-family: 'Playfair Display';
             font-size: 1.8rem;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .footer-box p {
-            font-size: 0.9rem;
-            color: #777;
+            font-size: 0.85rem;
+            line-height: 2;
             text-align: justify;
-            line-height: 1.8;
         }
 
-        /* CONTROLES FLOTANTES (MÚSICA Y CONTACTO) */
-        .music-player {
-            position: fixed;
-            left: 30px;
-            bottom: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--negro-lux);
+        /* --- ELEMENTOS FLOTANTES --- */
+        .music-disk {
+            position: fixed; left: 40px; bottom: 40px;
+            width: 80px; height: 80px;
+            background: var(--negro-profundo);
             border: 2px solid var(--oro);
             border-radius: 50%;
+            color: var(--oro);
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 2000;
-            color: var(--oro);
-            font-size: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            animation: spin 6s linear infinite;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            animation: rotateDisk 5s linear infinite;
             animation-play-state: paused;
         }
+        .music-disk.playing { animation-play-state: running; }
 
-        .music-player.playing { animation-play-state: running; }
+        @keyframes rotateDisk { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .contact-buttons {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 2000;
+        .social-menu {
+            position: fixed; right: 40px; bottom: 40px;
+            display: flex; flex-direction: column; gap: 20px; z-index: 2000;
         }
 
-        .btn-contact {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: 0.3s ease;
+        .social-link {
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            color: white; text-decoration: none; font-size: 1.5rem;
+            transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
         .whatsapp { background: #25D366; }
         .tiktok { background: #000; border: 1px solid var(--oro); }
-        .btn-contact:hover { transform: translateY(-8px); filter: brightness(1.1); }
+        .social-link:hover { transform: scale(1.1) translateY(-10px); }
 
     </style>
 </head>
 <body>
 
+    <div id="elite-gate">
+        <div class="gate-frame animate__animated animate__fadeIn">
+            <h1 class="gate-logo">NANY</h1>
+            <p class="gate-subtitle">Colección Internacional 2026</p>
+            <button class="btn-enter" onclick="unlockGate()">Explorar Galería</button>
+        </div>
+    </div>
+
     <nav>
         <div id="google_translate_element"></div>
-        <div class="logo">
-            <img src="logo-nany.png" alt="Nany Haute Couture">
+        <div class="nav-logo">
+            <img src="logo-nany.png" alt="Nany Logo">
         </div>
-        <div style="font-weight: 700; letter-spacing: 5px; font-size: 0.8rem; color: var(--oro);">COLLECTION 2026</div>
+        <div class="nav-title">HAUTE COUTURE</div>
     </nav>
 
-    <section class="filter-section">
-        <button class="btn-filter active" onclick="filtrar('todos')">Todos</button>
-        <button class="btn-filter" onclick="filtrar('pasarelas')">Pasarelas</button>
-        <button class="btn-filter" onclick="filtrar('abanicos')">Abanicos</button>
-        <button class="btn-filter" onclick="filtrar('bisouteria')">Bisutería</button>
-        <button class="btn-filter" onclick="filtrar('bolsos')">Bolsos</button>
-    </section>
+    <main class="main-content">
+        <div class="filter-menu">
+            <button class="filter-btn active" onclick="updateGallery('todos')">Ver Todo</button>
+            <button class="filter-btn" onclick="updateGallery('pasarelas')">Desfiles</button>
+            <button class="filter-btn" onclick="updateGallery('abanicos')">Abanicos</button>
+            <button class="filter-btn" onclick="updateGallery('bisouteria')">Bisutería</button>
+            <button class="filter-btn" onclick="updateGallery('bolsos')">Bolsos</button>
+        </div>
 
-    <main class="gallery-container" id="mainGrid"></main>
+        <div class="luxury-grid" id="gridDisplay"></div>
+    </main>
 
     <section class="calendar-section">
-        <h2>Próximos Eventos</h2>
-        <div class="calendar-frame">
+        <h2>AGENDA EXCLUSIVA</h2>
+        <div class="calendar-wrapper">
             <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis" 
                     style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
         </div>
@@ -247,72 +299,82 @@
         <div class="footer-grid">
             <div class="footer-box">
                 <h3>Aviso Legal</h3>
-                <p>En cumplimiento del artículo 10 de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico, se informa que este sitio es una exhibición profesional gestionada por Michel. El acceso atribuye la condición de USUARIO y la aceptación de las condiciones.</p>
+                <p>En cumplimiento del artículo 10 de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico, se informa que este sitio es una exhibición profesional gestionada por Michel. El acceso y uso del portal atribuye la condición de USUARIO y la aceptación de las condiciones generales aquí expuestas.</p>
             </div>
             <div class="footer-box">
                 <h3>Privacidad</h3>
-                <p>Los datos suministrados mediante la navegación serán tratados bajo la responsabilidad de la marca para la gestión de consultas profesionales. No se cederán datos a terceros salvo obligación legal. Usted tiene derecho a acceder, rectificar y suprimir sus datos conforme a la normativa europea.</p>
+                <p>Los datos suministrados mediante la navegación serán tratados bajo la estricta responsabilidad de la marca para la gestión de consultas profesionales. No se cederán datos a terceros bajo ningún concepto, salvo obligación legal expresa. Usted posee derechos de acceso y rectificación conforme a la normativa europea.</p>
             </div>
             <div class="footer-box">
-                <h3>Propiedad</h3>
-                <p>Todos los derechos de Propiedad Industrial e Intelectual de los diseños, fotografías y logotipos mostrados en este portal pertenecen a Nany. Queda estrictamente prohibida cualquier alteración o distribución de los mismos sin autorización previa por escrito.</p>
+                <h3>Propiedad Intelectual</h3>
+                <p>Todos los derechos de Propiedad Industrial e Intelectual de los diseños, fotografías, audios y logotipos mostrados en este portal pertenecen en exclusiva a Nany. Queda estrictamente prohibida cualquier alteración, explotación comercial o distribución de los mismos sin autorización escrita.</p>
             </div>
         </div>
     </footer>
 
-    <div class="music-player" id="disk" onclick="toggleMusic()">
-        <i class="fas fa-music"></i>
+    <div class="music-disk" id="audioDisk" onclick="manageAudio()">
+        <i class="fas fa-compact-disc"></i>
     </div>
-    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+    <audio id="mainTrack" loop src="afrobeat-nanymp3.mp3"></audio>
 
-    <div class="contact-buttons">
-        <a href="https://wa.me/34612345678" class="btn-contact whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://tiktok.com/@nany" class="btn-contact tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <div class="social-menu">
+        <a href="https://wa.me/34612345678" class="social-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@nany" class="social-link tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
 
     <script>
-        const DATA = {
+        // MOTOR DE CARGA CASE-SENSITIVE PARA GITHUB
+        const MASTER_DATA = {
             abanicos: [1, 10, 11, 12, 13, 14, 15, 16, 17].map(id => `abanicos/AB${id}.${id===1?'png':'jpg'}`),
             bisouteria: [1, 10, 11, 12, 13, 14, 15].map(id => `bisouteria/BISOU${id}.jpg`),
             bolsos: [1, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(id => `bolsos/BOL${id}.jpg`),
             pasarelas: [1, 10, 100, 101, 102, 103, 104, 105, 106, 107].map(id => `pasarelas/desf${id}.jpg`)
         };
 
-        const music = document.getElementById('bgMusic');
-        const disk = document.getElementById('disk');
-
-        function toggleMusic() {
-            if(music.paused) { music.play(); disk.classList.add('playing'); }
-            else { music.pause(); disk.classList.remove('playing'); }
+        function unlockGate() {
+            document.getElementById('elite-gate').style.transform = 'translateY(-100%)';
+            manageAudio(); // Inicia la música al entrar
         }
 
-        function filtrar(c) {
-            const grid = document.getElementById('mainGrid');
-            grid.innerHTML = '';
+        function updateGallery(category) {
+            const display = document.getElementById('gridDisplay');
+            display.innerHTML = '';
             
-            // Actualizar estado de botones
-            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+            // UI Button Logic
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             if(event) event.target.classList.add('active');
 
-            if(c === 'todos') {
-                Object.keys(DATA).forEach(key => DATA[key].forEach(img => render(img)));
+            if(category === 'todos') {
+                Object.keys(MASTER_DATA).forEach(key => MASTER_DATA[key].forEach(path => createCard(path)));
             } else {
-                DATA[c].forEach(img => render(img));
+                MASTER_DATA[category].forEach(path => createCard(path));
             }
         }
 
-        function render(src) {
-            const div = document.createElement('div');
-            div.className = 'product-card';
-            div.innerHTML = `<img src="${src}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
-            document.getElementById('mainGrid').appendChild(div);
+        function createCard(imagePath) {
+            const card = document.createElement('div');
+            card.className = 'art-card animate__animated animate__fadeInUp';
+            card.innerHTML = `<img src="${imagePath}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
+            document.getElementById('gridDisplay').appendChild(card);
+        }
+
+        function manageAudio() {
+            const track = document.getElementById('mainTrack');
+            const disk = document.getElementById('audioDisk');
+            if(track.paused) {
+                track.play();
+                disk.classList.add('playing');
+            } else {
+                track.pause();
+                disk.classList.remove('playing');
+            }
         }
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'es,fr,en'}, 'google_translate_element');
         }
 
-        window.onload = () => filtrar('todos');
+        window.onload = () => updateGallery('todos');
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
