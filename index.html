@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NANY | Haute Couture</title>
+    <title>NANY | Haute Couture - Official Portfolio</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;600;800&display=swap" rel="stylesheet">
@@ -11,83 +11,210 @@
 
     <style>
         :root {
-            --oro: #D4AF37; --negro: #000000; --blanco: #ffffff;
+            --oro: #D4AF37;
+            --oro-brillante: #FFD700;
+            --negro-profundo: #000000;
+            --negro-lujo: #050505;
+            --blanco: #ffffff;
             --border-glass: rgba(212, 175, 55, 0.25);
+            --transition-master: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--negro); color: var(--blanco); overflow-x: hidden; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--negro-profundo); 
+            color: var(--blanco);
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        @media (max-width: 1024px) {
+            #custom-cursor, #cursor-follower { display: none !important; }
+            body { cursor: auto !important; }
+        }
+
+        /* CURSOR */
+        #custom-cursor { position: fixed; width: 10px; height: 10px; background: var(--oro); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+        #cursor-follower { position: fixed; width: 30px; height: 30px; border: 1px solid var(--oro); border-radius: 50%; pointer-events: none; z-index: 9999; transition: 0.1s; }
+
+        /* LUXURY GATE */
+        #luxury-gate {
+            position: fixed; inset: 0; background: var(--negro-profundo); z-index: 9500;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; transition: 1.5s cubic-bezier(1,0,0,1);
+        }
+        .gate-title { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 10vw, 8rem); color: var(--oro); letter-spacing: 20px; text-transform: uppercase; }
+        .btn-enter {
+            margin-top: 40px; padding: 20px 60px;
+            background: transparent; border: 1px solid var(--oro);
+            color: var(--oro); text-transform: uppercase; letter-spacing: 5px;
+            cursor: pointer; transition: 0.5s;
+        }
+        .btn-enter:hover { background: var(--oro); color: #000; box-shadow: 0 0 30px var(--oro); }
 
         /* HEADER */
         header {
-            position: fixed; top: 0; width: 100%; height: 80px; padding: 0 5%;
-            display: flex; align-items: center; justify-content: space-between;
+            position: fixed; top: 0; width: 100%; height: 90px;
+            padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
             z-index: 1000; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border-glass);
         }
-        .nav-logo img { height: 50px; width: auto; border: 1px solid red; /* Cadre rouge pour voir si le logo est là */ }
+        .nav-logo img { height: 50px; width: auto; }
 
-        /* GALLERY */
-        .gallery-container { padding: 120px 5% 50px; }
-        .grid-master { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .art-item { height: 400px; border: 1px solid var(--border-glass); position: relative; background: #111; }
-        .art-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* BOUTONS FIXES */
-        .social-float { position: fixed; right: 25px; bottom: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
-        .s-btn { width: 55px; height: 55px; border-radius: 50%; background: #000; border: 1px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.5rem; }
+        /* VALENTINE */
+        .valentine-luxury {
+            padding: 150px 7% 80px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px; align-items: center;
+        }
+        .val-frame { border: 1px solid var(--oro); padding: 15px; background: #fff; position: relative; }
+        .val-frame img { width: 100%; height: auto; display: block; }
+        .val-badge {
+            position: absolute; top: -20px; right: -20px;
+            background: var(--oro); color: #000; padding: 15px;
+            font-weight: 800; border-radius: 50%; font-size: 0.7rem; text-align: center; z-index: 10;
+        }
+        .val-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 3.5rem); color: var(--oro); margin-bottom: 20px; }
         
-        .music-btn { position: fixed; left: 25px; bottom: 25px; width: 55px; height: 55px; border-radius: 50%; background: #000; border: 1px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; }
+        /* GALLERY */
+        .gallery-container { padding: 80px 5%; }
+        .filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
+        .btn-f { padding: 12px 25px; background: transparent; border: 1px solid var(--border-glass); color: #fff; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-f.active { background: var(--oro); color: #000; border-color: var(--oro); }
+        .grid-master { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .art-item { height: 450px; overflow: hidden; position: relative; border: 1px solid var(--border-glass); background: #080808; }
+        .art-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }
+
+        /* FLOAT BUTTONS */
+        .social-float { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 5000; }
+        .s-btn { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,0.9); border: 1px solid var(--oro); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
+        .s-btn:hover { background: var(--oro); color: #000; transform: scale(1.1); }
+        
+        .music-player-container { position: fixed; left: 30px; bottom: 30px; z-index: 5000; display: flex; align-items: center; gap: 15px; }
+        .disk-ui { width: 60px; height: 60px; border-radius: 50%; background: #000; border: 2px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; cursor: pointer; }
+        .disk-ui.playing { animation: spin 4s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        footer { padding: 60px; text-align: center; border-top: 1px solid var(--border-glass); font-size: 0.8rem; color: #555; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-logo">
-            <img src="Assets/logo-nany.png" alt="Logo">
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <section id="luxury-gate">
+        <h1 class="gate-title animate__animated animate__zoomIn">NANY</h1>
+        <p style="letter-spacing: 8px; color: #666; font-size: 0.7rem;">MODA CON CONCIENCIA</p>
+        <button class="btn-enter" onclick="enterApp()">Explorar</button>
+    </section>
+
+    <div id="main-app" style="display: none;">
+        
+        <header>
+            <div class="nav-logo">
+                <img src="logo-nany.png" alt="Nany Logo">
+            </div>
+            <div id="google_translate_element"></div>
+        </header>
+
+        <section class="valentine-luxury">
+            <div class="val-frame animate__animated animate__fadeInLeft">
+                <div class="val-badge">PACK<br>40k FCFA</div>
+                <img src="san-valentin-pack.jpeg" alt="Pack San Valentín">
+            </div>
+            <div class="val-content">
+                <h2>Pack Saint-Valentin</h2>
+                <p>Regala exclusividad con nuestro pack especial <strong>"Yatty"</strong>. Una fusión perfecta entre alta costura sostenible y elegancia artesanal.</p>
+                <a href="https://wa.me/240555517225" class="s-btn" style="width: auto; padding: 0 30px; border-radius: 30px; font-size: 0.8rem;">
+                    RESERVAR POR WHATSAPP
+                </a>
+            </div>
+        </section>
+
+        <section class="gallery-container">
+            <div class="filter-bar">
+                <button class="btn-f active" onclick="filter('todos', event)">Todo</button>
+                <button class="btn-f" onclick="filter('pasarelas', event)">Pasarelas</button>
+                <button class="btn-f" onclick="filter('abanicos', event)">Abanicos</button>
+                <button class="btn-f" onclick="filter('bisouteria', event)">Bisutería</button>
+                <button class="btn-f" onclick="filter('bolsos', event)">Bolsos</button>
+            </div>
+            <div class="grid-master" id="gallery-render"></div>
+        </section>
+
+        <footer>
+            <p>© 2026 NANY HAUTE COUTURE | MANAGED BY MICHEL</p>
+        </footer>
+
+        <div class="music-player-container">
+            <div class="disk-ui" id="music-trigger" onclick="togglePlay()"><i class="fas fa-compact-disc fa-2x"></i></div>
         </div>
-        <div id="google_translate_element"></div>
-    </header>
+        <audio id="track" loop src="afrobeat-nanymp3.mp3"></audio>
 
-    <main class="gallery-container">
-        <h2 style="text-align: center; color: var(--oro); margin-bottom: 30px; font-family: 'Playfair Display';">CATÁLOGO EXCLUSIVO</h2>
-        <div class="grid-master" id="gallery-render"></div>
-    </main>
-
-    <div class="music-btn" onclick="togglePlay()"><i class="fas fa-music"></i></div>
-    <audio id="track" loop src="Assets/afrobeat nany.mp3"></audio>
-
-    <div class="social-float">
-        <a href="https://wa.me/240555517225" class="s-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@mickael8881" class="s-btn"><i class="fab fa-tiktok"></i></a>
+        <div class="social-float">
+            <a href="https://wa.me/240555517225" class="s-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@mickael8881" class="s-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
     </div>
 
     <script>
-        // ON TESTE LES DEUX EXTENSIONS POSSIBLES (.jpg et .JPG)
-        const categories = {
-            'bolsos': ['BOL1.jpg', 'BOL10.jpg', 'BOL11.jpg', 'BOL1.JPG', 'BOL10.JPG'],
-            'pasarelas': ['desf1.jpg', 'desf10.jpg', 'desf100.jpg', 'desf1.JPG', 'desf10.JPG'],
-            'abanicos': ['AB1.png', 'AB10.jpg', 'AB1.PNG', 'AB10.JPG']
-        };
+        // CURSOR LOGIC
+        const c = document.getElementById('custom-cursor'), f = document.getElementById('cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+            f.style.left = (e.clientX - 10) + 'px'; f.style.top = (e.clientY - 10) + 'px';
+        });
 
-        const render = () => {
-            const grid = document.getElementById('gallery-render');
-            Object.keys(categories).forEach(cat => {
-                categories[cat].forEach(imgName => {
-                    const url = `Assets/${cat}/${imgName}`;
-                    const div = document.createElement('div');
-                    div.className = 'art-item';
-                    div.innerHTML = `<img src="${url}" onerror="console.log('Erreur sur : ${url}')">
-                                     <p style="font-size:10px; color:gray; text-align:center;">${imgName}</p>`;
-                    grid.appendChild(div);
-                });
-            });
-        };
-
-        function togglePlay() {
-            const t = document.getElementById('track');
-            t.paused ? t.play() : t.pause();
+        function enterApp() {
+            document.getElementById('luxury-gate').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('luxury-gate').style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+                filter('todos');
+                togglePlay();
+            }, 1000);
         }
 
-        window.onload = render;
+        // --- CONFIGURATION GITHUB (Strict Match) ---
+        const REPO = {
+            abanicos: [1, 10, 11, 12, 13, 14, 15, 16, 17].map(i => `abanicos/AB${i}.${i===1?'png':'jpg'}`),
+            bisouteria: [1, 10, 11, 12, 13, 14, 15].map(i => `bisouteria/BISOU${i}.jpg`),
+            bolsos: [1, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(i => `bolsos/BOL${i}.jpg`),
+            pasarelas: [1, 10, 100, 101, 102, 103, 104, 105, 106, 107].map(i => `pasarelas/desf${i}.jpg`)
+        };
+
+        function filter(cat, event) {
+            const grid = document.getElementById('gallery-render'); grid.innerHTML = '';
+            if(event) {
+                document.querySelectorAll('.btn-f').forEach(b => b.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+            if(cat === 'todos') {
+                Object.keys(REPO).forEach(key => REPO[key].forEach(url => renderItem(url, key)));
+            } else {
+                REPO[cat].forEach(url => renderItem(url, cat));
+            }
+        }
+
+        function renderItem(url, cat) {
+            const div = document.createElement('div');
+            div.className = 'art-item animate__animated animate__fadeIn';
+            div.innerHTML = `<img src="${url}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
+            document.getElementById('gallery-render').appendChild(div);
+        }
+
+        const track = document.getElementById('track');
+        function togglePlay() {
+            const btn = document.getElementById('music-trigger');
+            if(track.paused) { track.play(); btn.classList.add('playing'); }
+            else { track.pause(); btn.classList.remove('playing'); }
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+        }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
