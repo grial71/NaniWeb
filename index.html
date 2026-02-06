@@ -85,6 +85,18 @@
         .art-item { height: 450px; overflow: hidden; position: relative; border: 1px solid var(--border-glass); background: #080808; }
         .art-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }
 
+        /* CALENDAR SECTION */
+        .calendar-section { padding: 60px 7%; text-align: center; }
+        .calendar-container {
+            width: 100%; max-width: 900px; margin: 0 auto;
+            border: 1px solid var(--oro); position: relative;
+            padding-top: 56.25%; /* Ratio 16:9 */
+        }
+        .calendar-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border: none; filter: invert(90%) hue-rotate(180deg);
+        }
+
         /* FLOAT BUTTONS */
         .social-float { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 5000; }
         .s-btn { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,0.9); border: 1px solid var(--oro); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
@@ -143,6 +155,13 @@
             <div class="grid-master" id="gallery-render"></div>
         </section>
 
+        <section class="calendar-section">
+            <h2 style="font-family: 'Playfair Display'; color: var(--oro); margin-bottom: 30px;">Agenda de Reservas</h2>
+            <div class="calendar-container">
+                <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis"></iframe>
+            </div>
+        </section>
+
         <footer>
             <p>© 2026 NANY HAUTE COUTURE | MANAGED BY MICHEL</p>
         </footer>
@@ -159,7 +178,6 @@
     </div>
 
     <script>
-        // CURSOR LOGIC
         const c = document.getElementById('custom-cursor'), f = document.getElementById('cursor-follower');
         document.addEventListener('mousemove', (e) => {
             c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
@@ -176,7 +194,6 @@
             }, 1000);
         }
 
-        // --- CONFIGURATION GITHUB (Strict Match) ---
         const REPO = {
             abanicos: [1, 10, 11, 12, 13, 14, 15, 16, 17].map(i => `abanicos/AB${i}.${i===1?'png':'jpg'}`),
             bisouteria: [1, 10, 11, 12, 13, 14, 15].map(i => `bisouteria/BISOU${i}.jpg`),
