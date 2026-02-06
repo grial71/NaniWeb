@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NANY | Haute Couture - Official Portfolio</title>
+    <title>NANY | Haute Couture</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;600;800&display=swap" rel="stylesheet">
@@ -11,286 +11,83 @@
 
     <style>
         :root {
-            --oro: #D4AF37;
-            --oro-brillante: #FFD700;
-            --negro-profundo: #000000;
-            --negro-lujo: #050505;
-            --blanco: #ffffff;
-            --glass: rgba(255, 255, 255, 0.03);
+            --oro: #D4AF37; --negro: #000000; --blanco: #ffffff;
             --border-glass: rgba(212, 175, 55, 0.25);
-            --transition-master: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--negro); color: var(--blanco); overflow-x: hidden; }
 
-        /* --- STYLE DE BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { font-size: 16px; scroll-behavior: smooth; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--negro-profundo); 
-            color: var(--blanco);
-            overflow-x: hidden;
-            cursor: none; /* Le curseur personnalisé */
-        }
-
-        /* Désactiver le curseur sur mobile */
-        @media (max-width: 1024px) {
-            #custom-cursor, #cursor-follower { display: none !important; }
-            body { cursor: auto !important; }
-        }
-
-        /* --- CURSOR --- */
-        #custom-cursor {
-            position: fixed; width: 10px; height: 10px; background: var(--oro);
-            border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference;
-        }
-        #cursor-follower {
-            position: fixed; width: 30px; height: 30px; border: 1px solid var(--oro);
-            border-radius: 50%; pointer-events: none; z-index: 9999; transition: 0.1s;
-        }
-
-        /* --- LUXURY GATE (Entrée du site) --- */
-        #luxury-gate {
-            position: fixed; inset: 0; background: var(--negro-profundo); z-index: 9500;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 20px; text-align: center; transition: 1.5s cubic-bezier(1,0,0,1);
-        }
-        .gate-title { 
-            font-family: 'Playfair Display'; 
-            font-size: clamp(2.5rem, 10vw, 8rem); 
-            color: var(--oro); letter-spacing: clamp(10px, 3vw, 30px);
-            text-transform: uppercase; margin-bottom: 10px;
-        }
-        .btn-enter {
-            margin-top: 40px; padding: clamp(15px, 2vw, 25px) clamp(30px, 5vw, 80px);
-            background: transparent; border: 1px solid var(--oro);
-            color: var(--oro); text-transform: uppercase; letter-spacing: 5px;
-            font-size: clamp(0.6rem, 1.5vw, 0.8rem); transition: var(--transition-master);
-            cursor: pointer;
-        }
-        .btn-enter:hover { background: var(--oro); color: #000; box-shadow: 0 0 40px var(--oro); }
-
-        /* --- HEADER --- */
+        /* HEADER */
         header {
-            position: fixed; top: 0; width: 100%; height: clamp(70px, 10vh, 100px);
-            padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
-            z-index: 1000; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-glass);
+            position: fixed; top: 0; width: 100%; height: 80px; padding: 0 5%;
+            display: flex; align-items: center; justify-content: space-between;
+            z-index: 1000; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border-glass);
         }
-        .nav-logo img { height: clamp(45px, 6vh, 65px); width: auto; display: block; }
+        .nav-logo img { height: 50px; width: auto; border: 1px solid red; /* Cadre rouge pour voir si le logo est là */ }
 
-        /* --- SECTION SAN VALENTÍN --- */
-        .valentine-luxury {
-            padding: clamp(120px, 15vh, 180px) 7% 60px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px; align-items: center; background: linear-gradient(to bottom, #000, #0a0505);
-        }
-        .val-frame { border: 1px solid var(--oro); padding: 15px; background: #fff; position: relative; }
-        .val-frame img { width: 100%; height: auto; display: block; }
-        .val-badge {
-            position: absolute; top: -20px; right: -20px;
-            background: var(--oro-brillante); color: #000; padding: 20px 10px;
-            font-weight: 800; border-radius: 50%; font-size: 0.7rem;
-            text-align: center; line-height: 1.2; box-shadow: 0 10px 20px rgba(0,0,0,0.5); z-index: 10;
-        }
-        .val-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 3.5rem); color: var(--oro); margin-bottom: 20px; }
-        .val-content p { color: #ccc; line-height: 1.8; margin-bottom: 25px; }
+        /* GALLERY */
+        .gallery-container { padding: 120px 5% 50px; }
+        .grid-master { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .art-item { height: 400px; border: 1px solid var(--border-glass); position: relative; background: #111; }
+        .art-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- BIO SECTION --- */
-        .history-section { padding: 80px 7% 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: center; }
-        .bio-visual { border: 1px solid var(--oro); padding: 15px; }
-        .bio-visual img { width: 100%; height: auto; display: block; }
-        .bio-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 4vw, 3rem); color: var(--oro); margin-bottom: 20px; }
-        .bio-content p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
-
-        /* --- MILESTONES (HITOS) --- */
-        .milestones-wrapper { display: flex; flex-wrap: wrap; gap: 20px; padding: 0 7% 100px; }
-        .m-card { flex: 1 1 300px; padding: 40px; background: var(--negro-lujo); border: 1px solid var(--border-glass); text-align: center; transition: 0.5s; }
-        .m-card i { font-size: 2.5rem; color: var(--oro); margin-bottom: 20px; }
-
-        /* --- GALLERY --- */
-        .gallery-container { padding: 80px 5%; }
-        .filter-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 50px; flex-wrap: wrap; }
-        .btn-f { padding: 10px 20px; background: transparent; border: 1px solid var(--border-glass); color: #fff; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-f.active { background: var(--oro); color: #000; border-color: var(--oro); }
-        .grid-master { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-        .art-item { height: 500px; overflow: hidden; position: relative; border: 1px solid var(--border-glass); background: #111; }
-        .art-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; }
-        .art-item:hover img { transform: scale(1.1); }
-
-        /* --- SOCIAL & MUSIC --- */
-        .music-player-container { position: fixed; left: 30px; bottom: 30px; z-index: 5000; display: flex; align-items: center; gap: 15px; }
-        .disk-ui { width: 70px; height: 70px; border-radius: 50%; background: #000; border: 2px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; cursor: pointer; }
-        .disk-ui.playing { animation: spin 4s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* BOUTONS FIXES */
+        .social-float { position: fixed; right: 25px; bottom: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .s-btn { width: 55px; height: 55px; border-radius: 50%; background: #000; border: 1px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.5rem; }
         
-        .social-float { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 5000; }
-        .s-btn { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,0.8); border: 1px solid var(--oro); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
-        .s-btn:hover { background: var(--oro); color: #000; transform: scale(1.1); }
-
-        footer { padding: 80px 7%; background: #030303; border-top: 1px solid var(--border-glass); text-align: center; }
+        .music-btn { position: fixed; left: 25px; bottom: 25px; width: 55px; height: 55px; border-radius: 50%; background: #000; border: 1px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; }
     </style>
 </head>
 <body>
 
-    <div id="custom-cursor"></div>
-    <div id="cursor-follower"></div>
-
-    <section id="luxury-gate">
-        <h1 class="gate-title animate__animated animate__fadeIn">NANY</h1>
-        <p style="letter-spacing: 10px; color: #888; font-weight: 100;">MODA CON CONCIENCIA</p>
-        <button class="btn-enter" onclick="enterApp()">Explorar Universo</button>
-    </section>
-
-    <div id="main-app" style="display: none;">
-        
-        <header>
-            <div class="nav-logo">
-                <img src="Assets/logo-nany.png" alt="Nany Logo" onerror="this.src='https://via.placeholder.com/150?text=LOGO+NANY'">
-            </div>
-            <div id="google_translate_element"></div>
-            <div style="font-family: 'Playfair Display'; color: var(--oro); font-size: 0.7rem; letter-spacing: 2px;">PORTFOLIO BY MICHEL</div>
-        </header>
-
-        <section class="valentine-luxury">
-            <div class="val-frame animate__animated animate__fadeInLeft">
-                <div class="val-badge">PACK<br>OFERTA<br>40k FCFA</div>
-                <img src="Assets/san-valentin-pack.jpeg" alt="Pack San Valentín" onerror="this.src='https://via.placeholder.com/400?text=Pack+San+Valentin'">
-            </div>
-            <div class="val-content animate__animated animate__fadeInRight">
-                <h2>Celebra el Amor con Nany</h2>
-                <p>En este San Valentín, regala exclusividad con nuestro pack especial <strong>"Yatty"</strong>. Una fusión perfecta entre alta costura sostenible y elegancia artesanal diseñada para perdurar.</p>
-                <a href="https://wa.me/240555517225" class="s-btn" style="width:auto; padding:0 30px; border-radius:30px; display:inline-flex; gap:10px;">
-                   <i class="fab fa-whatsapp"></i> RESERVAR AHORA
-                </a>
-            </div>
-        </section>
-
-        <section class="history-section">
-            <div class="bio-visual">
-                <img src="Assets/pasarelas/desf10.jpg" alt="Casiana Nchama" onerror="this.src='https://via.placeholder.com/400?text=Nany+Designer'">
-            </div>
-            <div class="bio-content">
-                <h4>BIOGRAFÍA OFICIAL</h4>
-                <h2>Casiana Nanitursa Nchama</h2>
-                <p>Pionera de la moda ética en Guinea Ecuatorial. Casiana transforma materiales reciclados en piezas de lujo, llevando la cultura africana a las pasarelas internacionales con un mensaje de sostenibilidad.</p>
-                <div style="border-left: 3px solid var(--oro); padding-left: 20px; font-style: italic; color: var(--oro); margin: 30px 0;">
-                    "Cada diseño es una historia de transformación y respeto por el medio ambiente."
-                </div>
-            </div>
-        </section>
-
-        <div class="milestones-wrapper">
-            <div class="m-card"><i class="fas fa-gem"></i><h3>Mujer Ideal</h3><p>Colecciones que celebran la resiliencia femenina.</p></div>
-            <div class="m-card"><i class="fas fa-globe-africa"></i><h3>FIMIAGE</h3><p>Reconocimiento internacional a la moda sostenible.</p></div>
-            <div class="m-card"><i class="fas fa-star"></i><h3>KAFAF</h3><p>Premio a la innovación social y diseño ético.</p></div>
+    <header>
+        <div class="nav-logo">
+            <img src="Assets/logo-nany.png" alt="Logo">
         </div>
+        <div id="google_translate_element"></div>
+    </header>
 
-        <section class="gallery-container">
-            <div class="filter-bar">
-                <button class="btn-f active" onclick="filter('todos', event)">Todo</button>
-                <button class="btn-f" onclick="filter('pasarelas', event)">Pasarelas</button>
-                <button class="btn-f" onclick="filter('abanicos', event)">Abanicos</button>
-                <button class="btn-f" onclick="filter('bisouteria', event)">Bisutería</button>
-                <button class="btn-f" onclick="filter('bolsos', event)">Bolsos</button>
-            </div>
-            <div class="grid-master" id="gallery-render"></div>
-        </section>
+    <main class="gallery-container">
+        <h2 style="text-align: center; color: var(--oro); margin-bottom: 30px; font-family: 'Playfair Display';">CATÁLOGO EXCLUSIVO</h2>
+        <div class="grid-master" id="gallery-render"></div>
+    </main>
 
-        <section style="padding: 60px 5%; text-align: center;">
-            <h2 style="font-family: 'Playfair Display'; color: var(--oro); margin-bottom: 20px;">Agenda de Reservas</h2>
-            <div style="width: 100%; border: 1px solid var(--oro); position: relative; padding-top: 56.25%;">
-                <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg);"></iframe>
-            </div>
-        </section>
+    <div class="music-btn" onclick="togglePlay()"><i class="fas fa-music"></i></div>
+    <audio id="track" loop src="Assets/afrobeat nany.mp3"></audio>
 
-        <footer>
-            <p style="color: var(--oro); letter-spacing: 2px;">© 2026 NANY HAUTE COUTURE | MANAGED BY MICHEL</p>
-        </footer>
-
-        <div class="music-player-container">
-            <div class="disk-ui" id="music-trigger" onclick="togglePlay()"><i class="fas fa-compact-disc fa-2x"></i></div>
-            <audio id="track" loop src="Assets/afrobeat nany.mp3"></audio>
-        </div>
-
-        <div class="social-float">
-            <a href="https://wa.me/240555517225" class="s-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.tiktok.com/@mickael8881" class="s-btn" target="_blank"><i class="fab fa-tiktok"></i></a>
-        </div>
+    <div class="social-float">
+        <a href="https://wa.me/240555517225" class="s-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@mickael8881" class="s-btn"><i class="fab fa-tiktok"></i></a>
     </div>
 
     <script>
-        // Gestion du curseur
-        const c = document.getElementById('custom-cursor'), f = document.getElementById('cursor-follower');
-        document.addEventListener('mousemove', (e) => {
-            c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
-            f.style.left = (e.clientX - 10) + 'px'; f.style.top = (e.clientY - 10) + 'px';
-        });
-
-        function enterApp() {
-            document.getElementById('luxury-gate').style.transform = 'translateY(-100%)';
-            setTimeout(() => {
-                document.getElementById('luxury-gate').style.display = 'none';
-                document.getElementById('main-app').style.display = 'block';
-                filter('todos');
-                togglePlay();
-            }, 1000);
-        }
-
-        // --- CATALOGUE CONFIGURATION ---
-        // Vérification stricte des chemins GitHub
-        const REPO = {
-            abanicos: [1, 10, 11, 12, 13, 14, 15, 16, 17].map(i => `Assets/abanicos/AB${i}.${i===1?'png':'jpg'}`),
-            bisouteria: [1, 10, 11, 12, 13, 14, 15].map(i => `Assets/bisouteria/BISOU${i}.jpg`),
-            bolsos: [1, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(i => `Assets/bolsos/BOL${i}.jpg`),
-            pasarelas: [1, 10, 100, 101, 102, 103, 104, 105, 106, 107].map(i => `Assets/pasarelas/desf${i}.jpg`)
+        // ON TESTE LES DEUX EXTENSIONS POSSIBLES (.jpg et .JPG)
+        const categories = {
+            'bolsos': ['BOL1.jpg', 'BOL10.jpg', 'BOL11.jpg', 'BOL1.JPG', 'BOL10.JPG'],
+            'pasarelas': ['desf1.jpg', 'desf10.jpg', 'desf100.jpg', 'desf1.JPG', 'desf10.JPG'],
+            'abanicos': ['AB1.png', 'AB10.jpg', 'AB1.PNG', 'AB10.JPG']
         };
 
-        function filter(cat, event) {
-            const grid = document.getElementById('gallery-render'); 
-            grid.innerHTML = '';
-            if(event) { 
-                document.querySelectorAll('.btn-f').forEach(b => b.classList.remove('active')); 
-                event.target.classList.add('active'); 
-            }
-            if(cat === 'todos') {
-                Object.keys(REPO).forEach(key => {
-                    REPO[key].forEach(url => renderItem(url, key));
+        const render = () => {
+            const grid = document.getElementById('gallery-render');
+            Object.keys(categories).forEach(cat => {
+                categories[cat].forEach(imgName => {
+                    const url = `Assets/${cat}/${imgName}`;
+                    const div = document.createElement('div');
+                    div.className = 'art-item';
+                    div.innerHTML = `<img src="${url}" onerror="console.log('Erreur sur : ${url}')">
+                                     <p style="font-size:10px; color:gray; text-align:center;">${imgName}</p>`;
+                    grid.appendChild(div);
                 });
-            } else {
-                REPO[cat].forEach(url => renderItem(url, cat));
-            }
-        }
+            });
+        };
 
-        function renderItem(url, category) {
-            const div = document.createElement('div');
-            div.className = 'art-item animate__animated animate__fadeInUp';
-            div.innerHTML = `
-                <img src="${url}" loading="lazy" onerror="this.parentElement.style.display='none'">
-                <div style="position:absolute; bottom:15px; left:15px; font-size:0.6rem; color:var(--oro); background:rgba(0,0,0,0.7); padding:5px 10px; border:1px solid var(--oro); text-transform:uppercase;">
-                    ${category}
-                </div>
-            `;
-            document.getElementById('gallery-render').appendChild(div);
-        }
-
-        // Musique
-        const track = document.getElementById('track');
         function togglePlay() {
-            const btn = document.getElementById('music-trigger');
-            if(track.paused) {
-                track.play().catch(() => console.log("Interaction requis pour le son"));
-                btn.classList.add('playing');
-            } else {
-                track.pause();
-                btn.classList.remove('playing');
-            }
+            const t = document.getElementById('track');
+            t.paused ? t.play() : t.pause();
         }
 
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
-        }
+        window.onload = render;
     </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
