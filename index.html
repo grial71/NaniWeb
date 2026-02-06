@@ -21,7 +21,7 @@
             --transition-master: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* --- RESET & BASE --- */
+        /* --- STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { font-size: 16px; scroll-behavior: smooth; }
         body { 
@@ -29,15 +29,16 @@
             background-color: var(--negro-profundo); 
             color: var(--blanco);
             overflow-x: hidden;
-            cursor: none; 
+            cursor: none; /* Le curseur personnalisé */
         }
 
+        /* Désactiver le curseur sur mobile */
         @media (max-width: 1024px) {
             #custom-cursor, #cursor-follower { display: none !important; }
             body { cursor: auto !important; }
         }
 
-        /* --- CURSOR SYSTEM --- */
+        /* --- CURSOR --- */
         #custom-cursor {
             position: fixed; width: 10px; height: 10px; background: var(--oro);
             border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference;
@@ -47,7 +48,7 @@
             border-radius: 50%; pointer-events: none; z-index: 9999; transition: 0.1s;
         }
 
-        /* --- LUXURY GATE --- */
+        /* --- LUXURY GATE (Entrée du site) --- */
         #luxury-gate {
             position: fixed; inset: 0; background: var(--negro-profundo); z-index: 9500;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -75,9 +76,9 @@
             z-index: 1000; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-glass);
         }
-        .nav-logo img { height: clamp(45px, 6vh, 65px); width: auto; }
+        .nav-logo img { height: clamp(45px, 6vh, 65px); width: auto; display: block; }
 
-        /* --- VALENTINE SECTION (ESPAÑOL) --- */
+        /* --- SECTION SAN VALENTÍN --- */
         .valentine-luxury {
             padding: clamp(120px, 15vh, 180px) 7% 60px;
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -93,63 +94,39 @@
         }
         .val-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 3.5rem); color: var(--oro); margin-bottom: 20px; }
         .val-content p { color: #ccc; line-height: 1.8; margin-bottom: 25px; }
-        .btn-val {
-            display: inline-block; padding: 18px 40px; background: #25D366; color: #fff; 
-            text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s;
-        }
 
         /* --- BIO SECTION --- */
-        .history-section {
-            padding: 80px 7% 80px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px; align-items: center;
-        }
+        .history-section { padding: 80px 7% 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: center; }
         .bio-visual { border: 1px solid var(--oro); padding: 15px; }
         .bio-visual img { width: 100%; height: auto; display: block; }
         .bio-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 4vw, 3rem); color: var(--oro); margin-bottom: 20px; }
         .bio-content p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
 
-        /* --- MILESTONES --- */
+        /* --- MILESTONES (HITOS) --- */
         .milestones-wrapper { display: flex; flex-wrap: wrap; gap: 20px; padding: 0 7% 100px; }
         .m-card { flex: 1 1 300px; padding: 40px; background: var(--negro-lujo); border: 1px solid var(--border-glass); text-align: center; transition: 0.5s; }
-        .m-card:hover { transform: translateY(-10px); border-color: var(--oro); }
         .m-card i { font-size: 2.5rem; color: var(--oro); margin-bottom: 20px; }
 
         /* --- GALLERY --- */
         .gallery-container { padding: 80px 5%; }
         .filter-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 50px; flex-wrap: wrap; }
-        .btn-f { padding: 10px 20px; background: transparent; border: 1px solid var(--border-glass); color: #fff; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
-        .btn-f.active { background: var(--oro); color: #000; }
-        .grid-master { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .art-item { height: clamp(400px, 60vh, 600px); overflow: hidden; position: relative; border: 1px solid var(--border-glass); background: #111; }
-        .art-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
+        .btn-f { padding: 10px 20px; background: transparent; border: 1px solid var(--border-glass); color: #fff; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-f.active { background: var(--oro); color: #000; border-color: var(--oro); }
+        .grid-master { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .art-item { height: 500px; overflow: hidden; position: relative; border: 1px solid var(--border-glass); background: #111; }
+        .art-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; }
+        .art-item:hover img { transform: scale(1.1); }
 
-        /* --- PLAYER & VOL --- */
-        .music-player-container {
-            position: fixed; left: 30px; bottom: 30px; z-index: 5000;
-            display: flex; align-items: center; gap: 15px;
-        }
-        .disk-ui {
-            width: 70px; height: 70px; border-radius: 50%; background: #000;
-            border: 2px solid var(--oro); color: var(--oro);
-            display: flex; justify-content: center; align-items: center;
-            cursor: pointer; transition: 0.5s;
-        }
+        /* --- SOCIAL & MUSIC --- */
+        .music-player-container { position: fixed; left: 30px; bottom: 30px; z-index: 5000; display: flex; align-items: center; gap: 15px; }
+        .disk-ui { width: 70px; height: 70px; border-radius: 50%; background: #000; border: 2px solid var(--oro); color: var(--oro); display: flex; justify-content: center; align-items: center; cursor: pointer; }
         .disk-ui.playing { animation: spin 4s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .volume-control {
-            width: 0; overflow: hidden; transition: 0.5s;
-            background: rgba(0,0,0,0.8); padding: 10px; border-radius: 20px;
-            border: 1px solid var(--border-glass); display: flex; align-items: center;
-        }
-        .music-player-container:hover .volume-control { width: 120px; }
-        input[type=range] { accent-color: var(--oro); cursor: pointer; }
-
-        /* --- REDES & FOOTER --- */
+        
         .social-float { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 5000; }
         .s-btn { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,0.8); border: 1px solid var(--oro); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
-        .s-btn:hover { background: var(--oro); color: #000; }
-        
+        .s-btn:hover { background: var(--oro); color: #000; transform: scale(1.1); }
+
         footer { padding: 80px 7%; background: #030303; border-top: 1px solid var(--border-glass); text-align: center; }
     </style>
 </head>
@@ -167,7 +144,9 @@
     <div id="main-app" style="display: none;">
         
         <header>
-            <div class="nav-logo"><img src="Assets/logo-nany.png" alt="Nany Logo"></div>
+            <div class="nav-logo">
+                <img src="Assets/logo-nany.png" alt="Nany Logo" onerror="this.src='https://via.placeholder.com/150?text=LOGO+NANY'">
+            </div>
             <div id="google_translate_element"></div>
             <div style="font-family: 'Playfair Display'; color: var(--oro); font-size: 0.7rem; letter-spacing: 2px;">PORTFOLIO BY MICHEL</div>
         </header>
@@ -175,21 +154,25 @@
         <section class="valentine-luxury">
             <div class="val-frame animate__animated animate__fadeInLeft">
                 <div class="val-badge">PACK<br>OFERTA<br>40k FCFA</div>
-                <img src="Assets/san-valentin-pack.jpeg" alt="Pack San Valentín">
+                <img src="Assets/san-valentin-pack.jpeg" alt="Pack San Valentín" onerror="this.src='https://via.placeholder.com/400?text=Pack+San+Valentin'">
             </div>
             <div class="val-content animate__animated animate__fadeInRight">
                 <h2>Celebra el Amor con Nany</h2>
                 <p>En este San Valentín, regala exclusividad con nuestro pack especial <strong>"Yatty"</strong>. Una fusión perfecta entre alta costura sostenible y elegancia artesanal diseñada para perdurar.</p>
-                <a href="https://wa.me/240555517225" class="btn-val"><i class="fab fa-whatsapp"></i> RESERVAR POR WHATSAPP</a>
+                <a href="https://wa.me/240555517225" class="s-btn" style="width:auto; padding:0 30px; border-radius:30px; display:inline-flex; gap:10px;">
+                   <i class="fab fa-whatsapp"></i> RESERVAR AHORA
+                </a>
             </div>
         </section>
 
         <section class="history-section">
-            <div class="bio-visual"><img src="Assets/pasarelas/desf10.jpg" alt="Casiana Nchama"></div>
+            <div class="bio-visual">
+                <img src="Assets/pasarelas/desf10.jpg" alt="Casiana Nchama" onerror="this.src='https://via.placeholder.com/400?text=Nany+Designer'">
+            </div>
             <div class="bio-content">
                 <h4>BIOGRAFÍA OFICIAL</h4>
                 <h2>Casiana Nanitursa Nchama</h2>
-                <p>Pionera de la moda ética en Guinea Ecuatorial. Casiana transforma materiales reciclados en piezas de lujo, llevando la cultura africana a las pasarelas internacionales con un mensaje de sostenibilidad y empoderamiento.</p>
+                <p>Pionera de la moda ética en Guinea Ecuatorial. Casiana transforma materiales reciclados en piezas de lujo, llevando la cultura africana a las pasarelas internacionales con un mensaje de sostenibilidad.</p>
                 <div style="border-left: 3px solid var(--oro); padding-left: 20px; font-style: italic; color: var(--oro); margin: 30px 0;">
                     "Cada diseño es una historia de transformación y respeto por el medio ambiente."
                 </div>
@@ -216,7 +199,8 @@
         <section style="padding: 60px 5%; text-align: center;">
             <h2 style="font-family: 'Playfair Display'; color: var(--oro); margin-bottom: 20px;">Agenda de Reservas</h2>
             <div style="width: 100%; border: 1px solid var(--oro); position: relative; padding-top: 56.25%;">
-                <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg);"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg);"></iframe>
             </div>
         </section>
 
@@ -226,11 +210,8 @@
 
         <div class="music-player-container">
             <div class="disk-ui" id="music-trigger" onclick="togglePlay()"><i class="fas fa-compact-disc fa-2x"></i></div>
-            <div class="volume-control">
-                <input type="range" id="vol-control" min="0" max="1" step="0.1" value="0.5" oninput="setVolume(this.value)">
-            </div>
+            <audio id="track" loop src="Assets/afrobeat nany.mp3"></audio>
         </div>
-        <audio id="track" loop src="Assets/afrobeat nany.mp3"></audio>
 
         <div class="social-float">
             <a href="https://wa.me/240555517225" class="s-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -239,6 +220,7 @@
     </div>
 
     <script>
+        // Gestion du curseur
         const c = document.getElementById('custom-cursor'), f = document.getElementById('cursor-follower');
         document.addEventListener('mousemove', (e) => {
             c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
@@ -255,6 +237,8 @@
             }, 1000);
         }
 
+        // --- CATALOGUE CONFIGURATION ---
+        // Vérification stricte des chemins GitHub
         const REPO = {
             abanicos: [1, 10, 11, 12, 13, 14, 15, 16, 17].map(i => `Assets/abanicos/AB${i}.${i===1?'png':'jpg'}`),
             bisouteria: [1, 10, 11, 12, 13, 14, 15].map(i => `Assets/bisouteria/BISOU${i}.jpg`),
@@ -263,32 +247,49 @@
         };
 
         function filter(cat, event) {
-            const grid = document.getElementById('gallery-render'); grid.innerHTML = '';
-            if(event) { document.querySelectorAll('.btn-f').forEach(b => b.classList.remove('active')); event.target.classList.add('active'); }
-            if(cat === 'todos') Object.keys(REPO).forEach(k => REPO[k].forEach(u => render(u, k)));
-            else REPO[cat].forEach(u => render(u, cat));
-        }
-
-        function render(u, c) {
-            const d = document.createElement('div'); d.className = 'art-item animate__animated animate__fadeInUp';
-            d.innerHTML = `<img src="${u}" loading="lazy" onerror="this.parentElement.style.display='none'">
-                           <div style="position:absolute;bottom:10px;left:10px;font-size:0.5rem;color:var(--oro);background:rgba(0,0,0,0.6);padding:3px;">${c.toUpperCase()}</div>`;
-            document.getElementById('gallery-render').appendChild(d);
-        }
-
-        const t = document.getElementById('track');
-        function togglePlay() {
-            const m = document.getElementById('music-trigger');
-            if(t.paused) { 
-                t.play().catch(() => { console.log("User interaction required"); }); 
-                m.classList.add('playing'); 
-            } else { 
-                t.pause(); m.classList.remove('playing'); 
+            const grid = document.getElementById('gallery-render'); 
+            grid.innerHTML = '';
+            if(event) { 
+                document.querySelectorAll('.btn-f').forEach(b => b.classList.remove('active')); 
+                event.target.classList.add('active'); 
+            }
+            if(cat === 'todos') {
+                Object.keys(REPO).forEach(key => {
+                    REPO[key].forEach(url => renderItem(url, key));
+                });
+            } else {
+                REPO[cat].forEach(url => renderItem(url, cat));
             }
         }
-        function setVolume(v) { t.volume = v; }
 
-        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element'); }
+        function renderItem(url, category) {
+            const div = document.createElement('div');
+            div.className = 'art-item animate__animated animate__fadeInUp';
+            div.innerHTML = `
+                <img src="${url}" loading="lazy" onerror="this.parentElement.style.display='none'">
+                <div style="position:absolute; bottom:15px; left:15px; font-size:0.6rem; color:var(--oro); background:rgba(0,0,0,0.7); padding:5px 10px; border:1px solid var(--oro); text-transform:uppercase;">
+                    ${category}
+                </div>
+            `;
+            document.getElementById('gallery-render').appendChild(div);
+        }
+
+        // Musique
+        const track = document.getElementById('track');
+        function togglePlay() {
+            const btn = document.getElementById('music-trigger');
+            if(track.paused) {
+                track.play().catch(() => console.log("Interaction requis pour le son"));
+                btn.classList.add('playing');
+            } else {
+                track.pause();
+                btn.classList.remove('playing');
+            }
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+        }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
