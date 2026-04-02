@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NANY | Casiana Nanitursa Nchama Nguema - Official Portfolio</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -33,20 +33,22 @@
             scroll-behavior: smooth;
         }
 
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--negro-profundo); 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--negro-profundo);
             color: var(--blanco);
             overflow-x: hidden;
-            cursor: none; 
+            cursor: none;
         }
 
         @media (max-width: 1024px) {
-            #custom-cursor, #cursor-follower { 
-                display: none !important; 
+            #custom-cursor,
+            #cursor-follower {
+                display: none !important;
             }
-            body { 
-                cursor: auto !important; 
+
+            body {
+                cursor: auto !important;
             }
         }
 
@@ -88,7 +90,7 @@
             transition: 1.5s cubic-bezier(1,0,0,1);
         }
 
-        .gate-title { 
+        .gate-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 10vw, 8rem);
             color: var(--oro);
@@ -138,7 +140,7 @@
             width: auto;
         }
 
-        /* HERO VIDEO SECTION */
+        /* HERO VIDEO */
         .interview-luxury {
             padding: clamp(120px, 15vh, 180px) 7% 60px;
             display: grid;
@@ -188,23 +190,40 @@
         .interview-content p {
             color: #ccc;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .btn-val {
-            display: inline-block;
-            padding: 18px 40px;
+        .wa-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .btn-wa-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 26px;
             background: #25D366;
             color: #fff;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
+            font-weight: 700;
+            border-radius: 999px;
             transition: 0.3s;
+            font-size: 0.9rem;
+            gap: 8px;
         }
 
-        .btn-val:hover {
+        .btn-wa-main:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .wa-note {
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: #aaa;
         }
 
         /* BIO */
@@ -422,7 +441,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* SOCIAL FLOAT */
+        /* SOCIAL */
         .social-float {
             position: fixed;
             right: 30px;
@@ -497,6 +516,16 @@
             header div:last-child {
                 display: none;
             }
+
+            .wa-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-wa-main {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -528,7 +557,10 @@
         <section class="interview-luxury">
             <div class="interview-frame animate__animated animate__fadeInLeft">
                 <div class="interview-badge">VIDEO<br>OFICIAL</div>
-                <img src="assets/pasarelas/desf10.jpg" alt="Entrevista con Nany">
+                <video controls playsinline>
+                    <source src="assets/interwieu_nani.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
             </div>
 
             <div class="interview-content animate__animated animate__fadeInRight">
@@ -541,9 +573,20 @@
                     Una mirada cercana a su recorrido, su fuerza personal y su universo artístico
                     entre Guinea Ecuatorial y Europa.
                 </p>
-                <a href="https://wa.me/240555517225" class="btn-val" target="_blank">
-                    <i class="fab fa-whatsapp"></i> CONTACTAR POR WHATSAPP
-                </a>
+
+                <div class="wa-group">
+                    <a href="https://wa.me/240555517225" class="btn-wa-main" target="_blank">
+                        <i class="fab fa-whatsapp"></i> 🇬🇶 WhatsApp Guinea
+                    </a>
+
+                    <a href="https://wa.me/34663424322" class="btn-wa-main" target="_blank">
+                        <i class="fab fa-whatsapp"></i> 🇪🇸 WhatsApp España
+                    </a>
+                </div>
+
+                <p class="wa-note">
+                    Disponible desde Guinea Ecuatorial 🇬🇶 y España 🇪🇸
+                </p>
             </div>
         </section>
 
@@ -622,8 +665,12 @@
         <audio id="track" loop src="assets/afrobeat-nanymp3.mp3"></audio>
 
         <div class="social-float">
-            <a href="https://wa.me/240555517225" class="s-btn" target="_blank" title="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/240555517225" class="s-btn" target="_blank" title="WhatsApp Guinea">
+                🇬🇶
+            </a>
+
+            <a href="https://wa.me/34663424322" class="s-btn" target="_blank" title="WhatsApp España">
+                🇪🇸
             </a>
 
             <a href="https://www.tiktok.com/@mickael8881" class="s-btn" target="_blank" title="TikTok">
@@ -650,7 +697,6 @@
                 document.getElementById('luxury-gate').style.display = 'none';
                 document.getElementById('main-app').style.display = 'block';
                 filter('todos');
-                togglePlay();
             }, 1000);
         }
 
@@ -717,5 +763,3 @@
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
-
