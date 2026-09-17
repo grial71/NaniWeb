@@ -927,34 +927,321 @@
     .lightbox-next { right: 20px; }
 
     .calendar-section {
-      padding: 80px 5%;
+      padding: 100px 5%;
       text-align: center;
       position: relative;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(212,175,55,0.1), transparent 32%),
+        linear-gradient(180deg, #050505 0%, #090806 100%);
+    }
+
+    .calendar-heading {
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .calendar-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--oro-claro);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
     }
 
     .calendar-section h2 {
-      margin-bottom: 30px;
-      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
     }
 
-    .calendar-wrapper {
-      width: 100%;
-      max-width: 1000px;
+    .calendar-heading p,
+    .calendar-note {
+      color: rgba(255,255,255,0.62);
+      line-height: 1.8;
+    }
+
+    .calendar-shell {
+      width: min(1180px, 100%);
       margin: 0 auto;
-      border: 1px solid var(--oro);
-      position: relative;
-      padding-top: 56.25%;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      gap: 24px;
+      align-items: stretch;
+      text-align: left;
     }
 
-    .calendar-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      filter: invert(90%) hue-rotate(180deg);
+    .calendar-card,
+    .calendar-events-panel {
+      border: 1px solid var(--border-glass);
+      background: rgba(8,8,8,0.92);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.48);
+      backdrop-filter: blur(14px);
+    }
+
+    .calendar-card {
+      padding: clamp(18px, 3vw, 34px);
+    }
+
+    .calendar-toolbar {
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .calendar-month-label {
+      font-family: var(--font-display);
+      color: var(--oro);
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      font-weight: 500;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    .calendar-nav-btn {
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--border-glass);
+      border-radius: 50%;
+      background: rgba(212,175,55,0.06);
+      color: var(--oro);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .calendar-nav-btn:hover,
+    .calendar-nav-btn:focus-visible {
+      border-color: var(--oro);
+      background: var(--oro);
+      color: #000;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .calendar-weekdays,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .calendar-weekdays {
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .calendar-weekdays span {
+      padding: 9px 2px;
+    }
+
+    .calendar-day {
+      min-height: 76px;
+      padding: 10px 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      color: rgba(255,255,255,0.78);
+      font-family: var(--font-body);
+      text-align: left;
+      cursor: default;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    button.calendar-day {
+      cursor: pointer;
+    }
+
+    .calendar-day.muted {
+      opacity: 0.28;
+    }
+
+    .calendar-day.today {
+      border-color: rgba(212,175,55,0.65);
+    }
+
+    .calendar-day.has-event {
+      border-color: var(--oro);
+      background: linear-gradient(145deg, rgba(212,175,55,0.19), rgba(212,175,55,0.04));
+    }
+
+    .calendar-day.has-event:hover,
+    .calendar-day.has-event:focus-visible,
+    .calendar-day.selected {
+      background: var(--oro);
+      color: #000;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .calendar-day-number {
+      display: block;
+      font-weight: 600;
+    }
+
+    .calendar-event-dots {
+      display: flex;
+      gap: 4px;
+      margin-top: 20px;
+    }
+
+    .calendar-event-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .calendar-events-panel {
+      padding: clamp(22px, 3vw, 34px);
+    }
+
+    .calendar-events-panel h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--oro);
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 500;
+    }
+
+    .calendar-event-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .calendar-event {
+      padding: 18px;
+      border-left: 2px solid var(--oro);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .calendar-event time {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--oro-claro);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .calendar-event h4 {
+      margin-bottom: 8px;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 500;
+    }
+
+    .calendar-event p {
+      margin-top: 7px;
+      color: rgba(255,255,255,0.58);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    .calendar-event-location i {
+      margin-right: 7px;
+      color: var(--oro);
+    }
+
+    .calendar-event-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 13px;
+      color: var(--oro-claro);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .calendar-empty {
+      padding: 34px 18px;
+      border: 1px dashed rgba(212,175,55,0.3);
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .calendar-empty i {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--oro);
+      font-size: 1.8rem;
+    }
+
+    .calendar-note {
+      margin: 24px auto 0;
+      max-width: 780px;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 860px) {
+      .calendar-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-day {
+        min-height: 64px;
+        padding: 8px 6px;
+      }
+
+      .calendar-event-dots {
+        margin-top: 13px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .calendar-section {
+        padding: 80px 4%;
+      }
+
+      .calendar-card {
+        padding: 15px 10px;
+      }
+
+      .calendar-toolbar {
+        grid-template-columns: 40px 1fr 40px;
+      }
+
+      .calendar-nav-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .calendar-weekdays,
+      .calendar-grid {
+        gap: 3px;
+      }
+
+      .calendar-weekdays {
+        font-size: 0.58rem;
+      }
+
+      .calendar-day {
+        min-height: 50px;
+        padding: 6px 4px;
+        font-size: 0.76rem;
+      }
+
+      .calendar-event-dots {
+        margin-top: 8px;
+      }
+
+      .calendar-event-dot {
+        width: 4px;
+        height: 4px;
+      }
     }
 
     .music-player-container {
@@ -1548,15 +1835,38 @@
       <div class="grid-master" id="gallery-render"></div>
     </section>
 
-    <section class="calendar-section">
-      <h2 class="reveal">Agenda de Reservas</h2>
-      <div class="calendar-wrapper reveal">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?src=584a149451e0354287076214c68c84bb83cab099a9b86df66942d5dbba25aea8%40group.calendar.google.com&ctz=Europe%2FParis"
-          title="Calendario de Reservas NANY"
-          loading="lazy">
-        </iframe>
+    <section class="calendar-section" id="agenda">
+      <div class="calendar-heading reveal">
+        <span class="calendar-kicker">Agenda NANY</span>
+        <h2>Calendario de eventos</h2>
+        <p>Consulta las próximas presentaciones, encuentros, exposiciones y actividades creativas de NANY.</p>
       </div>
+
+      <div class="calendar-shell reveal">
+        <div class="calendar-card">
+          <div class="calendar-toolbar">
+            <button class="calendar-nav-btn" type="button" onclick="changeCalendarMonth(-1)" aria-label="Mes anterior">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <h3 class="calendar-month-label" id="calendarMonth" aria-live="polite"></h3>
+            <button class="calendar-nav-btn" type="button" onclick="changeCalendarMonth(1)" aria-label="Mes siguiente">
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid" role="grid" aria-label="Calendario de eventos NANY"></div>
+        </div>
+
+        <aside class="calendar-events-panel" aria-live="polite">
+          <h3 id="calendarEventListTitle"><i class="far fa-calendar-check" aria-hidden="true"></i> Próximos eventos</h3>
+          <div class="calendar-event-list" id="calendarEventList"></div>
+        </aside>
+      </div>
+
+      <p class="calendar-note reveal">La agenda se actualiza directamente desde el sitio oficial de NANY. No utiliza ningún calendario externo.</p>
     </section>
 
 
@@ -1631,6 +1941,8 @@
     <img id="lightbox-img" src="" alt="Imagen NANY">
     <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">&#8250;</div>
   </div>
+
+  <script src="events.js"></script>
 
   <script>
     const c = document.getElementById('custom-cursor');
@@ -1820,6 +2132,193 @@
       }
     });
 
+    const NANY_MONTHS = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+
+    let calendarViewDate = new Date();
+    calendarViewDate = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth(), 1);
+    let selectedCalendarDate = null;
+
+    function nanyDateKey(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return year + '-' + month + '-' + day;
+    }
+
+    function nanyEvents() {
+      return Array.isArray(window.NANY_EVENTS) ? window.NANY_EVENTS : [];
+    }
+
+    function nanyEventDate(eventItem) {
+      return new Date(eventItem.date + 'T12:00:00');
+    }
+
+    function changeCalendarMonth(offset) {
+      calendarViewDate = new Date(
+        calendarViewDate.getFullYear(),
+        calendarViewDate.getMonth() + offset,
+        1
+      );
+      selectedCalendarDate = null;
+      renderNanyCalendar();
+      renderNanyEventList();
+    }
+
+    function selectCalendarDate(dateKey) {
+      selectedCalendarDate = dateKey;
+      renderNanyCalendar();
+      renderNanyEventList(dateKey);
+    }
+
+    function renderNanyCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      const monthLabel = document.getElementById('calendarMonth');
+      if (!grid || !monthLabel) return;
+
+      const year = calendarViewDate.getFullYear();
+      const month = calendarViewDate.getMonth();
+      const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7;
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const cellCount = Math.ceil((firstWeekday + daysInMonth) / 7) * 7;
+      const todayKey = nanyDateKey(new Date());
+      const eventsByDate = new Map();
+
+      nanyEvents().forEach((eventItem) => {
+        if (!eventItem || !eventItem.date) return;
+        const list = eventsByDate.get(eventItem.date) || [];
+        list.push(eventItem);
+        eventsByDate.set(eventItem.date, list);
+      });
+
+      monthLabel.textContent = NANY_MONTHS[month] + ' ' + year;
+      grid.innerHTML = '';
+
+      for (let index = 0; index < cellCount; index++) {
+        const dayNumber = index - firstWeekday + 1;
+        const cellDate = new Date(year, month, dayNumber);
+        const key = nanyDateKey(cellDate);
+        const dayEvents = eventsByDate.get(key) || [];
+        const button = document.createElement('button');
+
+        button.type = 'button';
+        button.className = 'calendar-day';
+        button.setAttribute('role', 'gridcell');
+        button.setAttribute('aria-label', cellDate.toLocaleDateString('es-ES', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        }) + (dayEvents.length ? ', ' + dayEvents.length + ' evento(s)' : ''));
+
+        if (cellDate.getMonth() !== month) button.classList.add('muted');
+        if (key === todayKey) button.classList.add('today');
+        if (key === selectedCalendarDate) button.classList.add('selected');
+
+        const number = document.createElement('span');
+        number.className = 'calendar-day-number';
+        number.textContent = String(cellDate.getDate());
+        button.appendChild(number);
+
+        if (dayEvents.length) {
+          button.classList.add('has-event');
+          button.addEventListener('click', () => selectCalendarDate(key));
+
+          const dots = document.createElement('span');
+          dots.className = 'calendar-event-dots';
+          dayEvents.slice(0, 3).forEach(() => {
+            const dot = document.createElement('span');
+            dot.className = 'calendar-event-dot';
+            dots.appendChild(dot);
+          });
+          button.appendChild(dots);
+        }
+
+        grid.appendChild(button);
+      }
+    }
+
+    function renderNanyEventList(filterDate) {
+      const list = document.getElementById('calendarEventList');
+      const title = document.getElementById('calendarEventListTitle');
+      if (!list || !title) return;
+
+      const today = nanyDateKey(new Date());
+      let items = nanyEvents()
+        .filter((eventItem) => eventItem && eventItem.date)
+        .slice()
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      if (filterDate) {
+        items = items.filter((eventItem) => eventItem.date === filterDate);
+        const selectedDate = new Date(filterDate + 'T12:00:00');
+        title.innerHTML = '<i class="far fa-calendar-check" aria-hidden="true"></i> Eventos del ' +
+          selectedDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+      } else {
+        items = items.filter((eventItem) => eventItem.date >= today).slice(0, 6);
+        title.innerHTML = '<i class="far fa-calendar-check" aria-hidden="true"></i> Próximos eventos';
+      }
+
+      list.innerHTML = '';
+
+      if (!items.length) {
+        const empty = document.createElement('div');
+        empty.className = 'calendar-empty';
+        empty.innerHTML = '<i class="far fa-calendar" aria-hidden="true"></i>' +
+          '<span>No hay eventos programados para este periodo. Vuelve pronto para descubrir nuevas fechas.</span>';
+        list.appendChild(empty);
+        return;
+      }
+
+      items.forEach((eventItem) => {
+        const article = document.createElement('article');
+        article.className = 'calendar-event';
+
+        const date = document.createElement('time');
+        date.dateTime = eventItem.date;
+        date.textContent = nanyEventDate(eventItem).toLocaleDateString('es-ES', {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        }) + (eventItem.time ? ' · ' + eventItem.time : '');
+        article.appendChild(date);
+
+        const heading = document.createElement('h4');
+        heading.textContent = eventItem.title || 'Evento NANY';
+        article.appendChild(heading);
+
+        if (eventItem.location) {
+          const location = document.createElement('p');
+          location.className = 'calendar-event-location';
+          location.innerHTML = '<i class="fas fa-map-marker-alt" aria-hidden="true"></i>';
+          const locationText = document.createElement('span');
+          locationText.textContent = eventItem.location;
+          location.appendChild(locationText);
+          article.appendChild(location);
+        }
+
+        if (eventItem.description) {
+          const description = document.createElement('p');
+          description.textContent = eventItem.description;
+          article.appendChild(description);
+        }
+
+        if (eventItem.link && /^https:\/\//i.test(eventItem.link)) {
+          const link = document.createElement('a');
+          link.className = 'calendar-event-link';
+          link.href = eventItem.link;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.innerHTML = '<span>Más información</span><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>';
+          article.appendChild(link);
+        }
+
+        list.appendChild(article);
+      });
+    }
+
     const t = document.getElementById('track');
 
     function togglePlay() {
@@ -1871,6 +2370,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      renderNanyCalendar();
+      renderNanyEventList();
       setTimeout(hideLoader, 700);
     });
 
