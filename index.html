@@ -1806,7 +1806,7 @@
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL17.png" alt="Nueva creación NANY NUEVO-BOL17">
+          <img src="bolsos/BOL5.jpg" loading="lazy" decoding="async" alt="Conjunto artesanal NANY con bolso y sandalias">
           <span>Última novedad</span>
         </div>
       </div>
@@ -1819,15 +1819,14 @@
     <section class="gallery-container">
       <div class="gallery-title reveal">
         <h2>Novedades y Colecciones</h2>
-        <p>Nuevas creaciones de Nany: bolsos artesanales 2026, collares, bisutería, abanicos y pasarelas.</p>
+        <p>Explora las creaciones de Nany por bloques para una navegación más clara y una carga más rápida.</p>
       </div>
 
       <div class="filter-bar reveal">
-        <button class="btn-f active" onclick="filter('todos', event)">Todo</button>
-        <button class="btn-f" onclick="filter('novedades', event)">Novedades</button>
+        <button class="btn-f active" onclick="filter('novedades', event)">Novedades</button>
         <button class="btn-f" onclick="filter('bolsos', event)">Bolsos</button>
-        <button class="btn-f" onclick="filter('collares', event)">Collares</button>
         <button class="btn-f" onclick="filter('pasarelas', event)">Pasarelas</button>
+        <button class="btn-f" onclick="filter('collares', event)">Collares</button>
         <button class="btn-f" onclick="filter('abanicos', event)">Abanicos</button>
         <button class="btn-f" onclick="filter('bisouteria', event)">Bisutería</button>
       </div>
@@ -2005,7 +2004,7 @@
         gate.style.display = 'none';
         document.getElementById('main-app').style.display = 'block';
         document.body.style.overflow = 'auto';
-        filter('todos');
+        filter('novedades');
         initScrollReveal();
         applyCursorHover();
       }, 1000);
@@ -2073,7 +2072,7 @@
       d.style.animationDelay = (index * 0.03) + 's';
 
       d.innerHTML = `
-        <img src="${u}" loading="lazy" alt="${label}" onerror="this.parentElement.style.display='none'">
+        <img src="${u}" loading="lazy" decoding="async" fetchpriority="low" alt="${label}" onerror="this.parentElement.style.display='none'">
         <div class="tag-label">${label}</div>
       `;
 
