@@ -1791,17 +1791,17 @@
 
       <div class="highlight-grid">
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL1.png" alt="Nueva creación NANY NUEVO-BOL1">
+          <img src="bolsos/NUEVO-BOL1.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL1">
           <span>Nueva colección</span>
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL4.png" alt="Nueva creación NANY NUEVO-BOL4">
+          <img src="bolsos/NUEVO-BOL4.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL4">
           <span>Diseño artesanal</span>
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL7.png" alt="Nueva creación NANY NUEVO-BOL7">
+          <img src="bolsos/NUEVO-BOL7.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL7">
           <span>Modelo exclusivo</span>
         </div>
 
@@ -1832,6 +1832,11 @@
       </div>
 
       <div class="grid-master" id="gallery-render"></div>
+      <div style="text-align:center; margin-top:32px;">
+        <button id="load-more-btn" class="btn-f" type="button" onclick="loadMore()" style="display:none;">
+          Cargar más
+        </button>
+      </div>
     </section>
 
     <section class="calendar-section" id="agenda">
@@ -2037,28 +2042,65 @@
 
     let currentImages = [];
     let currentLightboxIndex = 0;
+    let currentCategory = 'novedades';
+    let visibleCount = 0;
+    const GALLERY_BATCH_SIZE = 8;
+
+    function categoryLabel(cat) {
+      const labels = {
+        novedades: 'NOVEDADES',
+        bolsos: 'BOLSOS',
+        collares: 'COLLARES',
+        pasarelas: 'PASARELAS',
+        abanicos: 'ABANICOS',
+        bisouteria: 'BISUTERÍA'
+      };
+      return labels[cat] || cat.toUpperCase();
+    }
 
     function filter(cat, event) {
       const grid = document.getElementById('gallery-render');
-      grid.innerHTML = '';
+      const moreBtn = document.getElementById('load-more-btn');
+
+      if (!REPO[cat]) return;
+
+      currentCategory = cat;
+      visibleCount = 0;
       currentImages = [];
+      grid.innerHTML = '';
 
       if (event) {
         document.querySelectorAll('.btn-f').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        event.currentTarget.classList.add('active');
       }
 
-      if (cat === 'todos') {
-        REPO.novedades.forEach(u => render(u, 'NOVEDADES'));
-        REPO.bolsos.forEach(u => render(u, 'BOLSOS'));
-        REPO.collares.forEach(u => render(u, 'COLLARES'));
-        REPO.pasarelas.forEach(u => render(u, 'PASARELAS'));
-        REPO.abanicos.forEach(u => render(u, 'ABANICOS'));
-        REPO.bisouteria.forEach(u => render(u, 'BISUTERÍA'));
-      } else {
-        REPO[cat].forEach(u => render(u, cat.toUpperCase()));
+      renderNextBatch();
+
+      if (moreBtn) {
+        moreBtn.style.display = REPO[currentCategory].length > visibleCount ? 'inline-block' : 'none';
       }
 
+      applyCursorHover();
+    }
+
+    function renderNextBatch() {
+      const items = REPO[currentCategory];
+      const nextLimit = Math.min(visibleCount + GALLERY_BATCH_SIZE, items.length);
+
+      for (let i = visibleCount; i < nextLimit; i++) {
+        render(items[i], categoryLabel(currentCategory));
+      }
+
+      visibleCount = nextLimit;
+
+      const moreBtn = document.getElementById('load-more-btn');
+      if (moreBtn) {
+        moreBtn.style.display = visibleCount < items.length ? 'inline-block' : 'none';
+      }
+    }
+
+    function loadMore() {
+      renderNextBatch();
       applyCursorHover();
     }
 
@@ -2069,7 +2111,7 @@
       const index = currentImages.length - 1;
       const d = document.createElement('div');
       d.className = 'art-item animate__animated animate__fadeInUp';
-      d.style.animationDelay = (index * 0.03) + 's';
+      d.style.animationDelay = (Math.min(index, GALLERY_BATCH_SIZE - 1) * 0.03) + 's';
 
       d.innerHTML = `
         <img src="${u}" loading="lazy" decoding="async" fetchpriority="low" alt="${label}" onerror="this.parentElement.style.display='none'">
