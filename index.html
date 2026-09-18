@@ -1782,37 +1782,36 @@
 
 
     <section class="collection-highlight">
-      <h2 class="reveal">Nuevas Creaciones 2026</h2>
+      <h2 class="reveal">Selección artesanal</h2>
       <p class="reveal">
-        Selección destacada de la nueva colección de bolsos artesanales de Nany: piezas únicas, coloridas y hechas a mano,
-        con texturas cuidadas y una identidad propia. Cada modelo conserva el espíritu creativo de Nany y su
-        compromiso con una moda diferente, humana y consciente.
+        Selección de creaciones reales de Nany: bolsos y conjuntos artesanales hechos a mano,
+        presentados de forma ligera para que la página cargue más rápido sin perder autenticidad.
       </p>
 
       <div class="highlight-grid">
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL1.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL1">
-          <span>Nueva colección</span>
+          <img src="bolsos/BOL2.jpg" loading="lazy" decoding="async" alt="Bolso artesanal NANY azul y crema">
+          <span>Bolso artesanal</span>
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL4.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL4">
-          <span>Diseño artesanal</span>
+          <img src="bolsos/BOL3.jpg" loading="lazy" decoding="async" alt="Bolso artesanal NANY marrón">
+          <span>Trabajo con anillas</span>
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/NUEVO-BOL7.png" loading="lazy" decoding="async" alt="Nueva creación NANY NUEVO-BOL7">
-          <span>Modelo exclusivo</span>
+          <img src="bolsos/BOL5.jpg" loading="lazy" decoding="async" alt="Bolso artesanal NANY turquesa">
+          <span>Conjunto coordinado</span>
         </div>
 
         <div class="highlight-item reveal-scale">
-          <img src="bolsos/BOL5.jpg" loading="lazy" decoding="async" alt="Conjunto artesanal NANY con bolso y sandalias">
-          <span>Última novedad</span>
+          <img src="bolsos/BOL14.jpg" loading="lazy" decoding="async" alt="Selección de bolsos y complementos NANY">
+          <span>Selección de piezas</span>
         </div>
       </div>
 
       <p class="reveal" style="margin-top: 28px; color: rgba(255,255,255,0.55); font-size: 0.95rem;">
-        Ver la colección completa en la galería: 17 nuevas creaciones disponibles en la categoría “Novedades”.
+        Explora el resto de las creaciones por categorías en la galería.
       </p>
     </section>
 
@@ -1823,8 +1822,8 @@
       </div>
 
       <div class="filter-bar reveal">
-        <button class="btn-f active" onclick="filter('novedades', event)">Novedades</button>
-        <button class="btn-f" onclick="filter('bolsos', event)">Bolsos</button>
+        <button class="btn-f" onclick="filter('novedades', event)">Novedades</button>
+        <button class="btn-f active" onclick="filter('bolsos', event)">Bolsos</button>
         <button class="btn-f" onclick="filter('pasarelas', event)">Vestidos y pasarelas</button>
         <button class="btn-f" onclick="filter('complementos', event)">Complementos</button>
       </div>
@@ -2007,7 +2006,7 @@
         gate.style.display = 'none';
         document.getElementById('main-app').style.display = 'block';
         document.body.style.overflow = 'auto';
-        filter('novedades');
+        filter('bolsos');
         initScrollReveal();
         applyCursorHover();
       }, 1000);
@@ -2046,9 +2045,9 @@
 
     let currentImages = [];
     let currentLightboxIndex = 0;
-    let currentCategory = 'novedades';
+    let currentCategory = 'bolsos';
     let visibleCount = 0;
-    const GALLERY_BATCH_SIZE = 8;
+    const GALLERY_BATCH_SIZE = 4;
 
     function categoryLabel(cat) {
       const labels = {
