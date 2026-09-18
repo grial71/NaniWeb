@@ -1819,16 +1819,14 @@
     <section class="gallery-container">
       <div class="gallery-title reveal">
         <h2>Novedades y Colecciones</h2>
-        <p>Explora las creaciones de Nany por bloques para una navegación más clara y una carga más rápida.</p>
+        <p>Explora las creaciones de Nany por bloques: novedades, bolsos, vestidos y pasarelas, y complementos.</p>
       </div>
 
       <div class="filter-bar reveal">
         <button class="btn-f active" onclick="filter('novedades', event)">Novedades</button>
         <button class="btn-f" onclick="filter('bolsos', event)">Bolsos</button>
-        <button class="btn-f" onclick="filter('pasarelas', event)">Pasarelas</button>
-        <button class="btn-f" onclick="filter('collares', event)">Collares</button>
-        <button class="btn-f" onclick="filter('abanicos', event)">Abanicos</button>
-        <button class="btn-f" onclick="filter('bisouteria', event)">Bisutería</button>
+        <button class="btn-f" onclick="filter('pasarelas', event)">Vestidos y pasarelas</button>
+        <button class="btn-f" onclick="filter('complementos', event)">Complementos</button>
       </div>
 
       <div class="grid-master" id="gallery-render"></div>
@@ -2040,6 +2038,12 @@
         .map(i => `assets/pasarelas/desf${i}.jpg`)
     };
 
+    REPO.complementos = [
+      ...REPO.collares,
+      ...REPO.abanicos,
+      ...REPO.bisouteria
+    ];
+
     let currentImages = [];
     let currentLightboxIndex = 0;
     let currentCategory = 'novedades';
@@ -2051,9 +2055,10 @@
         novedades: 'NOVEDADES',
         bolsos: 'BOLSOS',
         collares: 'COLLARES',
-        pasarelas: 'PASARELAS',
+        pasarelas: 'VESTIDOS Y PASARELAS',
         abanicos: 'ABANICOS',
-        bisouteria: 'BISUTERÍA'
+        bisouteria: 'BISUTERÍA',
+        complementos: 'COMPLEMENTOS'
       };
       return labels[cat] || cat.toUpperCase();
     }
