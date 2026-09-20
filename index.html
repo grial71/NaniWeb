@@ -6,8 +6,8 @@
 
   <title>NANY | Casiana Nanitursa Nchama Nguema - Official Portfolio</title>
 
-  <meta name="description" content="Portfolio oficial de NANY - Moda con conciencia. Alta costura sostenible desde Guinea Ecuatorial.">
-  <meta name="keywords" content="NANY, moda sostenible, alta costura, Guinea Ecuatorial, Casiana Nchama">
+  <meta name="description" content="Portfolio creativo oficial de NANY: moda consciente, bolsos, complementos, pasarelas y creaciones artesanales de Nany.">
+  <meta name="keywords" content="NANY, DANNANY DESIGN, moda consciente, diseño artesanal, bolsos, complementos, pasarelas, Casiana Nchama">
   <meta name="author" content="Casiana Nanitursa Nchama Nguema">
   <meta name="theme-color" content="#D4AF37">
   <link rel="canonical" href="https://dannanydesign.com/">
@@ -1653,6 +1653,49 @@
       outline: none;
     }
 
+    .support-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .support-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 15px 30px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 650;
+      transition: var(--transition-smooth);
+    }
+
+    .support-action-secondary:hover,
+    .support-action-secondary:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--oro);
+      background: rgba(212,175,55,0.09);
+      outline: none;
+    }
+
+    .support-privacy-note {
+      display: block;
+      max-width: 650px;
+      margin: 10px auto 0;
+      color: rgba(255,255,255,0.52);
+      font-size: 0.78rem;
+      line-height: 1.65;
+    }
+
     .support-security {
       display: flex;
       align-items: center;
@@ -1873,26 +1916,45 @@
 
     <section class="support-section" id="apoyar">
       <div class="support-card reveal-scale">
-        <div class="support-kicker">Apoyo independiente</div>
+        <div class="support-kicker">Apoyo voluntario</div>
         <h2>Apoya el proyecto creativo de NANY</h2>
         <p>
-          Tu aportación ayuda a desarrollar nuevas creaciones, presentar el trabajo artesanal
-          de NANY y dar continuidad a un proyecto de moda consciente, humano y sostenible.
+          Si te gustan las creaciones de Nany y quieres contribuir a que pueda seguir desarrollando
+          nuevos diseños, materiales, presentaciones y proyectos creativos, puedes ponerte en contacto
+          directamente con ella.
         </p>
 
-        <div class="support-paypal-form" aria-live="polite">
-          <div class="support-paypal-button" style="cursor: default;" role="status">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-            Sistema de apoyo en preparación
-          </div>
+        <div class="support-paypal-form support-actions" aria-label="Opciones de contacto y apoyo">
+          <a class="support-paypal-button"
+             href="https://wa.me/34663424322?text=Hola%20Nany%2C%20me%20gustar%C3%ADa%20apoyar%20tu%20proyecto%20creativo%20DANNANY%20DESIGN%20por%20Bizum.%20%C2%BFPuedes%20indicarme%20c%C3%B3mo%20hacerlo%3F"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Contactar con Nany por WhatsApp para apoyar por Bizum">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            Apoyar por Bizum
+          </a>
+
+          <a class="support-action-secondary"
+             href="https://wa.me/34663424322?text=Hola%20Nany%2C%20me%20gustar%C3%ADa%20conocer%20tus%20pr%C3%B3ximas%20creaciones%20y%20novedades%20de%20DANNANY%20DESIGN."
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Contactar con Nany por WhatsApp para recibir novedades">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Quiero conocer las novedades
+          </a>
         </div>
+
+        <small class="support-privacy-note">
+          Al pulsar uno de los botones se abre WhatsApp con un mensaje preparado. Tú decides si quieres enviarlo.
+          La web no almacena tus datos de contacto.
+        </small>
 
         <div class="support-security">
           <i class="fas fa-lock" aria-hidden="true"></i>
-          <span>La futura modalidad de apoyo se activará únicamente después de validar su trazabilidad fiscal.</span>
+          <span>El apoyo se coordina directamente con Nany. Esta web no solicita ni almacena datos bancarios.</span>
         </div>
         <small class="support-legal">
-          Actualmente esta web no recibe aportaciones ni solicita datos bancarios. El sitio es un portfolio personal y artístico, sin venta en línea.
+          DANNANY DESIGN es actualmente un proyecto creativo personal. El apoyo es voluntario, no corresponde
+          a una compra y no implica una contraprestación comercial automática. Nany no se presenta como empresa,
+          asociación u ONG.
         </small>
       </div>
     </section>
@@ -1901,7 +1963,7 @@
       <div class="footer-content">
         <div class="footer-logo">NANY</div>
         <div class="footer-divider"></div>
-        <p>&copy; 2026 NANY Haute Couture | Titular y responsable: Casiana Nanitursa Nchama Nguema</p>
+        <p>&copy; 2026 NANY | Proyecto creativo personal de Casiana Nanitursa Nchama Nguema</p>
 
         <div class="footer-social">
           <a href="https://wa.me/34663424322" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp España">
