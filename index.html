@@ -2144,8 +2144,20 @@
       bisouteria: [1, 10, 11, 12, 13, 14, 15]
         .map(i => `assets/bisouteria/BISOU${i}.jpg`),
 
-      pasarelas: [1, 10, 100, 101, 102, 103, 104, 105, 106, 107]
-        .map(i => `assets/pasarelas/desf${i}.jpg`)
+      pasarelas: [
+        ...[
+          'dannany-defile-robe-argent-noir.jpg',
+          'dannany-defile-ensemble-metallique.jpg',
+          'dannany-defile-robe-orange.jpg',
+          'dannany-defile-robe-vert-citron.jpg',
+          'dannany-defile-top-argent-franges.jpg',
+          'dannany-mode-maillot-bleu-orange.jpg',
+          'dannany-evenement-tenues-duo.jpg',
+          'dannany-portrait-top-noir-argent.jpg'
+        ].map(name => `assets/pasarelas/${name}`),
+        ...[1, 10, 100, 101, 102, 103, 104, 105, 106, 107]
+          .map(i => `assets/pasarelas/desf${i}.jpg`)
+      ]
     };
 
     REPO.complementos = [
